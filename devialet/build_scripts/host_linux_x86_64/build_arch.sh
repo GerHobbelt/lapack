@@ -96,5 +96,5 @@ cmake --build . --parallel 8
 ################################################################################
 # Copy the library and headers to destination directory
 cp $CMAKEDIR/lib/$LIBS $BINARY_DIR
-cp $LAPACK_SRC/LAPACKE/include/$INCS $INCLUDE_DIR
+cp $CMAKEDIR/include/$INCS $INCLUDE_DIR
 ################################################################################
