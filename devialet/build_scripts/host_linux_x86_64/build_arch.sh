@@ -35,7 +35,7 @@ else
   echo "Usage: build_arch.sh /path/to/builddir target [armv7l|aarch64|x86_64]."
   exit 2
 fi
-LAPACKE_CC_FLAGS = "$LAPACKE_CC_FLAGS -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
+LAPACKE_CC_FLAGS="${LAPACKE_CC_FLAGS} -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
 ################################################################################
 # Library name and headers
 LIBS=*.a
@@ -74,9 +74,9 @@ if [ "$TARGET" == "aarch64" ] || [ "$TARGET" == "armv7l" ]; then
   tar xvf ${TOOLCHAIN_FILE} -C ${TOOLCHAINDIR}
   echo "Done."
 
-  ARMCC_PREFIX=${TOOLCHAINDIR}/${TOOLCHAIN_NAME}/bin/${TOOLCHAIN_NAME_SHORT}-
+  CC_PREFIX=${TOOLCHAINDIR}/${TOOLCHAIN_NAME}/bin/${TOOLCHAIN_NAME_SHORT}-
 else
-  ARMCC_PREFIX=
+  CC_PREFIX=
 fi
 ################################################################################
 # Run CMake
@@ -84,12 +84,12 @@ cd $CMAKEDIR
 cmake \
   -DCMAKE_SYSTEM_NAME=Linux \
   -DCMAKE_SYSTEM_PROCESSOR=${PROCESSOR} \
-  -DCMAKE_C_COMPILER=${ARMCC_PREFIX}gcc \
-  -DCMAKE_CXX_COMPILER=${ARMCC_PREFIX}g++ \
-  -DCMAKE_Fortran_COMPILER=${ARMCC_PREFIX}gfortran \
+  -DCMAKE_C_COMPILER=${CC_PREFIX}gcc \
+  -DCMAKE_CXX_COMPILER=${CC_PREFIX}g++ \
+  -DCMAKE_Fortran_COMPILER=${CC_PREFIX}gfortran \
   -DCMAKE_C_FLAGS="${LAPACKE_CC_FLAGS}" \
   -DCMAKE_CXX_FLAGS="${LAPACKE_CC_FLAGS}" \
-  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+  -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF \
   -DLAPACKE:BOOL=ON \
   ${LAPACK_SRC}
 cmake --build . --parallel 8
