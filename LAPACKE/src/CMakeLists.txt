@@ -557,6 +557,8 @@ lapacke_ctrsna.c
 lapacke_ctrsna_work.c
 lapacke_ctrsyl.c
 lapacke_ctrsyl_work.c
+lapacke_ctrsyl3.c
+lapacke_ctrsyl3_work.c
 lapacke_ctrtri.c
 lapacke_ctrtri_work.c
 lapacke_ctrtrs.c
@@ -1169,6 +1171,8 @@ lapacke_dtrsna.c
 lapacke_dtrsna_work.c
 lapacke_dtrsyl.c
 lapacke_dtrsyl_work.c
+lapacke_dtrsyl3.c
+lapacke_dtrsyl3_work.c
 lapacke_dtrtri.c
 lapacke_dtrtri_work.c
 lapacke_dtrtrs.c
@@ -1740,6 +1744,8 @@ lapacke_strsna.c
 lapacke_strsna_work.c
 lapacke_strsyl.c
 lapacke_strsyl_work.c
+lapacke_strsyl3.c
+lapacke_strsyl3_work.c
 lapacke_strtri.c
 lapacke_strtri_work.c
 lapacke_strtrs.c
@@ -2314,6 +2320,8 @@ lapacke_ztrsna.c
 lapacke_ztrsna_work.c
 lapacke_ztrsyl.c
 lapacke_ztrsyl_work.c
+lapacke_ztrsyl3.c
+lapacke_ztrsyl3_work.c
 lapacke_ztrtri.c
 lapacke_ztrtri_work.c
 lapacke_ztrtrs.c
