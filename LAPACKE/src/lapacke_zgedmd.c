@@ -51,9 +51,9 @@ lapack_int LAPACKE_zgedmd( int matrix_layout, char jobs, char jobz, char jobr,
     lapack_complex_double* zwork = NULL;
     double* work = NULL;
     lapack_int* iwork = NULL;
-    lapack_complex_double work_query;
+    double work_query;
     lapack_int iwork_query;
-    lapack_int zwork_query;
+    lapack_complex_double zwork_query;
     if( matrix_layout != LAPACK_COL_MAJOR && matrix_layout != LAPACK_ROW_MAJOR ) {
         LAPACKE_xerbla( "LAPACKE_zgedmd", -1 );
         return -1;
@@ -92,7 +92,7 @@ lapack_int LAPACKE_zgedmd( int matrix_layout, char jobs, char jobz, char jobr,
     }
     lwork  = LAPACK_Z2INT( work_query );
     liwork = iwork_query;
-    lzwork = zwork_query;
+    lzwork = LAPACK_Z2INT( zwork_query );
     /* Allocate memory for work arrays */
     zwork  = (lapack_complex_double*)LAPACKE_malloc( sizeof(lapack_complex_double) * lzwork );
     if( zwork == NULL ) {
