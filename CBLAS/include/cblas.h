@@ -29,7 +29,7 @@ extern "C" {            /* Assume C declarations for C++ */
  * Integer format string
  */
 #ifndef CBLAS_IFMT
-#ifdef WeirdNEC
+#if defined( WeirdNEC )
    #define CBLAS_IFMT PRId64
 #else
    #define CBLAS_IFMT PRId32
@@ -44,7 +44,7 @@ typedef enum CBLAS_SIDE {CblasLeft=141, CblasRight=142} CBLAS_SIDE;
 
 #define CBLAS_ORDER CBLAS_LAYOUT /* this for backward compatibility with CBLAS_ORDER */
 
-#include "cblas_mangling.h"
+#include "cblas_mangling_with_flags.h"
 
 /*
  * Integer specific API

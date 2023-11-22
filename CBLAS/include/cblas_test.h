@@ -5,7 +5,7 @@
 #ifndef CBLAS_TEST_H
 #define CBLAS_TEST_H
 #include "cblas.h"
-#include "cblas_mangling.h"
+#include "cblas_mangling_with_flags.h"
 
 #define  TRUE           1
 #define  PASSED         1
