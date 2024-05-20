@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b STRSYL
 *
 *  =========== DOCUMENTATION ===========
@@ -251,7 +250,7 @@
       SMIN = MAX( SMLNUM, EPS*SLANGE( 'M', M, M, A, LDA, DUM ),
      $       EPS*SLANGE( 'M', N, N, B, LDB, DUM ) )
 *
-      SGN = ISGN
+      SGN = REAL( ISGN )
 *
       IF( NOTRNA .AND. NOTRNB ) THEN
 *

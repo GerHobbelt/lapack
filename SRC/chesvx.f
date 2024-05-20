@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> CHESVX computes the solution to system of linear equations A * X = B for HE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -316,7 +315,8 @@
       LOGICAL            LSAME
       INTEGER            ILAENV
       REAL               CLANHE, SLAMCH, SROUNDUP_LWORK
-      EXTERNAL           ILAENV, LSAME, CLANHE, SLAMCH, SROUNDUP_LWORK
+      EXTERNAL           ILAENV, LSAME, CLANHE, SLAMCH,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           CHECON, CHERFS, CHETRF, CHETRS, CLACPY,

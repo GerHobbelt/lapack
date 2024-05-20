@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SHGEQZ
 *
 *  =========== DOCUMENTATION ===========
@@ -348,9 +347,10 @@
 *     ..
 *     .. External Functions ..
       LOGICAL            LSAME
-      REAL               SLAMCH, SLANHS, SLAPY2, SLAPY3, SROUNDUP_LWORK
-      EXTERNAL           LSAME, SLAMCH, SLANHS, SLAPY2, SLAPY3,
-     $                   SROUNDUP_LWORK
+      REAL               SLAMCH, SLANHS, SLAPY2,
+     $                   SLAPY3, SROUNDUP_LWORK
+      EXTERNAL           LSAME, SLAMCH, SLANHS,
+     $                   SLAPY2, SLAPY3, SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           SLAG2, SLARFG, SLARTG, SLASET, SLASV2,
@@ -403,7 +403,7 @@
 *     Check Argument Values
 *
       INFO = 0
-      WORK( 1 ) = MAX( 1, N )
+      WORK( 1 ) = REAL( MAX( 1, N ) )
       LQUERY = ( LWORK.EQ.-1 )
       IF( ISCHUR.EQ.0 ) THEN
          INFO = -1

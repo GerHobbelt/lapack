@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SGELST solves overdetermined or underdetermined systems for GE matrices using QR or LQ factorization with compact WY representation of Q.</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -225,7 +224,8 @@
       LOGICAL            LSAME
       INTEGER            ILAENV
       REAL               SLAMCH, SLANGE, SROUNDUP_LWORK
-      EXTERNAL           LSAME, ILAENV, SLAMCH, SLANGE, SROUNDUP_LWORK
+      EXTERNAL           LSAME, ILAENV, SLAMCH, SLANGE,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           SGELQT, SGEQRT, SGEMLQT, SGEMQRT,

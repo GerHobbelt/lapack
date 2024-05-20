@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CTREVC3
 *
 *  =========== DOCUMENTATION ===========
@@ -327,7 +326,7 @@
       NB = ILAENV( 1, 'CTREVC', SIDE // HOWMNY, N, -1, -1, -1 )
       MAXWRK = MAX( 1, N + 2*N*NB )
       WORK(1) = SROUNDUP_LWORK(MAXWRK)
-      RWORK(1) = MAX( 1, N )
+      RWORK(1) = REAL( MAX( 1, N ) )
       LQUERY = ( LWORK.EQ.-1 .OR. LRWORK.EQ.-1 )
       IF( .NOT.RIGHTV .AND. .NOT.LEFTV ) THEN
          INFO = -1
@@ -376,7 +375,7 @@
       UNFL = SLAMCH( 'Safe minimum' )
       OVFL = ONE / UNFL
       ULP = SLAMCH( 'Precision' )
-      SMLNUM = UNFL*( N / ULP )
+      SMLNUM = UNFL*( REAL( N ) / ULP )
 *
 *     Store the diagonal elements of T in working array WORK.
 *

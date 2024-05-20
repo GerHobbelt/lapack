@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SSTEDC
 *
 *  =========== DOCUMENTATION ===========
@@ -210,7 +209,8 @@
       LOGICAL            LSAME
       INTEGER            ILAENV
       REAL               SLAMCH, SLANST, SROUNDUP_LWORK
-      EXTERNAL           ILAENV, LSAME, SLAMCH, SLANST, SROUNDUP_LWORK
+      EXTERNAL           ILAENV, LSAME, SLAMCH, SLANST,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           SGEMM, SLACPY, SLAED0, SLASCL, SLASET,

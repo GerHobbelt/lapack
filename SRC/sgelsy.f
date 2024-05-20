@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SGELSY solves overdetermined or underdetermined systems for GE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -237,7 +236,8 @@
 *     .. External Functions ..
       INTEGER            ILAENV
       REAL               SLAMCH, SLANGE, SROUNDUP_LWORK
-      EXTERNAL           ILAENV, SLAMCH, SLANGE, SROUNDUP_LWORK
+      EXTERNAL           ILAENV, SLAMCH, SLANGE,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           SCOPY, SGEQP3, SLAIC1, SLASCL,
@@ -359,7 +359,7 @@
 *
       CALL SGEQP3( M, N, A, LDA, JPVT, WORK( 1 ), WORK( MN+1 ),
      $             LWORK-MN, INFO )
-      WSIZE = MN + WORK( MN+1 )
+      WSIZE = REAL( MN ) + WORK( MN+1 )
 *
 *     workspace: MN+2*N+NB*(N+1).
 *     Details of Householder rotations stored in WORK(1:MN).
@@ -420,7 +420,7 @@
       CALL SORMQR( 'Left', 'Transpose', M, NRHS, MN, A, LDA,
      $             WORK( 1 ),
      $             B, LDB, WORK( 2*MN+1 ), LWORK-2*MN, INFO )
-      WSIZE = MAX( WSIZE, 2*MN+WORK( 2*MN+1 ) )
+      WSIZE = MAX( WSIZE, REAL( 2*MN )+WORK( 2*MN+1 ) )
 *
 *     workspace: 2*MN+NB*NRHS.
 *

@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SORBDB
 *
 *  =========== DOCUMENTATION ===========
@@ -377,7 +376,7 @@
       IF( INFO .EQ. 0 ) THEN
          LWORKOPT = M - Q
          LWORKMIN = M - Q
-         WORK(1) = LWORKOPT
+         WORK(1) = REAL( LWORKOPT )
          IF( LWORK .LT. LWORKMIN .AND. .NOT. LQUERY ) THEN
             INFO = -21
          END IF

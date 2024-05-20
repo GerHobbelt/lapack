@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> ZGESVJ </b>
 *
 *  =========== DOCUMENTATION ===========
@@ -477,7 +476,7 @@
          RETURN
       ELSE IF( LQUERY ) THEN
          CWORK( 1 ) = LWMIN
-         RWORK( 1 ) = LRWMIN
+         RWORK( 1 ) = REAL( LRWMIN )
          RETURN
       END IF
 *

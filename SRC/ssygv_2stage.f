@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SSYGV_2STAGE
 *
 *  @generated from dsygv_2stage.f, fortran d -> s, Sun Nov  6 12:54:29 2016
@@ -298,7 +297,7 @@
          LWTRD = ILAENV2STAGE( 4, 'SSYTRD_2STAGE', JOBZ, N, KD, IB,
      $                         -1 )
          LWMIN = 2*N + LHTRD + LWTRD
-         WORK( 1 )  = LWMIN
+         WORK( 1 )  = REAL( LWMIN )
 *
          IF( LWORK.LT.LWMIN .AND. .NOT.LQUERY ) THEN
             INFO = -11

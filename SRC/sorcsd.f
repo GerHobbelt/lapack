@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SORCSD
 *
 *  =========== DOCUMENTATION ===========
@@ -479,7 +478,7 @@
      $              IORBDB + LORBDBWORKOPT, IBBCSD + LBBCSDWORKOPT ) - 1
          LWORKMIN = MAX( IORGQR + LORGQRWORKMIN, IORGLQ + LORGLQWORKMIN,
      $              IORBDB + LORBDBWORKOPT, IBBCSD + LBBCSDWORKMIN ) - 1
-         WORK(1) = MAX(LWORKOPT,LWORKMIN)
+         WORK(1) = REAL( MAX(LWORKOPT,LWORKMIN) )
 *
          IF( LWORK .LT. LWORKMIN .AND. .NOT. LQUERY ) THEN
             INFO = -22

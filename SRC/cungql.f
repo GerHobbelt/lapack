@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CUNGQL
 *
 *  =========== DOCUMENTATION ===========
@@ -288,7 +287,7 @@
    50    CONTINUE
       END IF
 *
-      WORK( 1 ) = IWS
+      WORK( 1 ) = CMPLX( IWS )
       RETURN
 *
 *     End of CUNGQL

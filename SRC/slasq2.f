@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SLASQ2 computes all the eigenvalues of the symmetric positive definite tridiagonal matrix associated with the qd Array Z to high relative accuracy. Used by sbdsqr and sstegr.
 *
 *  =========== DOCUMENTATION ===========
@@ -586,7 +585,7 @@
       Z( 2*N+2 ) = E
       Z( 2*N+3 ) = REAL( ITER )
       Z( 2*N+4 ) = REAL( NDIV ) / REAL( N**2 )
-      Z( 2*N+5 ) = HUNDRD*NFAIL / REAL( ITER )
+      Z( 2*N+5 ) = HUNDRD*REAL( NFAIL / ITER )
       RETURN
 *
 *     End of SLASQ2

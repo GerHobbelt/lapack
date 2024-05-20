@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CGETSLS
 *
 *  Definition:
@@ -193,7 +192,8 @@
 *     .. External Functions ..
       LOGICAL            LSAME
       REAL               SLAMCH, CLANGE, SROUNDUP_LWORK
-      EXTERNAL           LSAME, SLAMCH, CLANGE, SROUNDUP_LWORK
+      EXTERNAL           LSAME, SLAMCH, CLANGE,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           CGEQR, CGEMQR, CLASCL, CLASET,

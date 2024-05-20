@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> ZHBEVD_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices</b>
 *
 *  @precisions fortran z -> s d c
@@ -347,7 +346,7 @@
 *
       IF( INFO.EQ.0 ) THEN
          WORK( 1 )  = LWMIN
-         RWORK( 1 ) = LRWMIN
+         RWORK( 1 ) = REAL( LRWMIN )
          IWORK( 1 ) = LIWMIN
 *
          IF( LWORK.LT.LWMIN .AND. .NOT.LQUERY ) THEN
@@ -449,7 +448,7 @@
       END IF
 *
       WORK( 1 )  = LWMIN
-      RWORK( 1 ) = LRWMIN
+      RWORK( 1 ) = REAL( LRWMIN )
       IWORK( 1 ) = LIWMIN
       RETURN
 *

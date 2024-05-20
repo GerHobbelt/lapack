@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SGGSVD3 computes the singular value decomposition (SVD) for OTHER matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -374,7 +373,8 @@
 *     .. External Functions ..
       LOGICAL            LSAME
       REAL               SLAMCH, SLANGE, SROUNDUP_LWORK
-      EXTERNAL           LSAME, SLAMCH, SLANGE, SROUNDUP_LWORK
+      EXTERNAL           LSAME, SLAMCH, SLANGE,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           SCOPY, SGGSVP3, STGSJA, XERBLA
@@ -452,8 +452,8 @@
 *
       ULP = SLAMCH( 'Precision' )
       UNFL = SLAMCH( 'Safe Minimum' )
-      TOLA = MAX( M, N )*MAX( ANORM, UNFL )*ULP
-      TOLB = MAX( P, N )*MAX( BNORM, UNFL )*ULP
+      TOLA = REAL( MAX( M, N ) )*MAX( ANORM, UNFL )*ULP
+      TOLB = REAL( MAX( P, N ) )*MAX( BNORM, UNFL )*ULP
 *
 *     Preprocessing
 *

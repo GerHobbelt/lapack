@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CUNCSD
 *
 *  =========== DOCUMENTATION ===========
@@ -481,7 +480,7 @@
          LBBCSDWORKMIN = LBBCSDWORKOPT
          LRWORKOPT = IBBCSD + LBBCSDWORKOPT - 1
          LRWORKMIN = IBBCSD + LBBCSDWORKMIN - 1
-         RWORK(1) = LRWORKOPT
+         RWORK(1) = REAL( LRWORKOPT )
 *
 *        Complex workspace
 *

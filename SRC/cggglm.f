@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CGGGLM
 *
 *  =========== DOCUMENTATION ===========
@@ -351,7 +350,7 @@
       CALL CUNMRQ( 'Left', 'Conjugate transpose', P, 1, NP,
      $             B( MAX( 1, N-P+1 ), 1 ), LDB, WORK( M+1 ), Y,
      $             MAX( 1, P ), WORK( M+NP+1 ), LWORK-M-NP, INFO )
-      WORK( 1 ) = M + NP + MAX( LOPT, INT( WORK( M+NP+1 ) ) )
+      WORK( 1 ) = CMPLX( M + NP + MAX( LOPT, INT( WORK( M+NP+1 ) ) ) )
 *
       RETURN
 *

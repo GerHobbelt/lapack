@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SSYTRF_AA_2STAGE
 *
 *  =========== DOCUMENTATION ===========
@@ -269,7 +268,7 @@
 *
 *     Save NB
 *
-      TB( 1 ) = NB
+      TB( 1 ) = REAL( NB )
 *
       IF( UPPER ) THEN
 *

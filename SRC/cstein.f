@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CSTEIN
 *
 *  =========== DOCUMENTATION ===========
@@ -319,7 +318,7 @@
    50    CONTINUE
          ORTOL = ODM3*ONENRM
 *
-         STPCRT = SQRT( ODM1 / BLKSIZ )
+         STPCRT = SQRT( ODM1 / REAL( BLKSIZ ) )
 *
 *        Loop through eigenvalues of block nblk.
 *
@@ -382,7 +381,7 @@
 *           Normalize and scale the righthand side vector Pb.
 *
             JMAX = ISAMAX( BLKSIZ, WORK( INDRV1+1 ), 1 )
-            SCL = BLKSIZ*ONENRM*MAX( EPS,
+            SCL = REAL( BLKSIZ )*ONENRM*MAX( EPS,
      $            ABS( WORK( INDRV4+BLKSIZ ) ) ) /
      $            ABS( WORK( INDRV1+JMAX ) )
             CALL SSCAL( BLKSIZ, SCL, WORK( INDRV1+1 ), 1 )

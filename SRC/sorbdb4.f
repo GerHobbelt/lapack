@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SORBDB4
 *
 *  =========== DOCUMENTATION ===========
@@ -279,7 +278,7 @@
          LWORKOPT = ILARF + LLARF - 1
          LWORKOPT = MAX( LWORKOPT, IORBDB5 + LORBDB5 - 1 )
          LWORKMIN = LWORKOPT
-         WORK(1) = LWORKOPT
+         WORK(1) = REAL( LWORKOPT )
          IF( LWORK .LT. LWORKMIN .AND. .NOT.LQUERY ) THEN
            INFO = -14
          END IF

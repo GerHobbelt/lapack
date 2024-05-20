@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SLANTR returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a trapezoidal or triangular matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -319,7 +318,7 @@
          IF( LSAME( UPLO, 'U' ) ) THEN
             IF( LSAME( DIAG, 'U' ) ) THEN
                SCALE = ONE
-               SUM = MIN( M, N )
+               SUM = REAL( MIN( M, N ) )
                DO 290 J = 2, N
                   CALL SLASSQ( MIN( M, J-1 ), A( 1, J ), 1, SCALE,
      $                         SUM )
@@ -335,7 +334,7 @@
          ELSE
             IF( LSAME( DIAG, 'U' ) ) THEN
                SCALE = ONE
-               SUM = MIN( M, N )
+               SUM = REAL( MIN( M, N ) )
                DO 310 J = 1, N
                   CALL SLASSQ( M-J, A( MIN( M, J+1 ), J ), 1, SCALE,
      $                         SUM )

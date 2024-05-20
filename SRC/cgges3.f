@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> CGGES3 computes the eigenvalues, the Schur form, and, optionally, the matrix of Schur vectors for GE matrices (blocked algorithm)</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -319,7 +318,8 @@
 *     .. External Functions ..
       LOGICAL            LSAME
       REAL               CLANGE, SLAMCH, SROUNDUP_LWORK
-      EXTERNAL           LSAME, CLANGE, SLAMCH, SROUNDUP_LWORK
+      EXTERNAL           LSAME, CLANGE, SLAMCH,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX, SQRT

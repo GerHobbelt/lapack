@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SLASY2 solves the Sylvester matrix equation where the matrices are of order 1 or 2.
 *
 *  =========== DOCUMENTATION ===========
@@ -239,7 +238,7 @@
 *
       EPS = SLAMCH( 'P' )
       SMLNUM = SLAMCH( 'S' ) / EPS
-      SGN = ISGN
+      SGN = REAL( ISGN )
 *
       K = N1 + N1 + N2 - 2
       GO TO ( 10, 20, 30, 50 )K

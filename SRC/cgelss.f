@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> CGELSS solves overdetermined or underdetermined systems for GE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -221,7 +220,8 @@
 *     .. External Functions ..
       INTEGER            ILAENV
       REAL               CLANGE, SLAMCH, SROUNDUP_LWORK
-      EXTERNAL           ILAENV, CLANGE, SLAMCH, SROUNDUP_LWORK
+      EXTERNAL           ILAENV, CLANGE, SLAMCH,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX, MIN

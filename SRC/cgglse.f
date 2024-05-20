@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> CGGLSE solves overdetermined or underdetermined systems for OTHER matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -349,7 +348,7 @@
 *
       CALL CUNMRQ( 'Left', 'Conjugate Transpose', N, 1, P, B, LDB,
      $             WORK( 1 ), X, N, WORK( P+MN+1 ), LWORK-P-MN, INFO )
-      WORK( 1 ) = P + MN + MAX( LOPT, INT( WORK( P+MN+1 ) ) )
+      WORK( 1 ) = CMPLX( P + MN + MAX( LOPT, INT( WORK( P+MN+1 ) ) ) )
 *
       RETURN
 *

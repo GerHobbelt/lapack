@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SSYEVD_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for SY matrices</b>
 *
 *  @generated from dsyevd_2stage.f, fortran d -> s, Sat Nov  5 23:55:54 2016
@@ -305,7 +304,7 @@
                LWMIN = 2*N + 1 + LHTRD + LWTRD
             END IF
          END IF
-         WORK( 1 )  = LWMIN
+         WORK( 1 )  = REAL( LWMIN )
          IWORK( 1 ) = LIWMIN
 *
          IF( LWORK.LT.LWMIN .AND. .NOT.LQUERY ) THEN
@@ -394,7 +393,7 @@
       IF( ISCALE.EQ.1 )
      $   CALL SSCAL( N, ONE / SIGMA, W, 1 )
 *
-      WORK( 1 )  = LWMIN
+      WORK( 1 )  = REAL( LWMIN )
       IWORK( 1 ) = LIWMIN
 *
       RETURN

@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SLARRK computes one eigenvalue of a symmetric tridiagonal matrix T to suitable accuracy.
 *
 *  =========== DOCUMENTATION ===========
@@ -196,8 +195,8 @@
 
       INFO = -1
 
-      LEFT = GL - FUDGE*TNORM*EPS*N - FUDGE*TWO*PIVMIN
-      RIGHT = GU + FUDGE*TNORM*EPS*N + FUDGE*TWO*PIVMIN
+      LEFT = GL - FUDGE*TNORM*EPS*REAL( N ) - FUDGE*TWO*PIVMIN
+      RIGHT = GU + FUDGE*TNORM*EPS*REAL( N ) + FUDGE*TWO*PIVMIN
       IT = 0
 
  10   CONTINUE

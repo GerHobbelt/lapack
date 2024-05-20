@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CPSTF2 computes the Cholesky factorization with complete pivoting of complex Hermitian positive semidefinite matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -228,7 +227,7 @@
 *     Compute stopping value if not supplied
 *
       IF( TOL.LT.ZERO ) THEN
-         SSTOP = N * SLAMCH( 'Epsilon' ) * AJJ
+         SSTOP = REAL( N ) * SLAMCH( 'Epsilon' ) * AJJ
       ELSE
          SSTOP = TOL
       END IF

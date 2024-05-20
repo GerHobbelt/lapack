@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SGELSD computes the minimum-norm solution to a linear least squares problem for GE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -237,7 +236,8 @@
 *     .. External Functions ..
       INTEGER            ILAENV
       REAL               SLAMCH, SLANGE, SROUNDUP_LWORK
-      EXTERNAL           SLAMCH, SLANGE, ILAENV, SROUNDUP_LWORK
+      EXTERNAL           SLAMCH, SLANGE, ILAENV,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          INT, LOG, MAX, MIN, REAL

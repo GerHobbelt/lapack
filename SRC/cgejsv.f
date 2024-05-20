@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CGEJSV
 *
 *  =========== DOCUMENTATION ===========
@@ -952,9 +951,9 @@
          CALL XERBLA( 'CGEJSV', - INFO )
          RETURN
       ELSE IF ( LQUERY ) THEN
-          CWORK(1) = OPTWRK
-          CWORK(2) = MINWRK
-          RWORK(1) = MINRWRK
+          CWORK(1) = CMPLX( OPTWRK )
+          CWORK(2) = CMPLX( MINWRK )
+          RWORK(1) = REAL( MINRWRK )
           IWORK(1) = MAX( 4, MINIWRK )
           RETURN   
       END IF

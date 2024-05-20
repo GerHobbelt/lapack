@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SORCSD2BY1
 *
 *  =========== DOCUMENTATION ===========
@@ -477,7 +476,7 @@
      $                   IORGQR+LORGQROPT-1,
      $                   IORGLQ+LORGLQOPT-1,
      $                   IBBCSD+LBBCSD-1 )
-         WORK(1) = LWORKOPT
+         WORK(1) = REAL( LWORKOPT )
          IF( LWORK .LT. LWORKMIN .AND. .NOT.LQUERY ) THEN
             INFO = -19
          END IF

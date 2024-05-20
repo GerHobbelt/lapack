@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> ZHEEVD computes the eigenvalues and, optionally, the left and/or right eigenvectors for HE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -286,7 +285,7 @@
             LIOPT = LIWMIN
          END IF
          WORK( 1 ) = LOPT
-         RWORK( 1 ) = LROPT
+         RWORK( 1 ) = REAL( LROPT )
          IWORK( 1 ) = LIOPT
 *
          IF( LWORK.LT.LWMIN .AND. .NOT.LQUERY ) THEN
@@ -382,7 +381,7 @@
       END IF
 *
       WORK( 1 ) = LOPT
-      RWORK( 1 ) = LROPT
+      RWORK( 1 ) = REAL( LROPT )
       IWORK( 1 ) = LIOPT
 *
       RETURN

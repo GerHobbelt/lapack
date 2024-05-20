@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CLAQZ2
 *
 *  =========== DOCUMENTATION ===========
@@ -285,7 +284,7 @@
       LWORKREQ = MAX( LWORKREQ, N*NW, 2*NW**2+N )
       IF ( LWORK .EQ.-1 ) THEN
 *        workspace query, quick return
-         WORK( 1 ) = LWORKREQ
+         WORK( 1 ) = CMPLX( LWORKREQ )
          RETURN
       ELSE IF ( LWORK .LT. LWORKREQ ) THEN
          INFO = -26

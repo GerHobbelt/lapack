@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> ZHESV_AA computes the solution to system of linear equations A * X = B for HE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -198,7 +197,8 @@
       INFO = 0
       LQUERY = ( LWORK.EQ.-1 )
       LWKMIN = MAX( 1, 2*N, 3*N-2 )
-      IF( .NOT.LSAME( UPLO, 'U' ) .AND. .NOT.LSAME( UPLO, 'L' ) ) THEN
+      IF( .NOT.LSAME( UPLO, 'U' ) .AND.
+     $    .NOT.LSAME( UPLO, 'L' ) ) THEN
          INFO = -1
       ELSE IF( N.LT.0 ) THEN
          INFO = -2

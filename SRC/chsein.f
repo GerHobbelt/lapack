@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CHSEIN
 *
 *  =========== DOCUMENTATION ===========
@@ -345,7 +344,7 @@
 *
       UNFL = SLAMCH( 'Safe minimum' )
       ULP = SLAMCH( 'Precision' )
-      SMLNUM = UNFL*( N / ULP )
+      SMLNUM = UNFL*( REAL( N ) / ULP )
 *
       LDWORK = N
 *

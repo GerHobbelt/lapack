@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> CHBEVD computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -242,7 +241,8 @@
 *     .. External Functions ..
       LOGICAL            LSAME
       REAL               CLANHB, SLAMCH, SROUNDUP_LWORK
-      EXTERNAL           LSAME, CLANHB, SLAMCH, SROUNDUP_LWORK
+      EXTERNAL           LSAME, CLANHB, SLAMCH,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           CGEMM, CHBTRD, CLACPY, CLASCL, CSTEDC,
@@ -292,7 +292,7 @@
 *
       IF( INFO.EQ.0 ) THEN
          WORK( 1 ) = SROUNDUP_LWORK(LWMIN)
-         RWORK( 1 ) = LRWMIN
+         RWORK( 1 ) = REAL( LRWMIN )
          IWORK( 1 ) = LIWMIN
 *
          IF( LWORK.LT.LWMIN .AND. .NOT.LQUERY ) THEN
@@ -389,7 +389,7 @@
       END IF
 *
       WORK( 1 ) = SROUNDUP_LWORK(LWMIN)
-      RWORK( 1 ) = LRWMIN
+      RWORK( 1 ) = REAL( LRWMIN )
       IWORK( 1 ) = LIWMIN
       RETURN
 *

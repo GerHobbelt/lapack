@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CTGSNA
 *
 *  =========== DOCUMENTATION ===========
@@ -344,9 +343,11 @@
 *     ..
 *     .. External Functions ..
       LOGICAL            LSAME
-      REAL               SCNRM2, SLAMCH, SLAPY2, SROUNDUP_LWORK
+      REAL               SCNRM2, SLAMCH, SLAPY2,
+     $                   SROUNDUP_LWORK
       COMPLEX            CDOTC
-      EXTERNAL           LSAME, SCNRM2, SLAMCH, SLAPY2, SROUNDUP_LWORK,
+      EXTERNAL           LSAME, SCNRM2, SLAMCH,
+     $                   SLAPY2, SROUNDUP_LWORK,
      $                   CDOTC
 *     ..
 *     .. External Subroutines ..

@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CHETRF_AA_2STAGE
 *
 *  =========== DOCUMENTATION ===========
@@ -271,7 +270,7 @@
 *
 *     Save NB
 *
-      TB( 1 ) = NB
+      TB( 1 ) = CMPLX( NB )
 *
       IF( UPPER ) THEN
 *

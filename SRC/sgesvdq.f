@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SGESVDQ computes the singular value decomposition (SVD) with a QR-Preconditioned QR SVD Method for GE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -738,9 +737,9 @@
 *     Return optimal workspace
 *
           IWORK(1) = IMINWRK
-          WORK(1) = OPTWRK
-          WORK(2) = MINWRK
-          RWORK(1) = RMINWRK
+          WORK(1) = REAL( OPTWRK )
+          WORK(2) = REAL( MINWRK )
+          RWORK(1) = REAL( RMINWRK )
           RETURN
       END IF
 *
@@ -1393,7 +1392,7 @@
       IF ( ASCALED )
      $   CALL SLASCL( 'G',0,0, ONE,SQRT(REAL(M)), NR,1, S, N, IERR )
       IF ( CONDA ) RWORK(1) = SCONDA
-      RWORK(2) = p - NR
+      RWORK(2) = REAL( p - NR )
 *     .. p-NR is the number of singular values that are computed as
 *     exact zeros in SGESVD() applied to the (possibly truncated)
 *     full row rank triangular (trapezoidal) factor of A.

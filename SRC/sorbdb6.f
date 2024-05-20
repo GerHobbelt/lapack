@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b SORBDB6
 *
 *  =========== DOCUMENTATION ===========
@@ -266,7 +265,7 @@
          RETURN
       END IF
 *
-      IF( NORM_NEW .LE. N * EPS * NORM ) THEN
+      IF( NORM_NEW .LE. REAL( N ) * EPS * NORM ) THEN
          DO IX = 1, 1 + (M1-1)*INCX1, INCX1
            X1( IX ) = ZERO
          END DO

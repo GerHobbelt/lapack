@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SSPEVD computes the eigenvalues and, optionally, the left and/or right eigenvectors for OTHER matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -200,7 +199,8 @@
 *     .. External Functions ..
       LOGICAL            LSAME
       REAL               SLAMCH, SLANSP, SROUNDUP_LWORK
-      EXTERNAL           LSAME, SLAMCH, SLANSP, SROUNDUP_LWORK
+      EXTERNAL           LSAME, SLAMCH, SLANSP,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           SOPMTR, SSCAL, SSPTRD, SSTEDC, SSTERF,

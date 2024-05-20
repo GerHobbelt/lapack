@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> CGELSD computes the minimum-norm solution to a linear least squares problem for GE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -256,7 +255,8 @@
 *     .. External Functions ..
       INTEGER            ILAENV
       REAL               CLANGE, SLAMCH, SROUNDUP_LWORK
-      EXTERNAL           CLANGE, SLAMCH, ILAENV, SROUNDUP_LWORK
+      EXTERNAL           CLANGE, SLAMCH, ILAENV,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          INT, LOG, MAX, MIN, REAL
@@ -375,7 +375,7 @@
          MINWRK = MIN( MINWRK, MAXWRK )
          WORK( 1 ) = SROUNDUP_LWORK(MAXWRK)
          IWORK( 1 ) = LIWORK
-         RWORK( 1 ) = LRWORK
+         RWORK( 1 ) = REAL( LRWORK )
 *
          IF( LWORK.LT.MINWRK .AND. .NOT.LQUERY ) THEN
             INFO = -12
@@ -667,7 +667,7 @@
    10 CONTINUE
       WORK( 1 ) = SROUNDUP_LWORK(MAXWRK)
       IWORK( 1 ) = LIWORK
-      RWORK( 1 ) = LRWORK
+      RWORK( 1 ) = REAL( LRWORK )
       RETURN
 *
 *     End of CGELSD

@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CTRSYL
 *
 *  =========== DOCUMENTATION ===========
@@ -243,7 +242,7 @@
       BIGNUM = ONE / SMLNUM
       SMIN = MAX( SMLNUM, EPS*CLANGE( 'M', M, M, A, LDA, DUM ),
      $       EPS*CLANGE( 'M', N, N, B, LDB, DUM ) )
-      SGN = ISGN
+      SGN = REAL( ISGN )
 *
       IF( NOTRNA .AND. NOTRNB ) THEN
 *

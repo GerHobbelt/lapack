@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> CGGEV3 computes the eigenvalues and, optionally, the left and/or right eigenvectors for GE matrices (blocked algorithm)</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -262,7 +261,8 @@
 *     .. External Functions ..
       LOGICAL            LSAME
       REAL               CLANGE, SLAMCH, SROUNDUP_LWORK
-      EXTERNAL           LSAME, CLANGE, SLAMCH, SROUNDUP_LWORK
+      EXTERNAL           LSAME, CLANGE, SLAMCH,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, AIMAG, MAX, REAL, SQRT

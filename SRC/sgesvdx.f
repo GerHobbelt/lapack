@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SGESVDX computes the singular value decomposition (SVD) for GE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -304,7 +303,8 @@
       LOGICAL            LSAME
       INTEGER            ILAENV
       REAL               SLAMCH, SLANGE, SROUNDUP_LWORK
-      EXTERNAL           LSAME, ILAENV, SLAMCH, SLANGE, SROUNDUP_LWORK
+      EXTERNAL           LSAME, ILAENV, SLAMCH, SLANGE,
+     $                   SROUNDUP_LWORK
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX, MIN, SQRT

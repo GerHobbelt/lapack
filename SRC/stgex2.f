@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b STGEX2 swaps adjacent diagonal blocks in an upper (quasi) triangular matrix pair by an orthogonal equivalence transformation.
 *
 *  =========== DOCUMENTATION ===========
@@ -289,7 +288,7 @@
       M = N1 + N2
       IF( LWORK.LT.MAX( N*M, M*M*2 ) ) THEN
          INFO = -16
-         WORK( 1 ) = MAX( N*M, M*M*2 )
+         WORK( 1 ) = REAL( MAX( N*M, M*M*2 ) )
          RETURN
       END IF
 *

@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief \b CLANTP returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a triangular matrix supplied in packed form.
 *
 *  =========== DOCUMENTATION ===========
@@ -316,7 +315,7 @@
          IF( LSAME( UPLO, 'U' ) ) THEN
             IF( LSAME( DIAG, 'U' ) ) THEN
                SCALE = ONE
-               SUM = N
+               SUM = REAL( N )
                K = 2
                DO 280 J = 2, N
                   CALL CLASSQ( J-1, AP( K ), 1, SCALE, SUM )
@@ -334,7 +333,7 @@
          ELSE
             IF( LSAME( DIAG, 'U' ) ) THEN
                SCALE = ONE
-               SUM = N
+               SUM = REAL( N )
                K = 2
                DO 300 J = 1, N - 1
                   CALL CLASSQ( N-J, AP( K ), 1, SCALE, SUM )

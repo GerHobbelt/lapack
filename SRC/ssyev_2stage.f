@@ -1,4 +1,3 @@
-#include "lapack_64.h"
 *> \brief <b> SSYEV_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for SY matrices</b>
 *
 *  @generated from dsyev_2stage.f, fortran d -> s, Sat Nov  5 23:55:51 2016
@@ -253,7 +252,7 @@
          LWTRD = ILAENV2STAGE( 4, 'SSYTRD_2STAGE', JOBZ, N, KD, IB,
      $                         -1 )
          LWMIN = 2*N + LHTRD + LWTRD
-         WORK( 1 )  = LWMIN
+         WORK( 1 )  = REAL( LWMIN )
 *
          IF( LWORK.LT.LWMIN .AND. .NOT.LQUERY )
      $      INFO = -8
