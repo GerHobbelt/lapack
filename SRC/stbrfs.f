@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b STBRFS
 *
 *  =========== DOCUMENTATION ===========
@@ -218,7 +219,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SAXPY, SCOPY, SLACN2, STBMV, STBSV, XERBLA
+      EXTERNAL           SAXPY, SCOPY, SLACN2, STBMV, STBSV,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, MAX, MIN
@@ -439,7 +441,8 @@
 *
          KASE = 0
   210    CONTINUE
-         CALL SLACN2( N, WORK( 2*N+1 ), WORK( N+1 ), IWORK, FERR( J ),
+         CALL SLACN2( N, WORK( 2*N+1 ), WORK( N+1 ), IWORK,
+     $                FERR( J ),
      $                KASE, ISAVE )
          IF( KASE.NE.0 ) THEN
             IF( KASE.EQ.1 ) THEN

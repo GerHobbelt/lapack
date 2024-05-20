@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CGBTF2 computes the LU factorization of a general band matrix using the unblocked version of the algorithm.
 *
 *  =========== DOCUMENTATION ===========
@@ -249,7 +250,8 @@
 *
 *              Compute multipliers.
 *
-               CALL CSCAL( KM, ONE / AB( KV+1, J ), AB( KV+2, J ), 1 )
+               CALL CSCAL( KM, ONE / AB( KV+1, J ), AB( KV+2, J ),
+     $                     1 )
 *
 *              Update trailing submatrix within the band.
 *

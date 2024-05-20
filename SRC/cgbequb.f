@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CGBEQUB
 *
 *  =========== DOCUMENTATION ===========
@@ -156,7 +157,8 @@
 *> \ingroup gbequb
 *
 *  =====================================================================
-      SUBROUTINE CGBEQUB( M, N, KL, KU, AB, LDAB, R, C, ROWCND, COLCND,
+      SUBROUTINE CGBEQUB( M, N, KL, KU, AB, LDAB, R, C, ROWCND,
+     $                    COLCND,
      $                    AMAX, INFO )
 *
 *  -- LAPACK computational routine --

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLATBS solves a triangular banded system of equations.
 *
 *  =========== DOCUMENTATION ===========
@@ -237,7 +238,8 @@
 *> \endverbatim
 *>
 *  =====================================================================
-      SUBROUTINE DLATBS( UPLO, TRANS, DIAG, NORMIN, N, KD, AB, LDAB, X,
+      SUBROUTINE DLATBS( UPLO, TRANS, DIAG, NORMIN, N, KD, AB, LDAB,
+     $                   X,
      $                   SCALE, CNORM, INFO )
 *
 *  -- LAPACK auxiliary routine --
@@ -702,7 +704,8 @@
                   ELSE
                      JLEN = MIN( KD, N-J )
                      IF( JLEN.GT.0 )
-     $                  SUMJ = DDOT( JLEN, AB( 2, J ), 1, X( J+1 ), 1 )
+     $                  SUMJ = DDOT( JLEN, AB( 2, J ), 1, X( J+1 ),
+     $                               1 )
                   END IF
                ELSE
 *

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSYR performs the symmetric rank-1 update of a complex symmetric matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -171,7 +172,8 @@
 *     Test the input parameters.
 *
       INFO = 0
-      IF( .NOT.LSAME( UPLO, 'U' ) .AND. .NOT.LSAME( UPLO, 'L' ) ) THEN
+      IF( .NOT.LSAME( UPLO, 'U' ) .AND.
+     $    .NOT.LSAME( UPLO, 'L' ) ) THEN
          INFO = 1
       ELSE IF( N.LT.0 ) THEN
          INFO = 2

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLA_SYRPVGRW computes the reciprocal pivot growth factor norm(A)/norm(U) for a symmetric indefinite matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -117,7 +118,8 @@
 *> \ingroup la_herpvgrw
 *
 *  =====================================================================
-      DOUBLE PRECISION FUNCTION DLA_SYRPVGRW( UPLO, N, INFO, A, LDA, AF,
+      DOUBLE PRECISION FUNCTION DLA_SYRPVGRW( UPLO, N, INFO, A, LDA,
+     $                                        AF,
      $                                        LDAF, IPIV, WORK )
 *
 *  -- LAPACK computational routine --

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DSPGST
 *
 *  =========== DOCUMENTATION ===========
@@ -135,7 +136,8 @@
       DOUBLE PRECISION   AJJ, AKK, BJJ, BKK, CT
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DAXPY, DSCAL, DSPMV, DSPR2, DTPMV, DTPSV,
+      EXTERNAL           DAXPY, DSCAL, DSPMV, DSPR2, DTPMV,
+     $                   DTPSV,
      $                   XERBLA
 *     ..
 *     .. External Functions ..
@@ -181,7 +183,8 @@
                CALL DSPMV( UPLO, J-1, -ONE, AP, BP( J1 ), 1, ONE,
      $                     AP( J1 ), 1 )
                CALL DSCAL( J-1, ONE / BJJ, AP( J1 ), 1 )
-               AP( JJ ) = ( AP( JJ )-DDOT( J-1, AP( J1 ), 1, BP( J1 ),
+               AP( JJ ) = ( AP( JJ )-DDOT( J-1, AP( J1 ), 1,
+     $             BP( J1 ),
      $                    1 ) ) / BJJ
    10       CONTINUE
          ELSE

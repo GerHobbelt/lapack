@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLAQP2 computes a QR factorization with column pivoting of the matrix block.
 *
 *  =========== DOCUMENTATION ===========
@@ -211,7 +212,8 @@
 *        Generate elementary reflector H(i).
 *
          IF( OFFPI.LT.M ) THEN
-            CALL CLARFG( M-OFFPI+1, A( OFFPI, I ), A( OFFPI+1, I ), 1,
+            CALL CLARFG( M-OFFPI+1, A( OFFPI, I ), A( OFFPI+1, I ),
+     $                   1,
      $                   TAU( I ) )
          ELSE
             CALL CLARFG( 1, A( M, I ), A( M, I ), 1, TAU( I ) )

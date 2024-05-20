@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSYTRS2
 *
 *  =========== DOCUMENTATION ===========
@@ -159,7 +160,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           ZSCAL, ZSYCONV, ZSWAP, ZTRSM, XERBLA
+      EXTERNAL           ZSCAL, ZSYCONV, ZSWAP, ZTRSM,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX

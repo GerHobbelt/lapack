@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SORGTR
 *
 *  =========== DOCUMENTATION ===========
@@ -217,7 +218,8 @@
 *
 *        Generate Q(1:n-1,1:n-1)
 *
-         CALL SORGQL( N-1, N-1, N-1, A, LDA, TAU, WORK, LWORK, IINFO )
+         CALL SORGQL( N-1, N-1, N-1, A, LDA, TAU, WORK, LWORK,
+     $                IINFO )
 *
       ELSE
 *

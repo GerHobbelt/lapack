@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b STRTRI
 *
 *  =========== DOCUMENTATION ===========
@@ -197,9 +198,11 @@
 *
 *              Compute rows 1:j-1 of current block column
 *
-               CALL STRMM( 'Left', 'Upper', 'No transpose', DIAG, J-1,
+               CALL STRMM( 'Left', 'Upper', 'No transpose', DIAG,
+     $                     J-1,
      $                     JB, ONE, A, LDA, A( 1, J ), LDA )
-               CALL STRSM( 'Right', 'Upper', 'No transpose', DIAG, J-1,
+               CALL STRSM( 'Right', 'Upper', 'No transpose', DIAG,
+     $                     J-1,
      $                     JB, -ONE, A( J, J ), LDA, A( 1, J ), LDA )
 *
 *              Compute inverse of current diagonal block

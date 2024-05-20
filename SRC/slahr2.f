@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLAHR2 reduces the specified number of first columns of a general rectangular matrix A so that elements below the specified subdiagonal are zero, and returns auxiliary matrices which are needed to apply the transformation to the unreduced part of A.
 *
 *  =========== DOCUMENTATION ===========
@@ -223,7 +224,8 @@
 *
 *           Update I-th column of A - Y * V**T
 *
-            CALL SGEMV( 'NO TRANSPOSE', N-K, I-1, -ONE, Y(K+1,1), LDY,
+            CALL SGEMV( 'NO TRANSPOSE', N-K, I-1, -ONE, Y(K+1,1),
+     $                  LDY,
      $                  A( K+I-1, 1 ), LDA, ONE, A( K+1, I ), 1 )
 *
 *           Apply I - V * T**T * V**T to this column (call it b) from the
@@ -272,7 +274,8 @@
 *        Generate the elementary reflector H(I) to annihilate
 *        A(K+I+1:N,I)
 *
-         CALL SLARFG( N-K-I+1, A( K+I, I ), A( MIN( K+I+1, N ), I ), 1,
+         CALL SLARFG( N-K-I+1, A( K+I, I ), A( MIN( K+I+1, N ), I ),
+     $                1,
      $                TAU( I ) )
          EI = A( K+I, I )
          A( K+I, I ) = ONE

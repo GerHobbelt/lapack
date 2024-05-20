@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> CGESVXX computes the solution to system of linear equations A * X = B for GE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -535,7 +536,8 @@
 *> \ingroup gesvxx
 *
 *  =====================================================================
-      SUBROUTINE CGESVXX( FACT, TRANS, N, NRHS, A, LDA, AF, LDAF, IPIV,
+      SUBROUTINE CGESVXX( FACT, TRANS, N, NRHS, A, LDA, AF, LDAF,
+     $                    IPIV,
      $                    EQUED, R, C, B, LDB, X, LDX, RCOND, RPVGRW,
      $                    BERR, N_ERR_BNDS, ERR_BNDS_NORM,
      $                    ERR_BNDS_COMP, NPARAMS, PARAMS, WORK, RWORK,
@@ -586,7 +588,8 @@
       REAL               SLAMCH, CLA_GERPVGRW
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CGEEQUB, CGETRF, CGETRS, CLACPY, CLAQGE,
+      EXTERNAL           CGEEQUB, CGETRF, CGETRS, CLACPY,
+     $                   CLAQGE,
      $                   XERBLA, CLASCL2, CGERFSX
 *     ..
 *     .. Intrinsic Functions ..

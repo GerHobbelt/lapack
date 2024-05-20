@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZGBTF2 computes the LU factorization of a general band matrix using the unblocked version of the algorithm.
 *
 *  =========== DOCUMENTATION ===========
@@ -249,7 +250,8 @@
 *
 *              Compute multipliers.
 *
-               CALL ZSCAL( KM, ONE / AB( KV+1, J ), AB( KV+2, J ), 1 )
+               CALL ZSCAL( KM, ONE / AB( KV+1, J ), AB( KV+2, J ),
+     $                     1 )
 *
 *              Update trailing submatrix within the band.
 *

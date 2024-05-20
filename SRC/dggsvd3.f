@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> DGGSVD3 computes the singular value decomposition (SVD) for OTHER matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -423,7 +424,8 @@
 *     Compute workspace
 *
       IF( INFO.EQ.0 ) THEN
-         CALL DGGSVP3( JOBU, JOBV, JOBQ, M, P, N, A, LDA, B, LDB, TOLA,
+         CALL DGGSVP3( JOBU, JOBV, JOBQ, M, P, N, A, LDA, B, LDB,
+     $                 TOLA,
      $                 TOLB, K, L, U, LDU, V, LDV, Q, LDQ, IWORK, WORK,
      $                 WORK, -1, INFO )
          LWKOPT = N + INT( WORK( 1 ) )

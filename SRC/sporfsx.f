@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SPORFSX
 *
 *  =========== DOCUMENTATION ===========
@@ -387,7 +388,8 @@
 *> \ingroup porfsx
 *
 *  =====================================================================
-      SUBROUTINE SPORFSX( UPLO, EQUED, N, NRHS, A, LDA, AF, LDAF, S, B,
+      SUBROUTINE SPORFSX( UPLO, EQUED, N, NRHS, A, LDA, AF, LDAF, S,
+     $                    B,
      $                    LDB, X, LDX, RCOND, BERR, N_ERR_BNDS,
      $                    ERR_BNDS_NORM, ERR_BNDS_COMP, NPARAMS, PARAMS,
      $                    WORK, IWORK, INFO )

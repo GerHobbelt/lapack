@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CTRSYL3
 *
 * Definition:
@@ -151,7 +152,8 @@
 *   Angelika Schwarz, Umea University, Sweden.
 *
 *  =====================================================================
-      SUBROUTINE CTRSYL3( TRANA, TRANB, ISGN, M, N, A, LDA, B, LDB, C,
+      SUBROUTINE CTRSYL3( TRANA, TRANB, ISGN, M, N, A, LDA, B, LDB,
+     $                    C,
      $                    LDC, SCALE, SWORK, LDSWORK, INFO )
       IMPLICIT NONE
 *
@@ -185,10 +187,12 @@
       LOGICAL            LSAME
       INTEGER            ILAENV
       REAL               CLANGE, SLAMCH, SLARMM
-      EXTERNAL           CLANGE, ILAENV, LSAME, SLAMCH, SLARMM
+      EXTERNAL           CLANGE, ILAENV, LSAME, SLAMCH,
+     $                   SLARMM
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CSSCAL, CGEMM, CLASCL, CTRSYL, XERBLA
+      EXTERNAL           CSSCAL, CGEMM, CLASCL, CTRSYL,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, AIMAG, EXPONENT, MAX, MIN, REAL

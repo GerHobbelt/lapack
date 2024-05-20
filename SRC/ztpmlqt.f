@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZTPMLQT
 *
 *  =========== DOCUMENTATION ===========
@@ -209,7 +210,8 @@
 *> \endverbatim
 *>
 *  =====================================================================
-      SUBROUTINE ZTPMLQT( SIDE, TRANS, M, N, K, L, MB, V, LDV, T, LDT,
+      SUBROUTINE ZTPMLQT( SIDE, TRANS, M, N, K, L, MB, V, LDV, T,
+     $                    LDT,
      $                    A, LDA, B, LDB, WORK, INFO )
 *
 *  -- LAPACK computational routine --

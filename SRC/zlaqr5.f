@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZLAQR5 performs a single small-bulge multi-shift QR sweep.
 *
 *  =========== DOCUMENTATION ===========
@@ -251,7 +252,8 @@
 *>       ACM Trans. Math. Softw. 40, 2, Article 12 (February 2014).
 *>
 *  =====================================================================
-      SUBROUTINE ZLAQR5( WANTT, WANTZ, KACC22, N, KTOP, KBOT, NSHFTS, S,
+      SUBROUTINE ZLAQR5( WANTT, WANTZ, KACC22, N, KTOP, KBOT, NSHFTS,
+     $                   S,
      $                   H, LDH, ILOZ, IHIZ, Z, LDZ, V, LDV, U, LDU, NV,
      $                   WV, LDWV, NH, WH, LDWH )
       IMPLICIT NONE
@@ -300,7 +302,8 @@
       COMPLEX*16         VT( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           ZGEMM, ZLACPY, ZLAQR1, ZLARFG, ZLASET, ZTRMM
+      EXTERNAL           ZGEMM, ZLACPY, ZLAQR1, ZLARFG, ZLASET,
+     $                   ZTRMM
 *     ..
 *     .. Statement Functions ..
       DOUBLE PRECISION   CABS1

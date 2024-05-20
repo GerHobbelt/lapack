@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DTGEXC
 *
 *  =========== DOCUMENTATION ===========
@@ -381,7 +382,8 @@
 *
 *              Swap two 1-by-1 blocks.
 *
-               CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ, Z,
+               CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ,
+     $                      Z,
      $                      LDZ, HERE, 1, 1, WORK, LWORK, INFO )
                IF( INFO.NE.0 ) THEN
                   ILST = HERE
@@ -399,7 +401,8 @@
 *
 *                 2-by-2 block did not split.
 *
-                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ,
+                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q,
+     $                         LDQ,
      $                         Z, LDZ, HERE, 1, NBNEXT, WORK, LWORK,
      $                         INFO )
                   IF( INFO.NE.0 ) THEN
@@ -411,14 +414,16 @@
 *
 *                 2-by-2 block did split.
 *
-                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ,
+                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q,
+     $                         LDQ,
      $                         Z, LDZ, HERE, 1, 1, WORK, LWORK, INFO )
                   IF( INFO.NE.0 ) THEN
                      ILST = HERE
                      RETURN
                   END IF
                   HERE = HERE + 1
-                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ,
+                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q,
+     $                         LDQ,
      $                         Z, LDZ, HERE, 1, 1, WORK, LWORK, INFO )
                   IF( INFO.NE.0 ) THEN
                      ILST = HERE
@@ -484,7 +489,8 @@
 *
 *              Swap two 1-by-1 blocks.
 *
-               CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ, Z,
+               CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ,
+     $                      Z,
      $                      LDZ, HERE, NBNEXT, 1, WORK, LWORK, INFO )
                IF( INFO.NE.0 ) THEN
                   ILST = HERE
@@ -501,7 +507,8 @@
 *
 *                 2-by-2 block did not split.
 *
-                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ,
+                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q,
+     $                         LDQ,
      $                         Z, LDZ, HERE-1, 2, 1, WORK, LWORK, INFO )
                   IF( INFO.NE.0 ) THEN
                      ILST = HERE
@@ -512,14 +519,16 @@
 *
 *                 2-by-2 block did split.
 *
-                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ,
+                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q,
+     $                         LDQ,
      $                         Z, LDZ, HERE, 1, 1, WORK, LWORK, INFO )
                   IF( INFO.NE.0 ) THEN
                      ILST = HERE
                      RETURN
                   END IF
                   HERE = HERE - 1
-                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q, LDQ,
+                  CALL DTGEX2( WANTQ, WANTZ, N, A, LDA, B, LDB, Q,
+     $                         LDQ,
      $                         Z, LDZ, HERE, 1, 1, WORK, LWORK, INFO )
                   IF( INFO.NE.0 ) THEN
                      ILST = HERE

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLASYF_AA
 *
 *  =========== DOCUMENTATION ===========
@@ -172,7 +173,8 @@
       EXTERNAL           LSAME, ILAENV, ISAMAX
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SAXPY, SGEMV, SSCAL, SCOPY, SSWAP, SLASET,
+      EXTERNAL           SAXPY, SGEMV, SSCAL, SCOPY, SSWAP,
+     $                   SLASET,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

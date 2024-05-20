@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SOPMTR
 *
 *  =========== DOCUMENTATION ===========
@@ -145,7 +146,8 @@
 *> \ingroup upmtr
 *
 *  =====================================================================
-      SUBROUTINE SOPMTR( SIDE, UPLO, TRANS, M, N, AP, TAU, C, LDC, WORK,
+      SUBROUTINE SOPMTR( SIDE, UPLO, TRANS, M, N, AP, TAU, C, LDC,
+     $                   WORK,
      $                   INFO )
 *
 *  -- LAPACK computational routine --
@@ -262,7 +264,8 @@
 *
             AII = AP( II )
             AP( II ) = ONE
-            CALL SLARF( SIDE, MI, NI, AP( II-I+1 ), 1, TAU( I ), C, LDC,
+            CALL SLARF( SIDE, MI, NI, AP( II-I+1 ), 1, TAU( I ), C,
+     $                  LDC,
      $                  WORK )
             AP( II ) = AII
 *

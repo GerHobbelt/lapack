@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZHPGV
 *
 *  =========== DOCUMENTATION ===========
@@ -160,7 +161,8 @@
 *> \ingroup hpgv
 *
 *  =====================================================================
-      SUBROUTINE ZHPGV( ITYPE, JOBZ, UPLO, N, AP, BP, W, Z, LDZ, WORK,
+      SUBROUTINE ZHPGV( ITYPE, JOBZ, UPLO, N, AP, BP, W, Z, LDZ,
+     $                  WORK,
      $                  RWORK, INFO )
 *
 *  -- LAPACK driver routine --
@@ -188,7 +190,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, ZHPEV, ZHPGST, ZPPTRF, ZTPMV, ZTPSV
+      EXTERNAL           XERBLA, ZHPEV, ZHPGST, ZPPTRF, ZTPMV,
+     $                   ZTPSV
 *     ..
 *     .. Executable Statements ..
 *

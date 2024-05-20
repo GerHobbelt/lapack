@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZGBEQU
 *
 *  =========== DOCUMENTATION ===========
@@ -149,7 +150,8 @@
 *> \ingroup gbequ
 *
 *  =====================================================================
-      SUBROUTINE ZGBEQU( M, N, KL, KU, AB, LDAB, R, C, ROWCND, COLCND,
+      SUBROUTINE ZGBEQU( M, N, KL, KU, AB, LDAB, R, C, ROWCND,
+     $                   COLCND,
      $                   AMAX, INFO )
 *
 *  -- LAPACK computational routine --

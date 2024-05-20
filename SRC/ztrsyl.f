@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZTRSYL
 *
 *  =========== DOCUMENTATION ===========
@@ -188,7 +189,8 @@
       LOGICAL            LSAME
       DOUBLE PRECISION   DLAMCH, ZLANGE
       COMPLEX*16         ZDOTC, ZDOTU, ZLADIV
-      EXTERNAL           LSAME, DLAMCH, ZLANGE, ZDOTC, ZDOTU, ZLADIV
+      EXTERNAL           LSAME, DLAMCH, ZLANGE, ZDOTC, ZDOTU,
+     $                   ZLADIV
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           XERBLA, ZDSCAL

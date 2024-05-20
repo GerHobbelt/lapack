@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLA_SYRPVGRW computes the reciprocal pivot growth factor norm(A)/norm(U) for a symmetric indefinite matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -118,7 +119,8 @@
 *> \ingroup la_herpvgrw
 *
 *  =====================================================================
-      REAL FUNCTION CLA_SYRPVGRW( UPLO, N, INFO, A, LDA, AF, LDAF, IPIV,
+      REAL FUNCTION CLA_SYRPVGRW( UPLO, N, INFO, A, LDA, AF, LDAF,
+     $                            IPIV,
      $                            WORK )
 *
 *  -- LAPACK computational routine --

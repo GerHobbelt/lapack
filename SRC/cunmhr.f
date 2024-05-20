@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CUNMHR
 *
 *  =========== DOCUMENTATION ===========
@@ -228,7 +229,8 @@
       END IF
       IF( .NOT.LEFT .AND. .NOT.LSAME( SIDE, 'R' ) ) THEN
          INFO = -1
-      ELSE IF( .NOT.LSAME( TRANS, 'N' ) .AND. .NOT.LSAME( TRANS, 'C' ) )
+      ELSE IF( .NOT.LSAME( TRANS, 'N' ) .AND.
+     $         .NOT.LSAME( TRANS, 'C' ) )
      $          THEN
          INFO = -2
       ELSE IF( M.LT.0 ) THEN

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSPRFS
 *
 *  =========== DOCUMENTATION ===========
@@ -175,7 +176,8 @@
 *> \ingroup hprfs
 *
 *  =====================================================================
-      SUBROUTINE ZSPRFS( UPLO, N, NRHS, AP, AFP, IPIV, B, LDB, X, LDX,
+      SUBROUTINE ZSPRFS( UPLO, N, NRHS, AP, AFP, IPIV, B, LDB, X,
+     $                   LDX,
      $                   FERR, BERR, WORK, RWORK, INFO )
 *
 *  -- LAPACK computational routine --
@@ -217,7 +219,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, ZAXPY, ZCOPY, ZLACN2, ZSPMV, ZSPTRS
+      EXTERNAL           XERBLA, ZAXPY, ZCOPY, ZLACN2, ZSPMV,
+     $                   ZSPTRS
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DIMAG, MAX

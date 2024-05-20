@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> SPTSVX computes the solution to system of linear equations A * X = B for PT matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -257,7 +258,8 @@
       EXTERNAL           LSAME, SLAMCH, SLANST
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SCOPY, SLACPY, SPTCON, SPTRFS, SPTTRF, SPTTRS,
+      EXTERNAL           SCOPY, SLACPY, SPTCON, SPTRFS, SPTTRF,
+     $                   SPTTRS,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CHBGV
 *
 *  =========== DOCUMENTATION ===========
@@ -178,7 +179,8 @@
 *> \ingroup hbgv
 *
 *  =====================================================================
-      SUBROUTINE CHBGV( JOBZ, UPLO, N, KA, KB, AB, LDAB, BB, LDBB, W, Z,
+      SUBROUTINE CHBGV( JOBZ, UPLO, N, KA, KB, AB, LDAB, BB, LDBB, W,
+     $                  Z,
      $                  LDZ, WORK, RWORK, INFO )
 *
 *  -- LAPACK driver routine --
@@ -207,7 +209,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CHBGST, CHBTRD, CPBSTF, CSTEQR, SSTERF, XERBLA
+      EXTERNAL           CHBGST, CHBTRD, CPBSTF, CSTEQR, SSTERF,
+     $                   XERBLA
 *     ..
 *     .. Executable Statements ..
 *

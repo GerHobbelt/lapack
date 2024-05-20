@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CUNHR_COL
 *
 *  =========== DOCUMENTATION ===========
@@ -281,7 +282,8 @@
      $                   NPLUSONE
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CCOPY, CLAUNHR_COL_GETRFNP, CSCAL, CTRSM,
+      EXTERNAL           CCOPY, CLAUNHR_COL_GETRFNP, CSCAL,
+     $                   CTRSM,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

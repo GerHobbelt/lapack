@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLASD8 finds the square roots of the roots of the secular equation, and stores, for each element in D, the distance to its two nearest poles. Used by sbdsdc.
 *
 *  =========== DOCUMENTATION ===========
@@ -186,7 +187,8 @@
       DOUBLE PRECISION   DIFLJ, DIFRJ, DJ, DSIGJ, DSIGJP, RHO, TEMP
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DCOPY, DLASCL, DLASD4, DLASET, XERBLA
+      EXTERNAL           DCOPY, DLASCL, DLASD4, DLASET,
+     $                   XERBLA
 *     ..
 *     .. External Functions ..
       DOUBLE PRECISION   DDOT, DLAMC3, DNRM2
@@ -295,11 +297,13 @@
 *        from doing x+(y+z).
 *
          DO 60 I = 1, J - 1
-            WORK( I ) = Z( I ) / ( DLAMC3( DSIGMA( I ), DSIGJ )-DIFLJ )
+            WORK( I ) = Z( I ) / ( DLAMC3( DSIGMA( I ),
+     $            DSIGJ )-DIFLJ )
      $                   / ( DSIGMA( I )+DJ )
    60    CONTINUE
          DO 70 I = J + 1, K
-            WORK( I ) = Z( I ) / ( DLAMC3( DSIGMA( I ), DSIGJP )+DIFRJ )
+            WORK( I ) = Z( I ) / ( DLAMC3( DSIGMA( I ),
+     $            DSIGJP )+DIFRJ )
      $                   / ( DSIGMA( I )+DJ )
    70    CONTINUE
          TEMP = DNRM2( K, WORK, 1 )

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> DPTSVX computes the solution to system of linear equations A * X = B for PT matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -257,7 +258,8 @@
       EXTERNAL           LSAME, DLAMCH, DLANST
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DCOPY, DLACPY, DPTCON, DPTRFS, DPTTRF, DPTTRS,
+      EXTERNAL           DCOPY, DLACPY, DPTCON, DPTRFS, DPTTRF,
+     $                   DPTTRS,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

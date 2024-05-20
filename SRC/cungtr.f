@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CUNGTR
 *
 *  =========== DOCUMENTATION ===========
@@ -218,7 +219,8 @@
 *
 *        Generate Q(1:n-1,1:n-1)
 *
-         CALL CUNGQL( N-1, N-1, N-1, A, LDA, TAU, WORK, LWORK, IINFO )
+         CALL CUNGQL( N-1, N-1, N-1, A, LDA, TAU, WORK, LWORK,
+     $                IINFO )
 *
       ELSE
 *

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZLA_HERPVGRW
 *
 *  =========== DOCUMENTATION ===========
@@ -118,7 +119,8 @@
 *> \ingroup la_herpvgrw
 *
 *  =====================================================================
-      DOUBLE PRECISION FUNCTION ZLA_HERPVGRW( UPLO, N, INFO, A, LDA, AF,
+      DOUBLE PRECISION FUNCTION ZLA_HERPVGRW( UPLO, N, INFO, A, LDA,
+     $                                        AF,
      $                                        LDAF, IPIV, WORK )
 *
 *  -- LAPACK computational routine --

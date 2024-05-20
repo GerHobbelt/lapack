@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZHETRS2
 *
 *  =========== DOCUMENTATION ===========
@@ -155,7 +156,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           ZDSCAL, ZSYCONV, ZSWAP, ZTRSM, XERBLA
+      EXTERNAL           ZDSCAL, ZSYCONV, ZSWAP, ZTRSM,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          DBLE, DCONJG, MAX

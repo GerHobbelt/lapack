@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLARFGP generates an elementary reflector (Householder matrix) with non-negative beta.
 *
 *  =========== DOCUMENTATION ===========
@@ -128,7 +129,8 @@
 *     .. External Functions ..
       REAL               SCNRM2, SLAMCH, SLAPY3, SLAPY2
       COMPLEX            CLADIV
-      EXTERNAL           SCNRM2, SLAMCH, SLAPY3, SLAPY2, CLADIV
+      EXTERNAL           SCNRM2, SLAMCH, SLAPY3, SLAPY2,
+     $                   CLADIV
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, AIMAG, CMPLX, REAL, SIGN

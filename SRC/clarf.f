@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLARF applies an elementary reflector to a general rectangular matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -204,7 +205,8 @@
 *
 *           C(1:lastv,1:lastc) := C(...) - v(1:lastv,1) * w(1:lastc,1)**H
 *
-            CALL CGERC( LASTV, LASTC, -TAU, V, INCV, WORK, 1, C, LDC )
+            CALL CGERC( LASTV, LASTC, -TAU, V, INCV, WORK, 1, C,
+     $                  LDC )
          END IF
       ELSE
 *
@@ -219,7 +221,8 @@
 *
 *           C(1:lastc,1:lastv) := C(...) - w(1:lastc,1) * v(1:lastv,1)**H
 *
-            CALL CGERC( LASTC, LASTV, -TAU, WORK, 1, V, INCV, C, LDC )
+            CALL CGERC( LASTC, LASTV, -TAU, WORK, 1, V, INCV, C,
+     $                  LDC )
          END IF
       END IF
       RETURN

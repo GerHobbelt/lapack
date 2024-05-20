@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DORM2R multiplies a general matrix by the orthogonal matrix from a QR factorization determined by sgeqrf (unblocked algorithm).
 *
 *  =========== DOCUMENTATION ===========
@@ -268,7 +269,8 @@
 *
          AII = A( I, I )
          A( I, I ) = ONE
-         CALL DLARF( SIDE, MI, NI, A( I, I ), 1, TAU( I ), C( IC, JC ),
+         CALL DLARF( SIDE, MI, NI, A( I, I ), 1, TAU( I ), C( IC,
+     $               JC ),
      $               LDC, WORK )
          A( I, I ) = AII
    10 CONTINUE

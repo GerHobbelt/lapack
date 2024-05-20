@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CTRSYL
 *
 *  =========== DOCUMENTATION ===========
@@ -188,7 +189,8 @@
       LOGICAL            LSAME
       REAL               CLANGE, SLAMCH
       COMPLEX            CDOTC, CDOTU, CLADIV
-      EXTERNAL           LSAME, CLANGE, SLAMCH, CDOTC, CDOTU, CLADIV
+      EXTERNAL           LSAME, CLANGE, SLAMCH, CDOTC, CDOTU,
+     $                   CLADIV
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           CSSCAL, XERBLA

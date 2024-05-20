@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CHBGVX
 *
 *  =========== DOCUMENTATION ===========
@@ -336,7 +337,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CCOPY, CGEMV, CHBGST, CHBTRD, CLACPY, CPBSTF,
+      EXTERNAL           CCOPY, CGEMV, CHBGST, CHBTRD, CLACPY,
+     $                   CPBSTF,
      $                   CSTEIN, CSTEQR, CSWAP, SCOPY, SSTEBZ, SSTERF,
      $                   XERBLA
 *     ..

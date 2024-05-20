@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZUNHR_COL
 *
 *  =========== DOCUMENTATION ===========
@@ -281,7 +282,8 @@
      $                   NPLUSONE
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           ZCOPY, ZLAUNHR_COL_GETRFNP, ZSCAL, ZTRSM,
+      EXTERNAL           ZCOPY, ZLAUNHR_COL_GETRFNP, ZSCAL,
+     $                   ZTRSM,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

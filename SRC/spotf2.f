@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SPOTF2 computes the Cholesky factorization of a symmetric/Hermitian positive definite matrix (unblocked algorithm).
 *
 *  =========== DOCUMENTATION ===========
@@ -208,7 +209,8 @@
 *           Compute elements J+1:N of column J.
 *
             IF( J.LT.N ) THEN
-               CALL SGEMV( 'No transpose', N-J, J-1, -ONE, A( J+1, 1 ),
+               CALL SGEMV( 'No transpose', N-J, J-1, -ONE, A( J+1,
+     $                     1 ),
      $                     LDA, A( J, 1 ), LDA, ONE, A( J+1, J ), 1 )
                CALL SSCAL( N-J, ONE / AJJ, A( J+1, J ), 1 )
             END IF

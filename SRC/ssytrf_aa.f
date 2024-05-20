@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SSYTRF_AA
 *
 *  =========== DOCUMENTATION ===========
@@ -165,7 +166,8 @@
       EXTERNAL           LSAME, ILAENV, SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SLASYF_AA, SGEMV, SSCAL, SCOPY, SSWAP, SGEMM,
+      EXTERNAL           SLASYF_AA, SGEMV, SSCAL, SCOPY, SSWAP,
+     $                   SGEMM,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

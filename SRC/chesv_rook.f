@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CHESV_ROOK computes the solution to a system of linear equations A * X = B for HE matrices using the bounded Bunch-Kaufman ("rook") diagonal pivoting method
 *
 *  =========== DOCUMENTATION ===========
@@ -200,7 +201,8 @@
 *
 *
 *  =====================================================================
-      SUBROUTINE CHESV_ROOK( UPLO, N, NRHS, A, LDA, IPIV, B, LDB, WORK,
+      SUBROUTINE CHESV_ROOK( UPLO, N, NRHS, A, LDA, IPIV, B, LDB,
+     $                       WORK,
      $                       LWORK, INFO )
 *
 *  -- LAPACK driver routine --
@@ -240,7 +242,8 @@
 *
       INFO = 0
       LQUERY = ( LWORK.EQ.-1 )
-      IF( .NOT.LSAME( UPLO, 'U' ) .AND. .NOT.LSAME( UPLO, 'L' ) ) THEN
+      IF( .NOT.LSAME( UPLO, 'U' ) .AND.
+     $    .NOT.LSAME( UPLO, 'L' ) ) THEN
          INFO = -1
       ELSE IF( N.LT.0 ) THEN
          INFO = -2
@@ -280,7 +283,8 @@
 *
 *        Solve with TRS ( Use Level BLAS 2)
 *
-         CALL CHETRS_ROOK( UPLO, N, NRHS, A, LDA, IPIV, B, LDB, INFO )
+         CALL CHETRS_ROOK( UPLO, N, NRHS, A, LDA, IPIV, B, LDB,
+     $                     INFO )
 *
       END IF
 *

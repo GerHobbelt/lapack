@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DSBGVX
 *
 *  =========== DOCUMENTATION ===========
@@ -326,7 +327,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DCOPY, DGEMV, DLACPY, DPBSTF, DSBGST, DSBTRD,
+      EXTERNAL           DCOPY, DGEMV, DLACPY, DPBSTF, DSBGST,
+     $                   DSBTRD,
      $                   DSTEBZ, DSTEIN, DSTEQR, DSTERF, DSWAP, XERBLA
 *     ..
 *     .. Intrinsic Functions ..

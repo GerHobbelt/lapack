@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZUNGTR
 *
 *  =========== DOCUMENTATION ===========
@@ -217,7 +218,8 @@
 *
 *        Generate Q(1:n-1,1:n-1)
 *
-         CALL ZUNGQL( N-1, N-1, N-1, A, LDA, TAU, WORK, LWORK, IINFO )
+         CALL ZUNGQL( N-1, N-1, N-1, A, LDA, TAU, WORK, LWORK,
+     $                IINFO )
 *
       ELSE
 *

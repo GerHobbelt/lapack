@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLASD6 computes the SVD of an updated upper bidiagonal matrix obtained by merging two smaller ones by appending a row. Used by sbdsdc.
 *
 *  =========== DOCUMENTATION ===========
@@ -306,7 +307,8 @@
 *>     California at Berkeley, USA
 *>
 *  =====================================================================
-      SUBROUTINE DLASD6( ICOMPQ, NL, NR, SQRE, D, VF, VL, ALPHA, BETA,
+      SUBROUTINE DLASD6( ICOMPQ, NL, NR, SQRE, D, VF, VL, ALPHA,
+     $                   BETA,
      $                   IDXQ, PERM, GIVPTR, GIVCOL, LDGCOL, GIVNUM,
      $                   LDGNUM, POLES, DIFL, DIFR, Z, K, C, S, WORK,
      $                   IWORK, INFO )
@@ -340,7 +342,8 @@
       DOUBLE PRECISION   ORGNRM
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DCOPY, DLAMRG, DLASCL, DLASD7, DLASD8, XERBLA
+      EXTERNAL           DCOPY, DLAMRG, DLASCL, DLASD7, DLASD8,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, MAX

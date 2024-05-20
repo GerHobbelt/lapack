@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLASQ1 computes the singular values of a real square bidiagonal matrix. Used by sbdsqr.
 *
 *  =========== DOCUMENTATION ===========
@@ -128,7 +129,8 @@
       REAL               EPS, SCALE, SAFMIN, SIGMN, SIGMX
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SCOPY, SLAS2, SLASCL, SLASQ2, SLASRT, XERBLA
+      EXTERNAL           SCOPY, SLAS2, SLASCL, SLASQ2, SLASRT,
+     $                   XERBLA
 *     ..
 *     .. External Functions ..
       REAL               SLAMCH

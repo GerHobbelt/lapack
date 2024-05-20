@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLA_GBRCOND estimates the Skeel condition number for a general banded matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -164,7 +165,8 @@
 *> \ingroup la_gbrcond
 *
 *  =====================================================================
-      DOUBLE PRECISION FUNCTION DLA_GBRCOND( TRANS, N, KL, KU, AB, LDAB,
+      DOUBLE PRECISION FUNCTION DLA_GBRCOND( TRANS, N, KL, KU, AB,
+     $                                       LDAB,
      $                                       AFB, LDAFB, IPIV, CMODE, C,
      $                                       INFO, WORK, IWORK )
 *
@@ -294,7 +296,8 @@
                CALL DGBTRS( 'No transpose', N, KL, KU, 1, AFB, LDAFB,
      $              IPIV, WORK, N, INFO )
             ELSE
-               CALL DGBTRS( 'Transpose', N, KL, KU, 1, AFB, LDAFB, IPIV,
+               CALL DGBTRS( 'Transpose', N, KL, KU, 1, AFB, LDAFB,
+     $                      IPIV,
      $              WORK, N, INFO )
             END IF
 *
@@ -324,7 +327,8 @@
             END IF
 
             IF ( NOTRANS ) THEN
-               CALL DGBTRS( 'Transpose', N, KL, KU, 1, AFB, LDAFB, IPIV,
+               CALL DGBTRS( 'Transpose', N, KL, KU, 1, AFB, LDAFB,
+     $                      IPIV,
      $              WORK, N, INFO )
             ELSE
                CALL DGBTRS( 'No transpose', N, KL, KU, 1, AFB, LDAFB,

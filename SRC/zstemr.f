@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSTEMR
 *
 *  =========== DOCUMENTATION ===========
@@ -380,7 +381,8 @@
       EXTERNAL           LSAME, DLAMCH, DLANST
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DCOPY, DLAE2, DLAEV2, DLARRC, DLARRE, DLARRJ,
+      EXTERNAL           DCOPY, DLAE2, DLAEV2, DLARRC, DLARRE,
+     $                   DLARRJ,
      $                   DLARRR, DLASRT, DSCAL, XERBLA, ZLARRV, ZSWAP
 *     ..
 *     .. Intrinsic Functions ..

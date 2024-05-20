@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CHFRK performs a Hermitian rank-k operation for matrix in RFP format.
 *
 *  =========== DOCUMENTATION ===========
@@ -163,7 +164,8 @@
 *> \ingroup hfrk
 *
 *  =====================================================================
-      SUBROUTINE CHFRK( TRANSR, UPLO, TRANS, N, K, ALPHA, A, LDA, BETA,
+      SUBROUTINE CHFRK( TRANSR, UPLO, TRANS, N, K, ALPHA, A, LDA,
+     $                  BETA,
      $                  C )
 *
 *  -- LAPACK computational routine --
@@ -291,9 +293,11 @@
 *
                   CALL CHERK( 'L', 'N', N1, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( 1 ), N )
-                  CALL CHERK( 'U', 'N', N2, K, ALPHA, A( N1+1, 1 ), LDA,
+                  CALL CHERK( 'U', 'N', N2, K, ALPHA, A( N1+1, 1 ),
+     $                        LDA,
      $                        BETA, C( N+1 ), N )
-                  CALL CGEMM( 'N', 'C', N2, N1, K, CALPHA, A( N1+1, 1 ),
+                  CALL CGEMM( 'N', 'C', N2, N1, K, CALPHA, A( N1+1,
+     $                        1 ),
      $                        LDA, A( 1, 1 ), LDA, CBETA, C( N1+1 ), N )
 *
                ELSE
@@ -302,9 +306,11 @@
 *
                   CALL CHERK( 'L', 'C', N1, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( 1 ), N )
-                  CALL CHERK( 'U', 'C', N2, K, ALPHA, A( 1, N1+1 ), LDA,
+                  CALL CHERK( 'U', 'C', N2, K, ALPHA, A( 1, N1+1 ),
+     $                        LDA,
      $                        BETA, C( N+1 ), N )
-                  CALL CGEMM( 'C', 'N', N2, N1, K, CALPHA, A( 1, N1+1 ),
+                  CALL CGEMM( 'C', 'N', N2, N1, K, CALPHA, A( 1,
+     $                        N1+1 ),
      $                        LDA, A( 1, 1 ), LDA, CBETA, C( N1+1 ), N )
 *
                END IF
@@ -319,7 +325,8 @@
 *
                   CALL CHERK( 'L', 'N', N1, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( N2+1 ), N )
-                  CALL CHERK( 'U', 'N', N2, K, ALPHA, A( N2, 1 ), LDA,
+                  CALL CHERK( 'U', 'N', N2, K, ALPHA, A( N2, 1 ),
+     $                        LDA,
      $                        BETA, C( N1+1 ), N )
                   CALL CGEMM( 'N', 'C', N1, N2, K, CALPHA, A( 1, 1 ),
      $                        LDA, A( N2, 1 ), LDA, CBETA, C( 1 ), N )
@@ -330,7 +337,8 @@
 *
                   CALL CHERK( 'L', 'C', N1, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( N2+1 ), N )
-                  CALL CHERK( 'U', 'C', N2, K, ALPHA, A( 1, N2 ), LDA,
+                  CALL CHERK( 'U', 'C', N2, K, ALPHA, A( 1, N2 ),
+     $                        LDA,
      $                        BETA, C( N1+1 ), N )
                   CALL CGEMM( 'C', 'N', N1, N2, K, CALPHA, A( 1, 1 ),
      $                        LDA, A( 1, N2 ), LDA, CBETA, C( 1 ), N )
@@ -353,7 +361,8 @@
 *
                   CALL CHERK( 'U', 'N', N1, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( 1 ), N1 )
-                  CALL CHERK( 'L', 'N', N2, K, ALPHA, A( N1+1, 1 ), LDA,
+                  CALL CHERK( 'L', 'N', N2, K, ALPHA, A( N1+1, 1 ),
+     $                        LDA,
      $                        BETA, C( 2 ), N1 )
                   CALL CGEMM( 'N', 'C', N1, N2, K, CALPHA, A( 1, 1 ),
      $                        LDA, A( N1+1, 1 ), LDA, CBETA,
@@ -365,7 +374,8 @@
 *
                   CALL CHERK( 'U', 'C', N1, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( 1 ), N1 )
-                  CALL CHERK( 'L', 'C', N2, K, ALPHA, A( 1, N1+1 ), LDA,
+                  CALL CHERK( 'L', 'C', N2, K, ALPHA, A( 1, N1+1 ),
+     $                        LDA,
      $                        BETA, C( 2 ), N1 )
                   CALL CGEMM( 'C', 'N', N1, N2, K, CALPHA, A( 1, 1 ),
      $                        LDA, A( 1, N1+1 ), LDA, CBETA,
@@ -383,9 +393,11 @@
 *
                   CALL CHERK( 'U', 'N', N1, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( N2*N2+1 ), N2 )
-                  CALL CHERK( 'L', 'N', N2, K, ALPHA, A( N1+1, 1 ), LDA,
+                  CALL CHERK( 'L', 'N', N2, K, ALPHA, A( N1+1, 1 ),
+     $                        LDA,
      $                        BETA, C( N1*N2+1 ), N2 )
-                  CALL CGEMM( 'N', 'C', N2, N1, K, CALPHA, A( N1+1, 1 ),
+                  CALL CGEMM( 'N', 'C', N2, N1, K, CALPHA, A( N1+1,
+     $                        1 ),
      $                        LDA, A( 1, 1 ), LDA, CBETA, C( 1 ), N2 )
 *
                ELSE
@@ -394,9 +406,11 @@
 *
                   CALL CHERK( 'U', 'C', N1, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( N2*N2+1 ), N2 )
-                  CALL CHERK( 'L', 'C', N2, K, ALPHA, A( 1, N1+1 ), LDA,
+                  CALL CHERK( 'L', 'C', N2, K, ALPHA, A( 1, N1+1 ),
+     $                        LDA,
      $                        BETA, C( N1*N2+1 ), N2 )
-                  CALL CGEMM( 'C', 'N', N2, N1, K, CALPHA, A( 1, N1+1 ),
+                  CALL CGEMM( 'C', 'N', N2, N1, K, CALPHA, A( 1,
+     $                        N1+1 ),
      $                        LDA, A( 1, 1 ), LDA, CBETA, C( 1 ), N2 )
 *
                END IF
@@ -423,9 +437,11 @@
 *
                   CALL CHERK( 'L', 'N', NK, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( 2 ), N+1 )
-                  CALL CHERK( 'U', 'N', NK, K, ALPHA, A( NK+1, 1 ), LDA,
+                  CALL CHERK( 'U', 'N', NK, K, ALPHA, A( NK+1, 1 ),
+     $                        LDA,
      $                        BETA, C( 1 ), N+1 )
-                  CALL CGEMM( 'N', 'C', NK, NK, K, CALPHA, A( NK+1, 1 ),
+                  CALL CGEMM( 'N', 'C', NK, NK, K, CALPHA, A( NK+1,
+     $                        1 ),
      $                        LDA, A( 1, 1 ), LDA, CBETA, C( NK+2 ),
      $                        N+1 )
 *
@@ -435,9 +451,11 @@
 *
                   CALL CHERK( 'L', 'C', NK, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( 2 ), N+1 )
-                  CALL CHERK( 'U', 'C', NK, K, ALPHA, A( 1, NK+1 ), LDA,
+                  CALL CHERK( 'U', 'C', NK, K, ALPHA, A( 1, NK+1 ),
+     $                        LDA,
      $                        BETA, C( 1 ), N+1 )
-                  CALL CGEMM( 'C', 'N', NK, NK, K, CALPHA, A( 1, NK+1 ),
+                  CALL CGEMM( 'C', 'N', NK, NK, K, CALPHA, A( 1,
+     $                        NK+1 ),
      $                        LDA, A( 1, 1 ), LDA, CBETA, C( NK+2 ),
      $                        N+1 )
 *
@@ -453,7 +471,8 @@
 *
                   CALL CHERK( 'L', 'N', NK, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( NK+2 ), N+1 )
-                  CALL CHERK( 'U', 'N', NK, K, ALPHA, A( NK+1, 1 ), LDA,
+                  CALL CHERK( 'U', 'N', NK, K, ALPHA, A( NK+1, 1 ),
+     $                        LDA,
      $                        BETA, C( NK+1 ), N+1 )
                   CALL CGEMM( 'N', 'C', NK, NK, K, CALPHA, A( 1, 1 ),
      $                        LDA, A( NK+1, 1 ), LDA, CBETA, C( 1 ),
@@ -465,7 +484,8 @@
 *
                   CALL CHERK( 'L', 'C', NK, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( NK+2 ), N+1 )
-                  CALL CHERK( 'U', 'C', NK, K, ALPHA, A( 1, NK+1 ), LDA,
+                  CALL CHERK( 'U', 'C', NK, K, ALPHA, A( 1, NK+1 ),
+     $                        LDA,
      $                        BETA, C( NK+1 ), N+1 )
                   CALL CGEMM( 'C', 'N', NK, NK, K, CALPHA, A( 1, 1 ),
      $                        LDA, A( 1, NK+1 ), LDA, CBETA, C( 1 ),
@@ -489,7 +509,8 @@
 *
                   CALL CHERK( 'U', 'N', NK, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( NK+1 ), NK )
-                  CALL CHERK( 'L', 'N', NK, K, ALPHA, A( NK+1, 1 ), LDA,
+                  CALL CHERK( 'L', 'N', NK, K, ALPHA, A( NK+1, 1 ),
+     $                        LDA,
      $                        BETA, C( 1 ), NK )
                   CALL CGEMM( 'N', 'C', NK, NK, K, CALPHA, A( 1, 1 ),
      $                        LDA, A( NK+1, 1 ), LDA, CBETA,
@@ -501,7 +522,8 @@
 *
                   CALL CHERK( 'U', 'C', NK, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( NK+1 ), NK )
-                  CALL CHERK( 'L', 'C', NK, K, ALPHA, A( 1, NK+1 ), LDA,
+                  CALL CHERK( 'L', 'C', NK, K, ALPHA, A( 1, NK+1 ),
+     $                        LDA,
      $                        BETA, C( 1 ), NK )
                   CALL CGEMM( 'C', 'N', NK, NK, K, CALPHA, A( 1, 1 ),
      $                        LDA, A( 1, NK+1 ), LDA, CBETA,
@@ -519,9 +541,11 @@
 *
                   CALL CHERK( 'U', 'N', NK, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( NK*( NK+1 )+1 ), NK )
-                  CALL CHERK( 'L', 'N', NK, K, ALPHA, A( NK+1, 1 ), LDA,
+                  CALL CHERK( 'L', 'N', NK, K, ALPHA, A( NK+1, 1 ),
+     $                        LDA,
      $                        BETA, C( NK*NK+1 ), NK )
-                  CALL CGEMM( 'N', 'C', NK, NK, K, CALPHA, A( NK+1, 1 ),
+                  CALL CGEMM( 'N', 'C', NK, NK, K, CALPHA, A( NK+1,
+     $                        1 ),
      $                        LDA, A( 1, 1 ), LDA, CBETA, C( 1 ), NK )
 *
                ELSE
@@ -530,9 +554,11 @@
 *
                   CALL CHERK( 'U', 'C', NK, K, ALPHA, A( 1, 1 ), LDA,
      $                        BETA, C( NK*( NK+1 )+1 ), NK )
-                  CALL CHERK( 'L', 'C', NK, K, ALPHA, A( 1, NK+1 ), LDA,
+                  CALL CHERK( 'L', 'C', NK, K, ALPHA, A( 1, NK+1 ),
+     $                        LDA,
      $                        BETA, C( NK*NK+1 ), NK )
-                  CALL CGEMM( 'C', 'N', NK, NK, K, CALPHA, A( 1, NK+1 ),
+                  CALL CGEMM( 'C', 'N', NK, NK, K, CALPHA, A( 1,
+     $                        NK+1 ),
      $                        LDA, A( 1, 1 ), LDA, CBETA, C( 1 ), NK )
 *
                END IF

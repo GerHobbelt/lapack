@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZTBRFS
 *
 *  =========== DOCUMENTATION ===========
@@ -219,7 +220,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, ZAXPY, ZCOPY, ZLACN2, ZTBMV, ZTBSV
+      EXTERNAL           XERBLA, ZAXPY, ZCOPY, ZLACN2, ZTBMV,
+     $                   ZTBSV
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DIMAG, MAX, MIN

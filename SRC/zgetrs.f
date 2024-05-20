@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZGETRS
 *
 *  =========== DOCUMENTATION ===========
@@ -189,7 +190,8 @@
 *
 *        Solve L*X = B, overwriting B with X.
 *
-         CALL ZTRSM( 'Left', 'Lower', 'No transpose', 'Unit', N, NRHS,
+         CALL ZTRSM( 'Left', 'Lower', 'No transpose', 'Unit', N,
+     $               NRHS,
      $               ONE, A, LDA, B, LDB )
 *
 *        Solve U*X = B, overwriting B with X.
@@ -202,7 +204,8 @@
 *
 *        Solve U**T *X = B or U**H *X = B, overwriting B with X.
 *
-         CALL ZTRSM( 'Left', 'Upper', TRANS, 'Non-unit', N, NRHS, ONE,
+         CALL ZTRSM( 'Left', 'Upper', TRANS, 'Non-unit', N, NRHS,
+     $               ONE,
      $               A, LDA, B, LDB )
 *
 *        Solve L**T *X = B, or L**H *X = B overwriting B with X.

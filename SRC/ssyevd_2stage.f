@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> SSYEVD_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for SY matrices</b>
 *
 *  @generated from dsyevd_2stage.f, fortran d -> s, Sat Nov  5 23:55:54 2016
@@ -216,7 +217,8 @@
 *> \endverbatim
 *
 *  =====================================================================
-      SUBROUTINE SSYEVD_2STAGE( JOBZ, UPLO, N, A, LDA, W, WORK, LWORK,
+      SUBROUTINE SSYEVD_2STAGE( JOBZ, UPLO, N, A, LDA, W, WORK,
+     $                          LWORK,
      $                          IWORK, LIWORK, INFO )
 *
       IMPLICIT NONE
@@ -256,7 +258,8 @@
       EXTERNAL           LSAME, SLAMCH, SLANSY, ILAENV2STAGE
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SLACPY, SLASCL, SORMTR, SSCAL, SSTEDC, SSTERF,
+      EXTERNAL           SLACPY, SLASCL, SORMTR, SSCAL, SSTEDC,
+     $                   SSTERF,
      $                   SSYTRD_2STAGE, XERBLA
 *     ..
 *     .. Intrinsic Functions ..

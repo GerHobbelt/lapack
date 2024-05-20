@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DSYTRS2
 *
 *  =========== DOCUMENTATION ===========
@@ -159,7 +160,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DSCAL, DSYCONV, DSWAP, DTRSM, XERBLA
+      EXTERNAL           DSCAL, DSYCONV, DSWAP, DTRSM,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX

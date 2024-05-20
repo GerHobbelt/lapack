@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SORMR3 multiplies a general matrix by the orthogonal matrix from a RZ factorization determined by stzrzf (unblocked algorithm).
 *
 *  =========== DOCUMENTATION ===========
@@ -173,7 +174,8 @@
 *> \endverbatim
 *>
 *  =====================================================================
-      SUBROUTINE SORMR3( SIDE, TRANS, M, N, K, L, A, LDA, TAU, C, LDC,
+      SUBROUTINE SORMR3( SIDE, TRANS, M, N, K, L, A, LDA, TAU, C,
+     $                   LDC,
      $                   WORK, INFO )
 *
 *  -- LAPACK computational routine --

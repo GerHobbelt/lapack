@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DSB2ST_KERNELS
 *
 *  @generated from zhb2st_kernels.f, fortran z -> d, Wed Dec  7 08:22:39 2016
@@ -287,7 +288,8 @@
                       A( DPOS-NB-I, J1+I ) = ZERO
    30             CONTINUE
                   CTMP = ( A( DPOS-NB, J1 ) )
-                  CALL DLARFG( LM, CTMP, V( VPOS+1 ), 1, TAU( TAUPOS ) )
+                  CALL DLARFG( LM, CTMP, V( VPOS+1 ), 1,
+     $                         TAU( TAUPOS ) )
                   A( DPOS-NB, J1 ) = CTMP
 *
                   CALL DLARFX( 'Right', LN-1, LM, V( VPOS ),

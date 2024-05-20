@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CSPRFS
 *
 *  =========== DOCUMENTATION ===========
@@ -175,7 +176,8 @@
 *> \ingroup hprfs
 *
 *  =====================================================================
-      SUBROUTINE CSPRFS( UPLO, N, NRHS, AP, AFP, IPIV, B, LDB, X, LDX,
+      SUBROUTINE CSPRFS( UPLO, N, NRHS, AP, AFP, IPIV, B, LDB, X,
+     $                   LDX,
      $                   FERR, BERR, WORK, RWORK, INFO )
 *
 *  -- LAPACK computational routine --
@@ -217,7 +219,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CAXPY, CCOPY, CLACN2, CSPMV, CSPTRS, XERBLA
+      EXTERNAL           CAXPY, CCOPY, CLACN2, CSPMV, CSPTRS,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, AIMAG, MAX, REAL

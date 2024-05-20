@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSYTRS_AA
 *
 *  =========== DOCUMENTATION ===========
@@ -213,7 +214,8 @@
 *
 *           Compute U**T \ B -> B    [ (U**T \P**T * B) ]
 *
-            CALL ZTRSM( 'L', 'U', 'T', 'U', N-1, NRHS, ONE, A( 1, 2 ),
+            CALL ZTRSM( 'L', 'U', 'T', 'U', N-1, NRHS, ONE, A( 1,
+     $                  2 ),
      $                  LDA, B( 2, 1 ), LDB)
          END IF
 *
@@ -223,10 +225,13 @@
 *
          CALL ZLACPY( 'F', 1, N, A( 1, 1 ), LDA+1, WORK( N ), 1)
          IF( N.GT.1 ) THEN
-            CALL ZLACPY( 'F', 1, N-1, A( 1, 2 ), LDA+1, WORK( 1 ), 1 )
-            CALL ZLACPY( 'F', 1, N-1, A( 1, 2 ), LDA+1, WORK( 2*N ), 1 )
+            CALL ZLACPY( 'F', 1, N-1, A( 1, 2 ), LDA+1, WORK( 1 ),
+     $                   1 )
+            CALL ZLACPY( 'F', 1, N-1, A( 1, 2 ), LDA+1, WORK( 2*N ),
+     $                   1 )
          END IF
-         CALL ZGTSV( N, NRHS, WORK( 1 ), WORK( N ), WORK( 2*N ), B, LDB,
+         CALL ZGTSV( N, NRHS, WORK( 1 ), WORK( N ), WORK( 2*N ), B,
+     $               LDB,
      $               INFO )
 *
 *        3) Backward substitution with U
@@ -235,7 +240,8 @@
 *
 *           Compute U \ B -> B   [ U \ (T \ (U**T \P**T * B) ) ]
 *
-            CALL ZTRSM( 'L', 'U', 'N', 'U', N-1, NRHS, ONE, A( 1, 2 ),
+            CALL ZTRSM( 'L', 'U', 'N', 'U', N-1, NRHS, ONE, A( 1,
+     $                  2 ),
      $                  LDA, B( 2, 1 ), LDB)
 *
 *           Pivot, P * B -> B  [ P * (U \ (T \ (U**T \P**T * B) )) ]
@@ -265,7 +271,8 @@
 *
 *           Compute L \ B -> B    [ (L \P**T * B) ]
 *
-            CALL ZTRSM( 'L', 'L', 'N', 'U', N-1, NRHS, ONE, A( 2, 1 ),
+            CALL ZTRSM( 'L', 'L', 'N', 'U', N-1, NRHS, ONE, A( 2,
+     $                  1 ),
      $                  LDA, B( 2, 1 ), LDB)
          END IF
 *
@@ -275,10 +282,13 @@
 *
          CALL ZLACPY( 'F', 1, N, A(1, 1), LDA+1, WORK(N), 1)
          IF( N.GT.1 ) THEN
-            CALL ZLACPY( 'F', 1, N-1, A( 2, 1 ), LDA+1, WORK( 1 ), 1 )
-            CALL ZLACPY( 'F', 1, N-1, A( 2, 1 ), LDA+1, WORK( 2*N ), 1 )
+            CALL ZLACPY( 'F', 1, N-1, A( 2, 1 ), LDA+1, WORK( 1 ),
+     $                   1 )
+            CALL ZLACPY( 'F', 1, N-1, A( 2, 1 ), LDA+1, WORK( 2*N ),
+     $                   1 )
          END IF
-         CALL ZGTSV( N, NRHS, WORK( 1 ), WORK(N), WORK( 2*N ), B, LDB,
+         CALL ZGTSV( N, NRHS, WORK( 1 ), WORK(N), WORK( 2*N ), B,
+     $               LDB,
      $               INFO)
 *
 *        3) Backward substitution with L**T
@@ -287,7 +297,8 @@
 *
 *           Compute (L**T \ B) -> B   [ L**T \ (T \ (L \P**T * B) ) ]
 *
-            CALL ZTRSM( 'L', 'L', 'T', 'U', N-1, NRHS, ONE, A( 2, 1 ),
+            CALL ZTRSM( 'L', 'L', 'T', 'U', N-1, NRHS, ONE, A( 2,
+     $                  1 ),
      $                  LDA, B( 2, 1 ), LDB)
 *
 *           Pivot, P * B -> B  [ P * (L**T \ (T \ (L \P**T * B) )) ]

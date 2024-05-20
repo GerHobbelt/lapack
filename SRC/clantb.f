@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLANTB returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a triangular band matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -187,14 +188,16 @@
                DO 20 J = 1, N
                   DO 10 I = MAX( K+2-J, 1 ), K
                      SUM = ABS( AB( I, J ) )
-                     IF( VALUE .LT. SUM .OR. SISNAN( SUM ) ) VALUE = SUM
+                     IF( VALUE .LT. SUM .OR.
+     $                   SISNAN( SUM ) ) VALUE = SUM
    10             CONTINUE
    20          CONTINUE
             ELSE
                DO 40 J = 1, N
                   DO 30 I = 2, MIN( N+1-J, K+1 )
                      SUM = ABS( AB( I, J ) )
-                     IF( VALUE .LT. SUM .OR. SISNAN( SUM ) ) VALUE = SUM
+                     IF( VALUE .LT. SUM .OR.
+     $                   SISNAN( SUM ) ) VALUE = SUM
    30             CONTINUE
    40          CONTINUE
             END IF
@@ -204,14 +207,16 @@
                DO 60 J = 1, N
                   DO 50 I = MAX( K+2-J, 1 ), K + 1
                      SUM = ABS( AB( I, J ) )
-                     IF( VALUE .LT. SUM .OR. SISNAN( SUM ) ) VALUE = SUM
+                     IF( VALUE .LT. SUM .OR.
+     $                   SISNAN( SUM ) ) VALUE = SUM
    50             CONTINUE
    60          CONTINUE
             ELSE
                DO 80 J = 1, N
                   DO 70 I = 1, MIN( N+1-J, K+1 )
                      SUM = ABS( AB( I, J ) )
-                     IF( VALUE .LT. SUM .OR. SISNAN( SUM ) ) VALUE = SUM
+                     IF( VALUE .LT. SUM .OR.
+     $                   SISNAN( SUM ) ) VALUE = SUM
    70             CONTINUE
    80          CONTINUE
             END IF
@@ -307,7 +312,8 @@
             SUM = WORK( I )
             IF( VALUE .LT. SUM .OR. SISNAN( SUM ) ) VALUE = SUM
   270    CONTINUE
-      ELSE IF( ( LSAME( NORM, 'F' ) ) .OR. ( LSAME( NORM, 'E' ) ) ) THEN
+      ELSE IF( ( LSAME( NORM, 'F' ) ) .OR.
+     $         ( LSAME( NORM, 'E' ) ) ) THEN
 *
 *        Find normF(A).
 *
@@ -326,7 +332,8 @@
                SCALE = ZERO
                SUM = ONE
                DO 290 J = 1, N
-                  CALL CLASSQ( MIN( J, K+1 ), AB( MAX( K+2-J, 1 ), J ),
+                  CALL CLASSQ( MIN( J, K+1 ), AB( MAX( K+2-J, 1 ),
+     $                         J ),
      $                         1, SCALE, SUM )
   290          CONTINUE
             END IF
@@ -336,7 +343,8 @@
                SUM = N
                IF( K.GT.0 ) THEN
                   DO 300 J = 1, N - 1
-                     CALL CLASSQ( MIN( N-J, K ), AB( 2, J ), 1, SCALE,
+                     CALL CLASSQ( MIN( N-J, K ), AB( 2, J ), 1,
+     $                            SCALE,
      $                            SUM )
   300             CONTINUE
                END IF
@@ -344,7 +352,8 @@
                SCALE = ZERO
                SUM = ONE
                DO 310 J = 1, N
-                  CALL CLASSQ( MIN( N-J+1, K+1 ), AB( 1, J ), 1, SCALE,
+                  CALL CLASSQ( MIN( N-J+1, K+1 ), AB( 1, J ), 1,
+     $                         SCALE,
      $                         SUM )
   310          CONTINUE
             END IF

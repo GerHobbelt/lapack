@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SGGQRF
 *
 *  =========== DOCUMENTATION ===========
@@ -283,7 +284,8 @@
 *
 *     Update B := Q**T*B.
 *
-      CALL SORMQR( 'Left', 'Transpose', N, P, MIN( N, M ), A, LDA, TAUA,
+      CALL SORMQR( 'Left', 'Transpose', N, P, MIN( N, M ), A, LDA,
+     $             TAUA,
      $             B, LDB, WORK, LWORK, INFO )
       LOPT = MAX( LOPT, INT( WORK( 1 ) ) )
 *

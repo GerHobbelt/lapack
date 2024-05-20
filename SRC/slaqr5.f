@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLAQR5 performs a single small-bulge multi-shift QR sweep.
 *
 *  =========== DOCUMENTATION ===========
@@ -306,7 +307,8 @@
       REAL               VT( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SGEMM, SLACPY, SLAQR1, SLARFG, SLASET, STRMM
+      EXTERNAL           SGEMM, SLACPY, SLAQR1, SLARFG, SLASET,
+     $                   STRMM
 *     ..
 *     .. Executable Statements ..
 *

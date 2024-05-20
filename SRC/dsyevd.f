@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> DSYEVD computes the eigenvalues and, optionally, the left and/or right eigenvectors for SY matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -172,7 +173,8 @@
 
 *>
 *  =====================================================================
-      SUBROUTINE DSYEVD( JOBZ, UPLO, N, A, LDA, W, WORK, LWORK, IWORK,
+      SUBROUTINE DSYEVD( JOBZ, UPLO, N, A, LDA, W, WORK, LWORK,
+     $                   IWORK,
      $                   LIWORK, INFO )
 *
 *  -- LAPACK driver routine --
@@ -209,7 +211,8 @@
       EXTERNAL           LSAME, DLAMCH, DLANSY, ILAENV
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DLACPY, DLASCL, DORMTR, DSCAL, DSTEDC, DSTERF,
+      EXTERNAL           DLACPY, DLASCL, DORMTR, DSCAL, DSTEDC,
+     $                   DSTERF,
      $                   DSYTRD, XERBLA
 *     ..
 *     .. Intrinsic Functions ..
@@ -249,7 +252,8 @@
                LWMIN = 2*N + 1
             END IF
             LOPT = MAX( LWMIN, 2*N +
-     $                  N*ILAENV( 1, 'DSYTRD', UPLO, N, -1, -1, -1 ) )
+     $                  N*ILAENV( 1, 'DSYTRD', UPLO, N, -1, -1,
+     $                            -1 ) )
             LIOPT = LIWMIN
          END IF
          WORK( 1 ) = LOPT

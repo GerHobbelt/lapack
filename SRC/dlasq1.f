@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLASQ1 computes the singular values of a real square bidiagonal matrix. Used by sbdsqr.
 *
 *  =========== DOCUMENTATION ===========
@@ -128,7 +129,8 @@
       DOUBLE PRECISION   EPS, SCALE, SAFMIN, SIGMN, SIGMX
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DCOPY, DLAS2, DLASCL, DLASQ2, DLASRT, XERBLA
+      EXTERNAL           DCOPY, DLAS2, DLASCL, DLASQ2, DLASRT,
+     $                   XERBLA
 *     ..
 *     .. External Functions ..
       DOUBLE PRECISION   DLAMCH

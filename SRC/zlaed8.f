@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZLAED8 used by ZSTEDC. Merges eigenvalues and deflates secular equation. Used when the original matrix is dense.
 *
 *  =========== DOCUMENTATION ===========
@@ -222,7 +223,8 @@
 *> \ingroup laed8
 *
 *  =====================================================================
-      SUBROUTINE ZLAED8( K, N, QSIZ, Q, LDQ, D, RHO, CUTPNT, Z, DLAMBDA,
+      SUBROUTINE ZLAED8( K, N, QSIZ, Q, LDQ, D, RHO, CUTPNT, Z,
+     $                   DLAMBDA,
      $                   Q2, LDQ2, W, INDXP, INDX, INDXQ, PERM, GIVPTR,
      $                   GIVCOL, GIVNUM, INFO )
 *
@@ -259,7 +261,8 @@
       EXTERNAL           IDAMAX, DLAMCH, DLAPY2
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DCOPY, DLAMRG, DSCAL, XERBLA, ZCOPY, ZDROT,
+      EXTERNAL           DCOPY, DLAMRG, DSCAL, XERBLA, ZCOPY,
+     $                   ZDROT,
      $                   ZLACPY
 *     ..
 *     .. Intrinsic Functions ..
@@ -350,7 +353,8 @@
             PERM( J ) = INDXQ( INDX( J ) )
             CALL ZCOPY( QSIZ, Q( 1, PERM( J ) ), 1, Q2( 1, J ), 1 )
    50    CONTINUE
-         CALL ZLACPY( 'A', QSIZ, N, Q2( 1, 1 ), LDQ2, Q( 1, 1 ), LDQ )
+         CALL ZLACPY( 'A', QSIZ, N, Q2( 1, 1 ), LDQ2, Q( 1, 1 ),
+     $                LDQ )
          RETURN
       END IF
 *
@@ -472,7 +476,8 @@
 *
       IF( K.LT.N ) THEN
          CALL DCOPY( N-K, DLAMBDA( K+1 ), 1, D( K+1 ), 1 )
-         CALL ZLACPY( 'A', QSIZ, N-K, Q2( 1, K+1 ), LDQ2, Q( 1, K+1 ),
+         CALL ZLACPY( 'A', QSIZ, N-K, Q2( 1, K+1 ), LDQ2, Q( 1,
+     $                K+1 ),
      $                LDQ )
       END IF
 *

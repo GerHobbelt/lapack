@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SGBEQU
 *
 *  =========== DOCUMENTATION ===========
@@ -148,7 +149,8 @@
 *> \ingroup gbequ
 *
 *  =====================================================================
-      SUBROUTINE SGBEQU( M, N, KL, KU, AB, LDAB, R, C, ROWCND, COLCND,
+      SUBROUTINE SGBEQU( M, N, KL, KU, AB, LDAB, R, C, ROWCND,
+     $                   COLCND,
      $                   AMAX, INFO )
 *
 *  -- LAPACK computational routine --

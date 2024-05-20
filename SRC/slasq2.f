@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLASQ2 computes all the eigenvalues of the symmetric positive definite tridiagonal matrix associated with the qd Array Z to high relative accuracy. Used by sbdsqr and sstegr.
 *
 *  =========== DOCUMENTATION ===========
@@ -467,7 +468,8 @@
 *
 *           While submatrix unfinished take a good dqds step.
 *
-            CALL SLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QMAX, NFAIL,
+            CALL SLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QMAX,
+     $                   NFAIL,
      $                   ITER, NDIV, IEEE, TTYPE, DMIN1, DMIN2, DN, DN1,
      $                   DN2, G, TAU )
 *

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZPOTF2 computes the Cholesky factorization of a symmetric/Hermitian positive definite matrix (unblocked algorithm).
 *
 *  =========== DOCUMENTATION ===========
@@ -201,7 +202,8 @@
 *
 *           Compute L(J,J) and test for non-positive-definiteness.
 *
-            AJJ = DBLE( A( J, J ) ) - DBLE( ZDOTC( J-1, A( J, 1 ), LDA,
+            AJJ = DBLE( A( J, J ) ) - DBLE( ZDOTC( J-1, A( J, 1 ),
+     $                  LDA,
      $            A( J, 1 ), LDA ) )
             IF( AJJ.LE.ZERO.OR.DISNAN( AJJ ) ) THEN
                A( J, J ) = AJJ
@@ -214,7 +216,8 @@
 *
             IF( J.LT.N ) THEN
                CALL ZLACGV( J-1, A( J, 1 ), LDA )
-               CALL ZGEMV( 'No transpose', N-J, J-1, -CONE, A( J+1, 1 ),
+               CALL ZGEMV( 'No transpose', N-J, J-1, -CONE, A( J+1,
+     $                     1 ),
      $                     LDA, A( J, 1 ), LDA, CONE, A( J+1, J ), 1 )
                CALL ZLACGV( J-1, A( J, 1 ), LDA )
                CALL ZDSCAL( N-J, ONE / AJJ, A( J+1, J ), 1 )

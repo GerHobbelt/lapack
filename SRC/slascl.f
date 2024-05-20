@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLASCL multiplies a general rectangular matrix by a real scalar defined as cto/cfrom.
 *
 *  =========== DOCUMENTATION ===========
@@ -139,7 +140,8 @@
 *> \ingroup lascl
 *
 *  =====================================================================
-      SUBROUTINE SLASCL( TYPE, KL, KU, CFROM, CTO, M, N, A, LDA, INFO )
+      SUBROUTINE SLASCL( TYPE, KL, KU, CFROM, CTO, M, N, A, LDA,
+     $                   INFO )
 *
 *  -- LAPACK auxiliary routine --
 *  -- LAPACK is a software package provided by Univ. of Tennessee,    --

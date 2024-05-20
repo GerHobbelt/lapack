@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> ZHESV_AA_2STAGE computes the solution to system of linear equations A * X = B for HE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -217,7 +218,8 @@
       EXTERNAL           LSAME, ILAENV
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, ZHETRF_AA_2STAGE, ZHETRS_AA_2STAGE
+      EXTERNAL           XERBLA, ZHETRF_AA_2STAGE,
+     $                   ZHETRS_AA_2STAGE
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLANHB returns the value of the 1-norm, or the Frobenius norm, or the infinity norm, or the element of largest absolute value of a Hermitian band matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -191,7 +192,8 @@
    30          CONTINUE
    40       CONTINUE
          END IF
-      ELSE IF( ( LSAME( NORM, 'I' ) ) .OR. ( LSAME( NORM, 'O' ) ) .OR.
+      ELSE IF( ( LSAME( NORM, 'I' ) ) .OR.
+     $         ( LSAME( NORM, 'O' ) ) .OR.
      $         ( NORM.EQ.'1' ) ) THEN
 *
 *        Find normI(A) ( = norm1(A), since A is hermitian).
@@ -227,7 +229,8 @@
                IF( VALUE .LT. SUM .OR. SISNAN( SUM ) ) VALUE = SUM
   100       CONTINUE
          END IF
-      ELSE IF( ( LSAME( NORM, 'F' ) ) .OR. ( LSAME( NORM, 'E' ) ) ) THEN
+      ELSE IF( ( LSAME( NORM, 'F' ) ) .OR.
+     $         ( LSAME( NORM, 'E' ) ) ) THEN
 *
 *        Find normF(A).
 *
@@ -236,7 +239,8 @@
          IF( K.GT.0 ) THEN
             IF( LSAME( UPLO, 'U' ) ) THEN
                DO 110 J = 2, N
-                  CALL CLASSQ( MIN( J-1, K ), AB( MAX( K+2-J, 1 ), J ),
+                  CALL CLASSQ( MIN( J-1, K ), AB( MAX( K+2-J, 1 ),
+     $                         J ),
      $                         1, SCALE, SUM )
   110          CONTINUE
                L = K + 1

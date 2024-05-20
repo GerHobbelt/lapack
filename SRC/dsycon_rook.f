@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> DSYCON_ROOK </b>
 *
 *  =========== DOCUMENTATION ===========
@@ -139,7 +140,8 @@
 *> \endverbatim
 *
 *  =====================================================================
-      SUBROUTINE DSYCON_ROOK( UPLO, N, A, LDA, IPIV, ANORM, RCOND, WORK,
+      SUBROUTINE DSYCON_ROOK( UPLO, N, A, LDA, IPIV, ANORM, RCOND,
+     $                        WORK,
      $                   IWORK, INFO )
 *
 *  -- LAPACK computational routine --

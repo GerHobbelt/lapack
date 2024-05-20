@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CSYRFS
 *
 *  =========== DOCUMENTATION ===========
@@ -187,7 +188,8 @@
 *> \ingroup herfs
 *
 *  =====================================================================
-      SUBROUTINE CSYRFS( UPLO, N, NRHS, A, LDA, AF, LDAF, IPIV, B, LDB,
+      SUBROUTINE CSYRFS( UPLO, N, NRHS, A, LDA, AF, LDAF, IPIV, B,
+     $                   LDB,
      $                   X, LDX, FERR, BERR, WORK, RWORK, INFO )
 *
 *  -- LAPACK computational routine --
@@ -229,7 +231,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CAXPY, CCOPY, CLACN2, CSYMV, CSYTRS, XERBLA
+      EXTERNAL           CAXPY, CCOPY, CLACN2, CSYMV, CSYTRS,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, AIMAG, MAX, REAL
@@ -302,7 +305,8 @@
 *        Compute residual R = B - A * X
 *
          CALL CCOPY( N, B( 1, J ), 1, WORK, 1 )
-         CALL CSYMV( UPLO, N, -ONE, A, LDA, X( 1, J ), 1, ONE, WORK, 1 )
+         CALL CSYMV( UPLO, N, -ONE, A, LDA, X( 1, J ), 1, ONE, WORK,
+     $               1 )
 *
 *        Compute componentwise relative backward error from formula
 *
@@ -409,7 +413,8 @@
 *
 *              Multiply by diag(W)*inv(A**T).
 *
-               CALL CSYTRS( UPLO, N, 1, AF, LDAF, IPIV, WORK, N, INFO )
+               CALL CSYTRS( UPLO, N, 1, AF, LDAF, IPIV, WORK, N,
+     $                      INFO )
                DO 110 I = 1, N
                   WORK( I ) = RWORK( I )*WORK( I )
   110          CONTINUE
@@ -420,7 +425,8 @@
                DO 120 I = 1, N
                   WORK( I ) = RWORK( I )*WORK( I )
   120          CONTINUE
-               CALL CSYTRS( UPLO, N, 1, AF, LDAF, IPIV, WORK, N, INFO )
+               CALL CSYTRS( UPLO, N, 1, AF, LDAF, IPIV, WORK, N,
+     $                      INFO )
             END IF
             GO TO 100
          END IF

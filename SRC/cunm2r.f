@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CUNM2R multiplies a general matrix by the unitary matrix from a QR factorization determined by cgeqrf (unblocked algorithm).
 *
 *  =========== DOCUMENTATION ===========
@@ -272,7 +273,8 @@
          END IF
          AII = A( I, I )
          A( I, I ) = ONE
-         CALL CLARF( SIDE, MI, NI, A( I, I ), 1, TAUI, C( IC, JC ), LDC,
+         CALL CLARF( SIDE, MI, NI, A( I, I ), 1, TAUI, C( IC, JC ),
+     $               LDC,
      $               WORK )
          A( I, I ) = AII
    10 CONTINUE

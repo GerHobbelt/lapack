@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLAED6 used by SSTEDC. Computes one Newton step in solution of the secular equation.
 *
 *  =========== DOCUMENTATION ===========
@@ -136,7 +137,8 @@
 *>     at Berkeley, USA
 *>
 *  =====================================================================
-      SUBROUTINE SLAED6( KNITER, ORGATI, RHO, D, Z, FINIT, TAU, INFO )
+      SUBROUTINE SLAED6( KNITER, ORGATI, RHO, D, Z, FINIT, TAU,
+     $                   INFO )
 *
 *  -- LAPACK computational routine --
 *  -- LAPACK is a software package provided by Univ. of Tennessee,    --

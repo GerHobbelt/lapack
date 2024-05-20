@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DSYTRD_SY2SB
 *
 *  @generated from zhetrd_he2hb.f, fortran z -> d, Wed Dec  7 08:22:39 2016
@@ -276,7 +277,8 @@
      $                   TPOS, WPOS, S2POS, S1POS
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, DSYR2K, DSYMM, DGEMM, DCOPY,
+      EXTERNAL           XERBLA, DSYR2K, DSYMM, DGEMM,
+     $                   DCOPY,
      $                   DLARFT, DGELQF, DGEQRF, DLASET
 *     ..
 *     .. Intrinsic Functions ..
@@ -384,7 +386,8 @@
 *        
              DO 20 J = I, I+PK-1
                 LK = MIN( KD, N-J ) + 1
-                CALL DCOPY( LK, A( J, J ), LDA, AB( KD+1, J ), LDAB-1 )
+                CALL DCOPY( LK, A( J, J ), LDA, AB( KD+1, J ),
+     $                      LDAB-1 )
    20        CONTINUE
 *                
              CALL DLASET( 'Lower', PK, PK, ZERO, ONE, 

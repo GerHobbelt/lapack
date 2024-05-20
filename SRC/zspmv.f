@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSPMV computes a matrix-vector product for complex vectors using a complex symmetric packed matrix
 *
 *  =========== DOCUMENTATION ===========
@@ -186,7 +187,8 @@
 *     Test the input parameters.
 *
       INFO = 0
-      IF( .NOT.LSAME( UPLO, 'U' ) .AND. .NOT.LSAME( UPLO, 'L' ) ) THEN
+      IF( .NOT.LSAME( UPLO, 'U' ) .AND.
+     $    .NOT.LSAME( UPLO, 'L' ) ) THEN
          INFO = 1
       ELSE IF( N.LT.0 ) THEN
          INFO = 2

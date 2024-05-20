@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> CPTSVX computes the solution to system of linear equations A * X = B for PT matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -264,7 +265,8 @@
       EXTERNAL           LSAME, CLANHT, SLAMCH
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CCOPY, CLACPY, CPTCON, CPTRFS, CPTTRF, CPTTRS,
+      EXTERNAL           CCOPY, CLACPY, CPTCON, CPTRFS, CPTTRF,
+     $                   CPTTRS,
      $                   SCOPY, XERBLA
 *     ..
 *     .. Intrinsic Functions ..
@@ -325,7 +327,8 @@
 *     Use iterative refinement to improve the computed solutions and
 *     compute error bounds and backward error estimates for them.
 *
-      CALL CPTRFS( 'Lower', N, NRHS, D, E, DF, EF, B, LDB, X, LDX, FERR,
+      CALL CPTRFS( 'Lower', N, NRHS, D, E, DF, EF, B, LDB, X, LDX,
+     $             FERR,
      $             BERR, WORK, RWORK, INFO )
 *
 *     Set INFO = N+1 if the matrix is singular to working precision.

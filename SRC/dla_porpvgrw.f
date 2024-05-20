@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLA_PORPVGRW computes the reciprocal pivot growth factor norm(A)/norm(U) for a symmetric or Hermitian positive-definite matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -101,7 +102,8 @@
 *> \ingroup la_porpvgrw
 *
 *  =====================================================================
-      DOUBLE PRECISION FUNCTION DLA_PORPVGRW( UPLO, NCOLS, A, LDA, AF,
+      DOUBLE PRECISION FUNCTION DLA_PORPVGRW( UPLO, NCOLS, A, LDA,
+     $                                        AF,
      $                                        LDAF, WORK )
 *
 *  -- LAPACK computational routine --

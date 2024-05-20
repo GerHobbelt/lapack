@@ -1,3 +1,4 @@
+#include "../SRC/lapack_64.h"
 *> \brief \b SROUNDUP_LWORK
 *
 *  =========== DOCUMENTATION ===========
@@ -76,7 +77,8 @@
 *
       IF( INT( SROUNDUP_LWORK ) .LT. LWORK ) THEN
 *         Force round up of LWORK
-          SROUNDUP_LWORK = SROUNDUP_LWORK * ( 1.0E+0 + EPSILON(0.0E+0) )
+          SROUNDUP_LWORK = SROUNDUP_LWORK *
+     $                     ( 1.0E+0 + EPSILON(0.0E+0) )
       ENDIF
 *
       RETURN

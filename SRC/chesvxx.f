@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> CHESVXX computes the solution to system of linear equations A * X = B for HE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -502,7 +503,8 @@
 *> \ingroup hesvxx
 *
 *  =====================================================================
-      SUBROUTINE CHESVXX( FACT, UPLO, N, NRHS, A, LDA, AF, LDAF, IPIV,
+      SUBROUTINE CHESVXX( FACT, UPLO, N, NRHS, A, LDA, AF, LDAF,
+     $                    IPIV,
      $                    EQUED, S, B, LDB, X, LDX, RCOND, RPVGRW, BERR,
      $                    N_ERR_BNDS, ERR_BNDS_NORM, ERR_BNDS_COMP,
      $                    NPARAMS, PARAMS, WORK, RWORK, INFO )
@@ -630,7 +632,8 @@
 *
 *     Compute row and column scalings to equilibrate the matrix A.
 *
-         CALL CHEEQUB( UPLO, N, A, LDA, S, SCOND, AMAX, WORK, INFEQU )
+         CALL CHEEQUB( UPLO, N, A, LDA, S, SCOND, AMAX, WORK,
+     $                 INFEQU )
          IF( INFEQU.EQ.0 ) THEN
 *
 *     Equilibrate the matrix.
@@ -649,7 +652,8 @@
 *        Compute the LDL^H or UDU^H factorization of A.
 *
          CALL CLACPY( UPLO, N, N, A, LDA, AF, LDAF )
-         CALL CHETRF( UPLO, N, AF, LDAF, IPIV, WORK, 5*MAX(1,N), INFO )
+         CALL CHETRF( UPLO, N, AF, LDAF, IPIV, WORK, 5*MAX(1,N),
+     $                INFO )
 *
 *        Return if INFO is non-zero.
 *
@@ -660,7 +664,8 @@
 *           leading rank-deficient INFO columns of A.
 *
             IF( N.GT.0 )
-     $           RPVGRW = CLA_HERPVGRW( UPLO, N, INFO, A, LDA, AF, LDAF,
+     $           RPVGRW = CLA_HERPVGRW( UPLO, N, INFO, A, LDA, AF,
+     $                                  LDAF,
      $           IPIV, RWORK )
             RETURN
          END IF
@@ -669,7 +674,8 @@
 *     Compute the reciprocal pivot growth factor RPVGRW.
 *
       IF( N.GT.0 )
-     $     RPVGRW = CLA_HERPVGRW( UPLO, N, INFO, A, LDA, AF, LDAF, IPIV,
+     $     RPVGRW = CLA_HERPVGRW( UPLO, N, INFO, A, LDA, AF, LDAF,
+     $                            IPIV,
      $     RWORK )
 *
 *     Compute the solution matrix X.

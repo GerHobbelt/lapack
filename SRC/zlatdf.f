@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZLATDF uses the LU factorization of the n-by-n matrix computed by sgetc2 and computes a contribution to the reciprocal Dif-estimate.
 *
 *  =========== DOCUMENTATION ===========
@@ -200,7 +201,8 @@
       COMPLEX*16         WORK( 4*MAXDIM ), XM( MAXDIM ), XP( MAXDIM )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           ZAXPY, ZCOPY, ZGECON, ZGESC2, ZLASSQ, ZLASWP,
+      EXTERNAL           ZAXPY, ZCOPY, ZGECON, ZGESC2, ZLASSQ,
+     $                   ZLASWP,
      $                   ZSCAL
 *     ..
 *     .. External Functions ..
@@ -232,7 +234,8 @@
 *
             SPLUS = SPLUS + DBLE( ZDOTC( N-J, Z( J+1, J ), 1, Z( J+1,
      $              J ), 1 ) )
-            SMINU = DBLE( ZDOTC( N-J, Z( J+1, J ), 1, RHS( J+1 ), 1 ) )
+            SMINU = DBLE( ZDOTC( N-J, Z( J+1, J ), 1, RHS( J+1 ),
+     $                    1 ) )
             SPLUS = SPLUS*DBLE( RHS( J ) )
             IF( SPLUS.GT.SMINU ) THEN
                RHS( J ) = BP

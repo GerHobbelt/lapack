@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLA_SYRCOND estimates the Skeel condition number for a symmetric indefinite matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -142,7 +143,8 @@
 *> \ingroup la_hercond
 *
 *  =====================================================================
-      DOUBLE PRECISION FUNCTION DLA_SYRCOND( UPLO, N, A, LDA, AF, LDAF,
+      DOUBLE PRECISION FUNCTION DLA_SYRCOND( UPLO, N, A, LDA, AF,
+     $                                       LDAF,
      $                                       IPIV, CMODE, C, INFO, WORK,
      $                                       IWORK )
 *
@@ -282,9 +284,11 @@
             END DO
 
             IF ( UP ) THEN
-               CALL DSYTRS( 'U', N, 1, AF, LDAF, IPIV, WORK, N, INFO )
+               CALL DSYTRS( 'U', N, 1, AF, LDAF, IPIV, WORK, N,
+     $                      INFO )
             ELSE
-               CALL DSYTRS( 'L', N, 1, AF, LDAF, IPIV, WORK, N, INFO )
+               CALL DSYTRS( 'L', N, 1, AF, LDAF, IPIV, WORK, N,
+     $                      INFO )
             ENDIF
 *
 *           Multiply by inv(C).
@@ -313,9 +317,11 @@
             END IF
 
             IF ( UP ) THEN
-               CALL DSYTRS( 'U', N, 1, AF, LDAF, IPIV, WORK, N, INFO )
+               CALL DSYTRS( 'U', N, 1, AF, LDAF, IPIV, WORK, N,
+     $                      INFO )
             ELSE
-               CALL DSYTRS( 'L', N, 1, AF, LDAF, IPIV, WORK, N, INFO )
+               CALL DSYTRS( 'L', N, 1, AF, LDAF, IPIV, WORK, N,
+     $                      INFO )
             ENDIF
 *
 *           Multiply by R.

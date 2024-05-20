@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLAED8 used by DSTEDC. Merges eigenvalues and deflates secular equation. Used when the original matrix is dense.
 *
 *  =========== DOCUMENTATION ===========
@@ -275,7 +276,8 @@
       EXTERNAL           IDAMAX, DLAMCH, DLAPY2
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DCOPY, DLACPY, DLAMRG, DROT, DSCAL, XERBLA
+      EXTERNAL           DCOPY, DLACPY, DLAMRG, DROT, DSCAL,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, MAX, MIN, SQRT
@@ -370,7 +372,8 @@
          ELSE
             DO 60 J = 1, N
                PERM( J ) = INDXQ( INDX( J ) )
-               CALL DCOPY( QSIZ, Q( 1, PERM( J ) ), 1, Q2( 1, J ), 1 )
+               CALL DCOPY( QSIZ, Q( 1, PERM( J ) ), 1, Q2( 1, J ),
+     $                     1 )
    60       CONTINUE
             CALL DLACPY( 'A', QSIZ, N, Q2( 1, 1 ), LDQ2, Q( 1, 1 ),
      $                   LDQ )

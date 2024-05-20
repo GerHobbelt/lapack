@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLAQR5 performs a single small-bulge multi-shift QR sweep.
 *
 *  =========== DOCUMENTATION ===========
@@ -306,7 +307,8 @@
       DOUBLE PRECISION   VT( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DGEMM, DLACPY, DLAQR1, DLARFG, DLASET, DTRMM
+      EXTERNAL           DGEMM, DLACPY, DLAQR1, DLARFG, DLASET,
+     $                   DTRMM
 *     ..
 *     .. Executable Statements ..
 *

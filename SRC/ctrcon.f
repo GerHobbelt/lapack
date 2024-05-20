@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CTRCON
 *
 *  =========== DOCUMENTATION ===========
@@ -249,7 +250,8 @@
 *
 *              Multiply by inv(A**H).
 *
-               CALL CLATRS( UPLO, 'Conjugate transpose', DIAG, NORMIN,
+               CALL CLATRS( UPLO, 'Conjugate transpose', DIAG,
+     $                      NORMIN,
      $                      N, A, LDA, WORK, SCALE, RWORK, INFO )
             END IF
             NORMIN = 'Y'

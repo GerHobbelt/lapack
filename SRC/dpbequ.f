@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DPBEQU
 *
 *  =========== DOCUMENTATION ===========
@@ -125,7 +126,8 @@
 *> \ingroup pbequ
 *
 *  =====================================================================
-      SUBROUTINE DPBEQU( UPLO, N, KD, AB, LDAB, S, SCOND, AMAX, INFO )
+      SUBROUTINE DPBEQU( UPLO, N, KD, AB, LDAB, S, SCOND, AMAX,
+     $                   INFO )
 *
 *  -- LAPACK computational routine --
 *  -- LAPACK is a software package provided by Univ. of Tennessee,    --

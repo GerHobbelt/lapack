@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CPORFS
 *
 *  =========== DOCUMENTATION ===========
@@ -219,7 +220,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CAXPY, CCOPY, CHEMV, CLACN2, CPOTRS, XERBLA
+      EXTERNAL           CAXPY, CCOPY, CHEMV, CLACN2, CPOTRS,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, AIMAG, MAX, REAL
@@ -292,7 +294,8 @@
 *        Compute residual R = B - A * X
 *
          CALL CCOPY( N, B( 1, J ), 1, WORK, 1 )
-         CALL CHEMV( UPLO, N, -ONE, A, LDA, X( 1, J ), 1, ONE, WORK, 1 )
+         CALL CHEMV( UPLO, N, -ONE, A, LDA, X( 1, J ), 1, ONE, WORK,
+     $               1 )
 *
 *        Compute componentwise relative backward error from formula
 *

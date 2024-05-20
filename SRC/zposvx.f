@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> ZPOSVX computes the solution to system of linear equations A * X = B for PO matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -300,7 +301,8 @@
 *> \ingroup posvx
 *
 *  =====================================================================
-      SUBROUTINE ZPOSVX( FACT, UPLO, N, NRHS, A, LDA, AF, LDAF, EQUED,
+      SUBROUTINE ZPOSVX( FACT, UPLO, N, NRHS, A, LDA, AF, LDAF,
+     $                   EQUED,
      $                   S, B, LDB, X, LDX, RCOND, FERR, BERR, WORK,
      $                   RWORK, INFO )
 *
@@ -336,7 +338,8 @@
       EXTERNAL           LSAME, DLAMCH, ZLANHE
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, ZLACPY, ZLAQHE, ZPOCON, ZPOEQU, ZPORFS,
+      EXTERNAL           XERBLA, ZLACPY, ZLAQHE, ZPOCON, ZPOEQU,
+     $                   ZPORFS,
      $                   ZPOTRF, ZPOTRS
 *     ..
 *     .. Intrinsic Functions ..
@@ -358,10 +361,13 @@
 *
 *     Test the input parameters.
 *
-      IF( .NOT.NOFACT .AND. .NOT.EQUIL .AND. .NOT.LSAME( FACT, 'F' ) )
+      IF( .NOT.NOFACT .AND.
+     $    .NOT.EQUIL .AND.
+     $    .NOT.LSAME( FACT, 'F' ) )
      $     THEN
          INFO = -1
-      ELSE IF( .NOT.LSAME( UPLO, 'U' ) .AND. .NOT.LSAME( UPLO, 'L' ) )
+      ELSE IF( .NOT.LSAME( UPLO, 'U' ) .AND.
+     $         .NOT.LSAME( UPLO, 'L' ) )
      $          THEN
          INFO = -2
       ELSE IF( N.LT.0 ) THEN
@@ -450,7 +456,8 @@
 *
 *     Compute the reciprocal of the condition number of A.
 *
-      CALL ZPOCON( UPLO, N, AF, LDAF, ANORM, RCOND, WORK, RWORK, INFO )
+      CALL ZPOCON( UPLO, N, AF, LDAF, ANORM, RCOND, WORK, RWORK,
+     $             INFO )
 *
 *     Compute the solution matrix X.
 *

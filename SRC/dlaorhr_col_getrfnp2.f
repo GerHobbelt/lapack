@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLAORHR_COL_GETRFNP2
 *
 *  =========== DOCUMENTATION ===========
@@ -163,7 +164,8 @@
 *> \endverbatim
 *
 *  =====================================================================
-      RECURSIVE SUBROUTINE DLAORHR_COL_GETRFNP2( M, N, A, LDA, D, INFO )
+      RECURSIVE SUBROUTINE DLAORHR_COL_GETRFNP2( M, N, A, LDA, D,
+     $                                           INFO )
       IMPLICIT NONE
 *
 *  -- LAPACK computational routine --

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CHERFS
 *
 *  =========== DOCUMENTATION ===========
@@ -187,7 +188,8 @@
 *> \ingroup herfs
 *
 *  =====================================================================
-      SUBROUTINE CHERFS( UPLO, N, NRHS, A, LDA, AF, LDAF, IPIV, B, LDB,
+      SUBROUTINE CHERFS( UPLO, N, NRHS, A, LDA, AF, LDAF, IPIV, B,
+     $                   LDB,
      $                   X, LDX, FERR, BERR, WORK, RWORK, INFO )
 *
 *  -- LAPACK computational routine --
@@ -229,7 +231,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CAXPY, CCOPY, CHEMV, CHETRS, CLACN2, XERBLA
+      EXTERNAL           CAXPY, CCOPY, CHEMV, CHETRS, CLACN2,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, AIMAG, MAX, REAL
@@ -302,7 +305,8 @@
 *        Compute residual R = B - A * X
 *
          CALL CCOPY( N, B( 1, J ), 1, WORK, 1 )
-         CALL CHEMV( UPLO, N, -ONE, A, LDA, X( 1, J ), 1, ONE, WORK, 1 )
+         CALL CHEMV( UPLO, N, -ONE, A, LDA, X( 1, J ), 1, ONE, WORK,
+     $               1 )
 *
 *        Compute componentwise relative backward error from formula
 *
@@ -409,7 +413,8 @@
 *
 *              Multiply by diag(W)*inv(A**H).
 *
-               CALL CHETRS( UPLO, N, 1, AF, LDAF, IPIV, WORK, N, INFO )
+               CALL CHETRS( UPLO, N, 1, AF, LDAF, IPIV, WORK, N,
+     $                      INFO )
                DO 110 I = 1, N
                   WORK( I ) = RWORK( I )*WORK( I )
   110          CONTINUE
@@ -420,7 +425,8 @@
                DO 120 I = 1, N
                   WORK( I ) = RWORK( I )*WORK( I )
   120          CONTINUE
-               CALL CHETRS( UPLO, N, 1, AF, LDAF, IPIV, WORK, N, INFO )
+               CALL CHETRS( UPLO, N, 1, AF, LDAF, IPIV, WORK, N,
+     $                      INFO )
             END IF
             GO TO 100
          END IF

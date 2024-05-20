@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZGELQ2 computes the LQ factorization of a general rectangular matrix using an unblocked algorithm.
 *
 *  =========== DOCUMENTATION ===========
@@ -186,7 +187,8 @@
 *           Apply H(i) to A(i+1:m,i:n) from the right
 *
             A( I, I ) = ONE
-            CALL ZLARF( 'Right', M-I, N-I+1, A( I, I ), LDA, TAU( I ),
+            CALL ZLARF( 'Right', M-I, N-I+1, A( I, I ), LDA,
+     $                  TAU( I ),
      $                  A( I+1, I ), LDA, WORK )
          END IF
          A( I, I ) = ALPHA

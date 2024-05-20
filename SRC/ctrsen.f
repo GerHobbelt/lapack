@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CTRSEN
 *
 *  =========== DOCUMENTATION ===========
@@ -259,7 +260,8 @@
 *> \endverbatim
 *>
 *  =====================================================================
-      SUBROUTINE CTRSEN( JOB, COMPQ, SELECT, N, T, LDT, Q, LDQ, W, M, S,
+      SUBROUTINE CTRSEN( JOB, COMPQ, SELECT, N, T, LDT, Q, LDQ, W, M,
+     $                   S,
      $                   SEP, WORK, LWORK, INFO )
 *
 *  -- LAPACK computational routine --
@@ -297,7 +299,8 @@
       EXTERNAL           LSAME, CLANGE, SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CLACN2, CLACPY, CTREXC, CTRSYL, XERBLA
+      EXTERNAL           CLACN2, CLACPY, CTREXC, CTRSYL,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX, SQRT

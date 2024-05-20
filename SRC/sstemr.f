@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SSTEMR
 *
 *  =========== DOCUMENTATION ===========
@@ -363,7 +364,8 @@
       EXTERNAL           LSAME, SLAMCH, SLANST, SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SCOPY, SLAE2, SLAEV2, SLARRC, SLARRE, SLARRJ,
+      EXTERNAL           SCOPY, SLAE2, SLAEV2, SLARRC, SLARRE,
+     $                   SLARRJ,
      $                   SLARRR, SLARRV, SLASRT, SSCAL, SSWAP, XERBLA
 *     ..
 *     .. Intrinsic Functions ..

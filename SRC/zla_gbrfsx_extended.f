@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZLA_GBRFSX_EXTENDED improves the computed solution to a system of linear equations for general banded matrices by performing extra-precise iterative refinement and provides error bounds and backward error estimates for the solution.
 *
 *  =========== DOCUMENTATION ===========
@@ -400,7 +401,8 @@
 *> \ingroup la_gbrfsx_extended
 *
 *  =====================================================================
-      SUBROUTINE ZLA_GBRFSX_EXTENDED( PREC_TYPE, TRANS_TYPE, N, KL, KU,
+      SUBROUTINE ZLA_GBRFSX_EXTENDED( PREC_TYPE, TRANS_TYPE, N, KL,
+     $                                KU,
      $                                NRHS, AB, LDAB, AFB, LDAFB, IPIV,
      $                                COLEQU, C, B, LDB, Y, LDY,
      $                                BERR_OUT, N_NORMS, ERR_BNDS_NORM,
@@ -466,7 +468,8 @@
       PARAMETER          ( LA_LINRX_RCOND_I = 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           ZAXPY, ZCOPY, ZGBTRS, ZGBMV, BLAS_ZGBMV_X,
+      EXTERNAL           ZAXPY, ZCOPY, ZGBTRS, ZGBMV,
+     $                   BLAS_ZGBMV_X,
      $                   BLAS_ZGBMV2_X, ZLA_GBAMV, ZLA_WWADDW, DLAMCH,
      $                   CHLA_TRANSTYPE, ZLA_LIN_BERR
       DOUBLE PRECISION   DLAMCH
@@ -537,7 +540,8 @@
 
 !        XXX: RES is no longer needed.
             CALL ZCOPY( N, RES, 1, DY, 1 )
-            CALL ZGBTRS( TRANS, N, KL, KU, 1, AFB, LDAFB, IPIV, DY, N,
+            CALL ZGBTRS( TRANS, N, KL, KU, 1, AFB, LDAFB, IPIV, DY,
+     $                   N,
      $           INFO )
 *
 *         Calculate relative changes DX_X, DZ_Z and ratios DXRAT, DZRAT.

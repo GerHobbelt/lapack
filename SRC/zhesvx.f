@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> ZHESVX computes the solution to system of linear equations A * X = B for HE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -279,7 +280,8 @@
 *> \ingroup hesvx
 *
 *  =====================================================================
-      SUBROUTINE ZHESVX( FACT, UPLO, N, NRHS, A, LDA, AF, LDAF, IPIV, B,
+      SUBROUTINE ZHESVX( FACT, UPLO, N, NRHS, A, LDA, AF, LDAF, IPIV,
+     $                   B,
      $                   LDB, X, LDX, RCOND, FERR, BERR, WORK, LWORK,
      $                   RWORK, INFO )
 *
@@ -317,7 +319,8 @@
       EXTERNAL           LSAME, ILAENV, DLAMCH, ZLANHE
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, ZHECON, ZHERFS, ZHETRF, ZHETRS, ZLACPY
+      EXTERNAL           XERBLA, ZHECON, ZHERFS, ZHETRF, ZHETRS,
+     $                   ZLACPY
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX
@@ -332,7 +335,8 @@
       LWKMIN = MAX( 1, 2*N )
       IF( .NOT.NOFACT .AND. .NOT.LSAME( FACT, 'F' ) ) THEN
          INFO = -1
-      ELSE IF( .NOT.LSAME( UPLO, 'U' ) .AND. .NOT.LSAME( UPLO, 'L' ) )
+      ELSE IF( .NOT.LSAME( UPLO, 'U' ) .AND.
+     $         .NOT.LSAME( UPLO, 'L' ) )
      $          THEN
          INFO = -2
       ELSE IF( N.LT.0 ) THEN
@@ -388,7 +392,8 @@
 *
 *     Compute the reciprocal of the condition number of A.
 *
-      CALL ZHECON( UPLO, N, AF, LDAF, IPIV, ANORM, RCOND, WORK, INFO )
+      CALL ZHECON( UPLO, N, AF, LDAF, IPIV, ANORM, RCOND, WORK,
+     $             INFO )
 *
 *     Compute the solution vectors X.
 *

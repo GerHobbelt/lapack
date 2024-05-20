@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZUNMR2 multiplies a general matrix by the unitary matrix from a RQ factorization determined by cgerqf (unblocked algorithm).
 *
 *  =========== DOCUMENTATION ===========
@@ -269,7 +270,8 @@
          CALL ZLACGV( NQ-K+I-1, A( I, 1 ), LDA )
          AII = A( I, NQ-K+I )
          A( I, NQ-K+I ) = ONE
-         CALL ZLARF( SIDE, MI, NI, A( I, 1 ), LDA, TAUI, C, LDC, WORK )
+         CALL ZLARF( SIDE, MI, NI, A( I, 1 ), LDA, TAUI, C, LDC,
+     $               WORK )
          A( I, NQ-K+I ) = AII
          CALL ZLACGV( NQ-K+I-1, A( I, 1 ), LDA )
    10 CONTINUE

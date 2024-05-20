@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLAED0 used by SSTEDC. Computes all eigenvalues and corresponding eigenvectors of an unreduced symmetric tridiagonal matrix using the divide and conquer method.
 *
 *  =========== DOCUMENTATION ===========
@@ -197,7 +198,8 @@
       REAL               TEMP
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SCOPY, SGEMM, SLACPY, SLAED1, SLAED7, SSTEQR,
+      EXTERNAL           SCOPY, SGEMM, SLACPY, SLAED1, SLAED7,
+     $                   SSTEQR,
      $                   XERBLA
 *     ..
 *     .. External Functions ..
@@ -373,7 +375,8 @@
      $                      E( SUBMAT+MSD2-1 ), MSD2, WORK,
      $                      IWORK( SUBPBS+1 ), INFO )
             ELSE
-               CALL SLAED7( ICOMPQ, MATSIZ, QSIZ, TLVLS, CURLVL, CURPRB,
+               CALL SLAED7( ICOMPQ, MATSIZ, QSIZ, TLVLS, CURLVL,
+     $                      CURPRB,
      $                      D( SUBMAT ), QSTORE( 1, SUBMAT ), LDQS,
      $                      IWORK( INDXQ+SUBMAT ), E( SUBMAT+MSD2-1 ),
      $                      MSD2, WORK( IQ ), IWORK( IQPTR ),

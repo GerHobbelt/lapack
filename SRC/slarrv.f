@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLARRV computes the eigenvectors of the tridiagonal matrix T = L D LT given L, D and the eigenvalues of L D LT.
 *
 *  =========== DOCUMENTATION ===========
@@ -337,7 +338,8 @@
       EXTERNAL           SLAMCH
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SCOPY, SLAR1V, SLARRB, SLARRF, SLASET,
+      EXTERNAL           SCOPY, SLAR1V, SLARRB, SLARRF,
+     $                   SLASET,
      $                   SSCAL
 *     ..
 *     .. Intrinsic Functions ..

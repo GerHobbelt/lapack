@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLA_SYRFSX_EXTENDED improves the computed solution to a system of linear equations for symmetric indefinite matrices by performing extra-precise iterative refinement and provides error bounds and backward error estimates for the solution.
 *
 *  =========== DOCUMENTATION ===========
@@ -385,7 +386,8 @@
 *> \ingroup la_herfsx_extended
 *
 *  =====================================================================
-      SUBROUTINE CLA_SYRFSX_EXTENDED( PREC_TYPE, UPLO, N, NRHS, A, LDA,
+      SUBROUTINE CLA_SYRFSX_EXTENDED( PREC_TYPE, UPLO, N, NRHS, A,
+     $                                LDA,
      $                                AF, LDAF, IPIV, COLEQU, C, B, LDB,
      $                                Y, LDY, BERR_OUT, N_NORMS,
      $                                ERR_BNDS_NORM, ERR_BNDS_COMP, RES,
@@ -457,7 +459,8 @@
       INTEGER            ILAUPLO
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CAXPY, CCOPY, CSYTRS, CSYMV, BLAS_CSYMV_X,
+      EXTERNAL           CAXPY, CCOPY, CSYTRS, CSYMV,
+     $                   BLAS_CSYMV_X,
      $                   BLAS_CSYMV2_X, CLA_SYAMV, CLA_WWADDW,
      $                   CLA_LIN_BERR
       REAL               SLAMCH

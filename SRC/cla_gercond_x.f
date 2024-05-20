@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLA_GERCOND_X computes the infinity norm condition number of op(A)*diag(x) for general matrices.
 *
 *  =========== DOCUMENTATION ===========
@@ -130,7 +131,8 @@
 *> \ingroup la_gercond
 *
 *  =====================================================================
-      REAL FUNCTION CLA_GERCOND_X( TRANS, N, A, LDA, AF, LDAF, IPIV, X,
+      REAL FUNCTION CLA_GERCOND_X( TRANS, N, A, LDA, AF, LDAF, IPIV,
+     $                             X,
      $                             INFO, WORK, RWORK )
 *
 *  -- LAPACK computational routine --
@@ -246,7 +248,8 @@
                CALL CGETRS( 'No transpose', N, 1, AF, LDAF, IPIV,
      $            WORK, N, INFO )
             ELSE
-               CALL CGETRS( 'Conjugate transpose', N, 1, AF, LDAF, IPIV,
+               CALL CGETRS( 'Conjugate transpose', N, 1, AF, LDAF,
+     $                      IPIV,
      $            WORK, N, INFO )
             ENDIF
 *
@@ -264,7 +267,8 @@
             END DO
 *
             IF ( NOTRANS ) THEN
-               CALL CGETRS( 'Conjugate transpose', N, 1, AF, LDAF, IPIV,
+               CALL CGETRS( 'Conjugate transpose', N, 1, AF, LDAF,
+     $                      IPIV,
      $            WORK, N, INFO )
             ELSE
                CALL CGETRS( 'No transpose', N, 1, AF, LDAF, IPIV,

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CPPRFS
 *
 *  =========== DOCUMENTATION ===========
@@ -166,7 +167,8 @@
 *> \ingroup pprfs
 *
 *  =====================================================================
-      SUBROUTINE CPPRFS( UPLO, N, NRHS, AP, AFP, B, LDB, X, LDX, FERR,
+      SUBROUTINE CPPRFS( UPLO, N, NRHS, AP, AFP, B, LDB, X, LDX,
+     $                   FERR,
      $                   BERR, WORK, RWORK, INFO )
 *
 *  -- LAPACK computational routine --
@@ -207,7 +209,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CAXPY, CCOPY, CHPMV, CLACN2, CPPTRS, XERBLA
+      EXTERNAL           CAXPY, CCOPY, CHPMV, CLACN2, CPPTRS,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, AIMAG, MAX, REAL
@@ -276,7 +279,8 @@
 *        Compute residual R = B - A * X
 *
          CALL CCOPY( N, B( 1, J ), 1, WORK, 1 )
-         CALL CHPMV( UPLO, N, -CONE, AP, X( 1, J ), 1, CONE, WORK, 1 )
+         CALL CHPMV( UPLO, N, -CONE, AP, X( 1, J ), 1, CONE, WORK,
+     $               1 )
 *
 *        Compute componentwise relative backward error from formula
 *

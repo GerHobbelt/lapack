@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CHEGV
 *
 *  =========== DOCUMENTATION ===========
@@ -176,7 +177,8 @@
 *> \ingroup hegv
 *
 *  =====================================================================
-      SUBROUTINE CHEGV( ITYPE, JOBZ, UPLO, N, A, LDA, B, LDB, W, WORK,
+      SUBROUTINE CHEGV( ITYPE, JOBZ, UPLO, N, A, LDA, B, LDB, W,
+     $                  WORK,
      $                  LWORK, RWORK, INFO )
 *
 *  -- LAPACK driver routine --
@@ -210,7 +212,8 @@
       EXTERNAL           ILAENV, LSAME, SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CHEEV, CHEGST, CPOTRF, CTRMM, CTRSM, XERBLA
+      EXTERNAL           CHEEV, CHEGST, CPOTRF, CTRMM, CTRSM,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX
@@ -271,7 +274,8 @@
 *     Transform problem to standard eigenvalue problem and solve.
 *
       CALL CHEGST( ITYPE, UPLO, N, A, LDA, B, LDB, INFO )
-      CALL CHEEV( JOBZ, UPLO, N, A, LDA, W, WORK, LWORK, RWORK, INFO )
+      CALL CHEEV( JOBZ, UPLO, N, A, LDA, W, WORK, LWORK, RWORK,
+     $            INFO )
 *
       IF( WANTZ ) THEN
 *
@@ -291,7 +295,8 @@
                TRANS = 'C'
             END IF
 *
-            CALL CTRSM( 'Left', UPLO, TRANS, 'Non-unit', N, NEIG, ONE,
+            CALL CTRSM( 'Left', UPLO, TRANS, 'Non-unit', N, NEIG,
+     $                  ONE,
      $                  B, LDB, A, LDA )
 *
          ELSE IF( ITYPE.EQ.3 ) THEN
@@ -305,7 +310,8 @@
                TRANS = 'N'
             END IF
 *
-            CALL CTRMM( 'Left', UPLO, TRANS, 'Non-unit', N, NEIG, ONE,
+            CALL CTRMM( 'Left', UPLO, TRANS, 'Non-unit', N, NEIG,
+     $                  ONE,
      $                  B, LDB, A, LDA )
          END IF
       END IF

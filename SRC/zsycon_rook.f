@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSYCON_ROOK
 *
 *  =========== DOCUMENTATION ===========
@@ -134,7 +135,8 @@
 *> \endverbatim
 *
 *  =====================================================================
-      SUBROUTINE ZSYCON_ROOK( UPLO, N, A, LDA, IPIV, ANORM, RCOND, WORK,
+      SUBROUTINE ZSYCON_ROOK( UPLO, N, A, LDA, IPIV, ANORM, RCOND,
+     $                        WORK,
      $                        INFO )
 *
 *  -- LAPACK computational routine --

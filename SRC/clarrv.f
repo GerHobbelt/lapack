@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLARRV computes the eigenvectors of the tridiagonal matrix T = L D LT given L, D and the eigenvalues of L D LT.
 *
 *  =========== DOCUMENTATION ===========
@@ -334,7 +335,8 @@
       EXTERNAL           SLAMCH
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CLAR1V, CLASET, CSSCAL, SCOPY, SLARRB,
+      EXTERNAL           CLAR1V, CLASET, CSSCAL, SCOPY,
+     $                   SLARRB,
      $                   SLARRF
 *     ..
 *     .. Intrinsic Functions ..

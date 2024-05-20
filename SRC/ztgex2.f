@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZTGEX2 swaps adjacent diagonal blocks in an upper (quasi) triangular matrix pair by an unitary equivalence transformation.
 *
 *  =========== DOCUMENTATION ===========
@@ -315,7 +316,8 @@
          CALL ZLACPY( 'Full', M, M, S, LDST, WORK, M )
          CALL ZLACPY( 'Full', M, M, T, LDST, WORK( M*M+1 ), M )
          CALL ZROT( 2, WORK, 1, WORK( 3 ), 1, CZ, -DCONJG( SZ ) )
-         CALL ZROT( 2, WORK( 5 ), 1, WORK( 7 ), 1, CZ, -DCONJG( SZ ) )
+         CALL ZROT( 2, WORK( 5 ), 1, WORK( 7 ), 1, CZ,
+     $              -DCONJG( SZ ) )
          CALL ZROT( 2, WORK, 2, WORK( 2 ), 2, CQ, -SQ )
          CALL ZROT( 2, WORK( 5 ), 2, WORK( 6 ), 2, CQ, -SQ )
          DO 10 I = 1, 2
@@ -344,8 +346,10 @@
      $           DCONJG( SZ ) )
       CALL ZROT( J1+1, B( 1, J1 ), 1, B( 1, J1+1 ), 1, CZ,
      $           DCONJG( SZ ) )
-      CALL ZROT( N-J1+1, A( J1, J1 ), LDA, A( J1+1, J1 ), LDA, CQ, SQ )
-      CALL ZROT( N-J1+1, B( J1, J1 ), LDB, B( J1+1, J1 ), LDB, CQ, SQ )
+      CALL ZROT( N-J1+1, A( J1, J1 ), LDA, A( J1+1, J1 ), LDA, CQ,
+     $           SQ )
+      CALL ZROT( N-J1+1, B( J1, J1 ), LDB, B( J1+1, J1 ), LDB, CQ,
+     $           SQ )
 *
 *     Set  N1 by N2 (2,1) blocks to 0
 *

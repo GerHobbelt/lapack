@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> CHEEVD_2STAGE computes the eigenvalues and, optionally, the left and/or right eigenvectors for HE matrices</b>
 *
 *  @generated from zheevd_2stage.f, fortran z -> c, Sat Nov  5 23:18:14 2016
@@ -242,7 +243,8 @@
 *> \endverbatim
 *
 *  =====================================================================
-      SUBROUTINE CHEEVD_2STAGE( JOBZ, UPLO, N, A, LDA, W, WORK, LWORK,
+      SUBROUTINE CHEEVD_2STAGE( JOBZ, UPLO, N, A, LDA, W, WORK,
+     $                          LWORK,
      $                   RWORK, LRWORK, IWORK, LIWORK, INFO )
 *
       IMPLICIT NONE
@@ -287,7 +289,8 @@
       EXTERNAL           LSAME, SLAMCH, CLANHE, ILAENV2STAGE
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SSCAL, SSTERF, XERBLA, CLACPY, CLASCL,
+      EXTERNAL           SSCAL, SSTERF, XERBLA, CLACPY,
+     $                   CLASCL,
      $                   CSTEDC, CUNMTR, CHETRD_2STAGE
 *     ..
 *     .. Intrinsic Functions ..

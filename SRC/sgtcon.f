@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SGTCON
 *
 *  =========== DOCUMENTATION ===========
@@ -234,7 +235,8 @@
 *
 *           Multiply by inv(L**T)*inv(U**T).
 *
-            CALL SGTTRS( 'Transpose', N, 1, DL, D, DU, DU2, IPIV, WORK,
+            CALL SGTTRS( 'Transpose', N, 1, DL, D, DU, DU2, IPIV,
+     $                   WORK,
      $                   N, INFO )
          END IF
          GO TO 20

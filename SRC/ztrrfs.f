@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZTRRFS
 *
 *  =========== DOCUMENTATION ===========
@@ -177,7 +178,8 @@
 *> \ingroup trrfs
 *
 *  =====================================================================
-      SUBROUTINE ZTRRFS( UPLO, TRANS, DIAG, N, NRHS, A, LDA, B, LDB, X,
+      SUBROUTINE ZTRRFS( UPLO, TRANS, DIAG, N, NRHS, A, LDA, B, LDB,
+     $                   X,
      $                   LDX, FERR, BERR, WORK, RWORK, INFO )
 *
 *  -- LAPACK computational routine --
@@ -213,7 +215,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, ZAXPY, ZCOPY, ZLACN2, ZTRMV, ZTRSV
+      EXTERNAL           XERBLA, ZAXPY, ZCOPY, ZLACN2, ZTRMV,
+     $                   ZTRSV
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DIMAG, MAX

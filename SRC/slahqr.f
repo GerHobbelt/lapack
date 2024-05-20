@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLAHQR computes the eigenvalues and Schur factorization of an upper Hessenberg matrix, using the double-shift/single-shift QR algorithm.
 *
 *  =========== DOCUMENTATION ===========
@@ -595,13 +596,15 @@
             IF( I2.GT.I )
      $         CALL SROT( I2-I, H( I-1, I+1 ), LDH, H( I, I+1 ), LDH,
      $                    CS, SN )
-            CALL SROT( I-I1-1, H( I1, I-1 ), 1, H( I1, I ), 1, CS, SN )
+            CALL SROT( I-I1-1, H( I1, I-1 ), 1, H( I1, I ), 1, CS,
+     $                 SN )
          END IF
          IF( WANTZ ) THEN
 *
 *           Apply the transformation to Z.
 *
-            CALL SROT( NZ, Z( ILOZ, I-1 ), 1, Z( ILOZ, I ), 1, CS, SN )
+            CALL SROT( NZ, Z( ILOZ, I-1 ), 1, Z( ILOZ, I ), 1, CS,
+     $                 SN )
          END IF
       END IF
 *     reset deflation counter

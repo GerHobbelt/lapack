@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLATPS solves a triangular system of equations with the matrix held in packed storage.
 *
 *  =========== DOCUMENTATION ===========
@@ -262,7 +263,8 @@
       INTEGER            ICAMAX, ISAMAX
       REAL               SCASUM, SLAMCH
       COMPLEX            CDOTC, CDOTU, CLADIV
-      EXTERNAL           LSAME, ICAMAX, ISAMAX, SCASUM, SLAMCH, CDOTC,
+      EXTERNAL           LSAME, ICAMAX, ISAMAX, SCASUM, SLAMCH,
+     $                   CDOTC,
      $                   CDOTU, CLADIV
 *     ..
 *     .. External Subroutines ..
@@ -659,7 +661,8 @@
 *                    Compute the update
 *                       x(1:j-1) := x(1:j-1) - x(j) * A(1:j-1,j)
 *
-                     CALL CAXPY( J-1, -X( J )*TSCAL, AP( IP-J+1 ), 1, X,
+                     CALL CAXPY( J-1, -X( J )*TSCAL, AP( IP-J+1 ), 1,
+     $                           X,
      $                           1 )
                      I = ICAMAX( J-1, X, 1 )
                      XMAX = CABS1( X( I ) )

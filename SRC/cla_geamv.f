@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLA_GEAMV computes a matrix-vector product using a general matrix to calculate error bounds.
 *
 *  =========== DOCUMENTATION ===========
@@ -172,7 +173,8 @@
 *> \ingroup la_geamv
 *
 *  =====================================================================
-      SUBROUTINE CLA_GEAMV( TRANS, M, N, ALPHA, A, LDA, X, INCX, BETA,
+      SUBROUTINE CLA_GEAMV( TRANS, M, N, ALPHA, A, LDA, X, INCX,
+     $                      BETA,
      $                      Y, INCY )
 *
 *  -- LAPACK computational routine --

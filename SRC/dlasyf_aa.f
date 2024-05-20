@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLASYF_AA
 *
 *  =========== DOCUMENTATION ===========
@@ -172,7 +173,8 @@
       EXTERNAL           LSAME, ILAENV, IDAMAX
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DGEMV, DAXPY, DCOPY, DSWAP, DSCAL, DLASET,
+      EXTERNAL           DGEMV, DAXPY, DCOPY, DSWAP, DSCAL,
+     $                   DLASET,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

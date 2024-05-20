@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CHB2ST_KERNELS
 *
 *  @generated from zhb2st_kernels.f, fortran z -> c, Wed Dec  7 08:22:40 2016
@@ -287,7 +288,8 @@
                       A( DPOS-NB-I, J1+I ) = ZERO
    30             CONTINUE
                   CTMP = CONJG( A( DPOS-NB, J1 ) )
-                  CALL CLARFG( LM, CTMP, V( VPOS+1 ), 1, TAU( TAUPOS ) )
+                  CALL CLARFG( LM, CTMP, V( VPOS+1 ), 1,
+     $                         TAU( TAUPOS ) )
                   A( DPOS-NB, J1 ) = CTMP
 *
                   CALL CLARFX( 'Right', LN-1, LM, V( VPOS ),

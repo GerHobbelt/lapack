@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CTPMLQT
 *
 *  Definition:
@@ -194,7 +195,8 @@
 *> \endverbatim
 *>
 *  =====================================================================
-      SUBROUTINE CTPMLQT( SIDE, TRANS, M, N, K, L, MB, V, LDV, T, LDT,
+      SUBROUTINE CTPMLQT( SIDE, TRANS, M, N, K, L, MB, V, LDV, T,
+     $                    LDT,
      $                    A, LDA, B, LDB, WORK, INFO )
 *
 *  -- LAPACK computational routine --

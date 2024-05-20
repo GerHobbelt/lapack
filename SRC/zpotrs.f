@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZPOTRS
 *
 *  =========== DOCUMENTATION ===========
@@ -172,7 +173,8 @@
 *
 *        Solve U**H *X = B, overwriting B with X.
 *
-         CALL ZTRSM( 'Left', 'Upper', 'Conjugate transpose', 'Non-unit',
+         CALL ZTRSM( 'Left', 'Upper', 'Conjugate transpose',
+     $               'Non-unit',
      $               N, NRHS, ONE, A, LDA, B, LDB )
 *
 *        Solve U*X = B, overwriting B with X.
@@ -190,7 +192,8 @@
 *
 *        Solve L**H *X = B, overwriting B with X.
 *
-         CALL ZTRSM( 'Left', 'Lower', 'Conjugate transpose', 'Non-unit',
+         CALL ZTRSM( 'Left', 'Lower', 'Conjugate transpose',
+     $               'Non-unit',
      $               N, NRHS, ONE, A, LDA, B, LDB )
       END IF
 *

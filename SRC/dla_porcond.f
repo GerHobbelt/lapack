@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLA_PORCOND estimates the Skeel condition number for a symmetric positive-definite matrix.
 *
 *  =========== DOCUMENTATION ===========
@@ -136,7 +137,8 @@
 *> \ingroup la_porcond
 *
 *  =====================================================================
-      DOUBLE PRECISION FUNCTION DLA_PORCOND( UPLO, N, A, LDA, AF, LDAF,
+      DOUBLE PRECISION FUNCTION DLA_PORCOND( UPLO, N, A, LDA, AF,
+     $                                       LDAF,
      $                                       CMODE, C, INFO, WORK,
      $                                       IWORK )
 *

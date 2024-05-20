@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SGELQ2 computes the LQ factorization of a general rectangular matrix using an unblocked algorithm.
 *
 *  =========== DOCUMENTATION ===========
@@ -185,7 +186,8 @@
 *
             AII = A( I, I )
             A( I, I ) = ONE
-            CALL SLARF( 'Right', M-I, N-I+1, A( I, I ), LDA, TAU( I ),
+            CALL SLARF( 'Right', M-I, N-I+1, A( I, I ), LDA,
+     $                  TAU( I ),
      $                  A( I+1, I ), LDA, WORK )
             A( I, I ) = AII
          END IF

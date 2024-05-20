@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SORG2L generates all or part of the orthogonal matrix Q from a QL factorization determined by sgeqlf (unblocked algorithm).
 *
 *  =========== DOCUMENTATION ===========
@@ -177,7 +178,8 @@
 *        Apply H(i) to A(1:m-k+i,1:n-k+i) from the left
 *
          A( M-N+II, II ) = ONE
-         CALL SLARF( 'Left', M-N+II, II-1, A( 1, II ), 1, TAU( I ), A,
+         CALL SLARF( 'Left', M-N+II, II-1, A( 1, II ), 1, TAU( I ),
+     $               A,
      $               LDA, WORK )
          CALL SSCAL( M-N+II-1, -TAU( I ), A( 1, II ), 1 )
          A( M-N+II, II ) = ONE - TAU( I )

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> DSPOSV computes the solution to system of linear equations A * X = B for PO matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -231,7 +232,8 @@
       DOUBLE PRECISION   ANRM, CTE, EPS, RNRM, XNRM
 *
 *     .. External Subroutines ..
-      EXTERNAL           DAXPY, DSYMM, DLACPY, DLAT2S, DLAG2S, SLAG2D,
+      EXTERNAL           DAXPY, DSYMM, DLACPY, DLAT2S, DLAG2S,
+     $                   SLAG2D,
      $                   SPOTRF, SPOTRS, DPOTRF, DPOTRS, XERBLA
 *     ..
 *     .. External Functions ..
@@ -250,7 +252,8 @@
 *
 *     Test the input parameters.
 *
-      IF( .NOT.LSAME( UPLO, 'U' ) .AND. .NOT.LSAME( UPLO, 'L' ) ) THEN
+      IF( .NOT.LSAME( UPLO, 'U' ) .AND.
+     $    .NOT.LSAME( UPLO, 'L' ) ) THEN
          INFO = -1
       ELSE IF( N.LT.0 ) THEN
          INFO = -2
@@ -369,7 +372,8 @@
 *
 *        Solve the system SA*SX = SR.
 *
-         CALL SPOTRS( UPLO, N, NRHS, SWORK( PTSA ), N, SWORK( PTSX ), N,
+         CALL SPOTRS( UPLO, N, NRHS, SWORK( PTSA ), N, SWORK( PTSX ),
+     $                N,
      $                INFO )
 *
 *        Convert SX back to double precision and update the current

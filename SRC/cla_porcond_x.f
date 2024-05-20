@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLA_PORCOND_X computes the infinity norm condition number of op(A)*diag(x) for Hermitian positive-definite matrices.
 *
 *  =========== DOCUMENTATION ===========
@@ -118,7 +119,8 @@
 *> \ingroup la_porcond
 *
 *  =====================================================================
-      REAL FUNCTION CLA_PORCOND_X( UPLO, N, A, LDA, AF, LDAF, X, INFO,
+      REAL FUNCTION CLA_PORCOND_X( UPLO, N, A, LDA, AF, LDAF, X,
+     $                             INFO,
      $                             WORK, RWORK )
 *
 *  -- LAPACK computational routine --

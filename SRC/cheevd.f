@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> CHEEVD computes the eigenvalues and, optionally, the left and/or right eigenvectors for HE matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -193,7 +194,8 @@
 *> at Berkeley, USA
 *>
 *  =====================================================================
-      SUBROUTINE CHEEVD( JOBZ, UPLO, N, A, LDA, W, WORK, LWORK, RWORK,
+      SUBROUTINE CHEEVD( JOBZ, UPLO, N, A, LDA, W, WORK, LWORK,
+     $                   RWORK,
      $                   LRWORK, IWORK, LIWORK, INFO )
 *
 *  -- LAPACK driver routine --
@@ -233,7 +235,8 @@
       EXTERNAL           ILAENV, LSAME, CLANHE, SLAMCH, SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CHETRD, CLACPY, CLASCL, CSTEDC, CUNMTR, SSCAL,
+      EXTERNAL           CHETRD, CLACPY, CLASCL, CSTEDC, CUNMTR,
+     $                   SSCAL,
      $                   SSTERF, XERBLA
 *     ..
 *     .. Intrinsic Functions ..
@@ -277,7 +280,8 @@
                LIWMIN = 1
             END IF
             LOPT = MAX( LWMIN, N +
-     $                  N*ILAENV( 1, 'CHETRD', UPLO, N, -1, -1, -1 ) )
+     $                  N*ILAENV( 1, 'CHETRD', UPLO, N, -1, -1,
+     $                            -1 ) )
             LROPT = LRWMIN
             LIOPT = LIWMIN
          END IF

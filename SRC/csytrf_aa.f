@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CSYTRF_AA
 *
 *  =========== DOCUMENTATION ===========
@@ -163,7 +164,8 @@
       EXTERNAL           LSAME, ILAENV, SROUNDUP_LWORK
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CLASYF_AA, CGEMM, CGEMV, CSCAL, CSWAP, CCOPY,
+      EXTERNAL           CLASYF_AA, CGEMM, CGEMV, CSCAL, CSWAP,
+     $                   CCOPY,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

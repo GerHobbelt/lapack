@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CLA_SYRCOND_X computes the infinity norm condition number of op(A)*diag(x) for symmetric indefinite matrices.
 *
 *  =========== DOCUMENTATION ===========
@@ -126,7 +127,8 @@
 *> \ingroup la_hercond
 *
 *  =====================================================================
-      REAL FUNCTION CLA_SYRCOND_X( UPLO, N, A, LDA, AF, LDAF, IPIV, X,
+      REAL FUNCTION CLA_SYRCOND_X( UPLO, N, A, LDA, AF, LDAF, IPIV,
+     $                             X,
      $                             INFO, WORK, RWORK )
 *
 *  -- LAPACK computational routine --

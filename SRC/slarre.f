@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLARRE given the tridiagonal matrix T, sets small off-diagonal elements to zero and for each unreduced block Ti, finds base representations and eigenvalues.
 *
 *  =========== DOCUMENTATION ===========
@@ -356,7 +357,8 @@
 
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SCOPY, SLARNV, SLARRA, SLARRB, SLARRC, SLARRD,
+      EXTERNAL           SCOPY, SLARNV, SLARRA, SLARRB, SLARRC,
+     $                   SLARRD,
      $                   SLASQ2, SLARRK
 *     ..
 *     .. Intrinsic Functions ..

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SORHR_COL
 *
 *  =========== DOCUMENTATION ===========
@@ -280,7 +281,8 @@
      $                   NPLUSONE
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SCOPY, SLAORHR_COL_GETRFNP, SSCAL, STRSM,
+      EXTERNAL           SCOPY, SLAORHR_COL_GETRFNP, SSCAL,
+     $                   STRSM,
      $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..

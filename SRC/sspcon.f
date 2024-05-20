@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SSPCON
 *
 *  =========== DOCUMENTATION ===========
@@ -120,7 +121,8 @@
 *> \ingroup hpcon
 *
 *  =====================================================================
-      SUBROUTINE SSPCON( UPLO, N, AP, IPIV, ANORM, RCOND, WORK, IWORK,
+      SUBROUTINE SSPCON( UPLO, N, AP, IPIV, ANORM, RCOND, WORK,
+     $                   IWORK,
      $                   INFO )
 *
 *  -- LAPACK computational routine --

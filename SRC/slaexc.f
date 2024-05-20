@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLAEXC swaps adjacent diagonal blocks of a real upper quasi-triangular matrix in Schur canonical form, by an orthogonal similarity transformation.
 *
 *  =========== DOCUMENTATION ===========
@@ -173,7 +174,8 @@
       EXTERNAL           SLAMCH, SLANGE
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           SLACPY, SLANV2, SLARFG, SLARFX, SLARTG, SLASY2,
+      EXTERNAL           SLACPY, SLANV2, SLARFG, SLARFX, SLARTG,
+     $                   SLASY2,
      $                   SROT
 *     ..
 *     .. Intrinsic Functions ..
@@ -208,7 +210,8 @@
 *        Apply transformation to the matrix T.
 *
          IF( J3.LE.N )
-     $      CALL SROT( N-J1-1, T( J1, J3 ), LDT, T( J2, J3 ), LDT, CS,
+     $      CALL SROT( N-J1-1, T( J1, J3 ), LDT, T( J2, J3 ), LDT,
+     $                 CS,
      $                 SN )
          CALL SROT( J1-1, T( 1, J1 ), 1, T( 1, J2 ), 1, CS, SN )
 *
@@ -276,7 +279,8 @@
 *
 *        Accept swap: apply transformation to the entire matrix T.
 *
-         CALL SLARFX( 'L', 3, N-J1+1, U, TAU, T( J1, J1 ), LDT, WORK )
+         CALL SLARFX( 'L', 3, N-J1+1, U, TAU, T( J1, J1 ), LDT,
+     $                WORK )
          CALL SLARFX( 'R', J2, 3, U, TAU, T( 1, J1 ), LDT, WORK )
 *
          T( J3, J1 ) = ZERO
@@ -370,9 +374,11 @@
 *
 *        Accept swap: apply transformation to the entire matrix T.
 *
-         CALL SLARFX( 'L', 3, N-J1+1, U1, TAU1, T( J1, J1 ), LDT, WORK )
+         CALL SLARFX( 'L', 3, N-J1+1, U1, TAU1, T( J1, J1 ), LDT,
+     $                WORK )
          CALL SLARFX( 'R', J4, 3, U1, TAU1, T( 1, J1 ), LDT, WORK )
-         CALL SLARFX( 'L', 3, N-J1+1, U2, TAU2, T( J2, J1 ), LDT, WORK )
+         CALL SLARFX( 'L', 3, N-J1+1, U2, TAU2, T( J2, J1 ), LDT,
+     $                WORK )
          CALL SLARFX( 'R', J4, 3, U2, TAU2, T( 1, J2 ), LDT, WORK )
 *
          T( J3, J1 ) = ZERO
@@ -396,7 +402,8 @@
 *
             CALL SLANV2( T( J1, J1 ), T( J1, J2 ), T( J2, J1 ),
      $                   T( J2, J2 ), WR1, WI1, WR2, WI2, CS, SN )
-            CALL SROT( N-J1-1, T( J1, J1+2 ), LDT, T( J2, J1+2 ), LDT,
+            CALL SROT( N-J1-1, T( J1, J1+2 ), LDT, T( J2, J1+2 ),
+     $                 LDT,
      $                 CS, SN )
             CALL SROT( J1-1, T( 1, J1 ), 1, T( 1, J2 ), 1, CS, SN )
             IF( WANTQ )

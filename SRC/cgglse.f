@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> CGGLSE solves overdetermined or underdetermined systems for OTHER matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -175,7 +176,8 @@
 *> \ingroup gglse
 *
 *  =====================================================================
-      SUBROUTINE CGGLSE( M, N, P, A, LDA, B, LDB, C, D, X, WORK, LWORK,
+      SUBROUTINE CGGLSE( M, N, P, A, LDA, B, LDB, C, D, X, WORK,
+     $                   LWORK,
      $                   INFO )
 *
 *  -- LAPACK driver routine --
@@ -202,7 +204,8 @@
      $                   NB4, NR
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CAXPY, CCOPY, CGEMV, CGGRQF, CTRMV, CTRTRS,
+      EXTERNAL           CAXPY, CCOPY, CGEMV, CGGRQF, CTRMV,
+     $                   CTRTRS,
      $                   CUNMQR, CUNMRQ, XERBLA
 *     ..
 *     .. External Functions ..
@@ -304,7 +307,8 @@
 *
 *        Update c1
 *
-         CALL CGEMV( 'No transpose', N-P, P, -CONE, A( 1, N-P+1 ), LDA,
+         CALL CGEMV( 'No transpose', N-P, P, -CONE, A( 1, N-P+1 ),
+     $               LDA,
      $               D, 1, CONE, C, 1 )
       END IF
 *
@@ -329,7 +333,8 @@
       IF( M.LT.N ) THEN
          NR = M + P - N
          IF( NR.GT.0 )
-     $      CALL CGEMV( 'No transpose', NR, N-M, -CONE, A( N-P+1, M+1 ),
+     $      CALL CGEMV( 'No transpose', NR, N-M, -CONE, A( N-P+1,
+     $                  M+1 ),
      $                  LDA, D( NR+1 ), 1, CONE, C( N-P+1 ), 1 )
       ELSE
          NR = P

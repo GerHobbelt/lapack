@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CSYTRS2
 *
 *  =========== DOCUMENTATION ===========
@@ -159,7 +160,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           CSCAL, CSYCONV, CSWAP, CTRSM, XERBLA
+      EXTERNAL           CSCAL, CSYCONV, CSWAP, CTRSM,
+     $                   XERBLA
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX

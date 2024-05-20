@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> CHECON_ROOK estimates the reciprocal of the condition number fort HE matrices using factorization obtained with one of the bounded diagonal pivoting methods (max 2 interchanges) </b>
 *
 *  =========== DOCUMENTATION ===========
@@ -134,7 +135,8 @@
 *> \endverbatim
 *
 *  =====================================================================
-      SUBROUTINE CHECON_ROOK( UPLO, N, A, LDA, IPIV, ANORM, RCOND, WORK,
+      SUBROUTINE CHECON_ROOK( UPLO, N, A, LDA, IPIV, ANORM, RCOND,
+     $                        WORK,
      $                        INFO )
 *
 *  -- LAPACK computational routine --

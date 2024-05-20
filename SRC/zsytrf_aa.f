@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSYTRF_AA
 *
 *  =========== DOCUMENTATION ===========
@@ -162,7 +163,8 @@
       EXTERNAL           LSAME, ILAENV
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           ZLASYF_AA, ZGEMM, ZGEMV, ZSCAL, ZCOPY,
+      EXTERNAL           ZLASYF_AA, ZGEMM, ZGEMV, ZSCAL,
+     $                   ZCOPY,
      $                   ZSWAP, XERBLA
 *     ..
 *     .. Intrinsic Functions ..

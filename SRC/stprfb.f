@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b STPRFB applies a real "triangular-pentagonal" block reflector to a real matrix, which is composed of two blocks.
 *
 *  =========== DOCUMENTATION ===========
@@ -429,7 +430,8 @@
 *
          CALL SGEMM( 'N', 'T', M, N-L, K, -ONE, WORK, LDWORK,
      $               V, LDV, ONE, B, LDB )
-         CALL SGEMM( 'N', 'T', M, L, K-L, -ONE, WORK( 1, KP ), LDWORK,
+         CALL SGEMM( 'N', 'T', M, L, K-L, -ONE, WORK( 1, KP ),
+     $               LDWORK,
      $               V( NP, KP ), LDV, ONE, B( 1, NP ), LDB )
          CALL STRMM( 'R', 'U', 'T', 'N', M, L, ONE, V( NP, 1 ), LDV,
      $               WORK, LDWORK )
@@ -670,7 +672,8 @@
 *
          CALL SGEMM( 'N', 'N', M, N-L, K, -ONE, WORK, LDWORK,
      $               V, LDV, ONE, B, LDB )
-         CALL SGEMM( 'N', 'N', M, L, K-L, -ONE, WORK( 1, KP ), LDWORK,
+         CALL SGEMM( 'N', 'N', M, L, K-L, -ONE, WORK( 1, KP ),
+     $               LDWORK,
      $               V( KP, NP ), LDV, ONE, B( 1, NP ), LDB )
          CALL STRMM( 'R', 'L', 'N', 'N', M, L, ONE, V( 1, NP ), LDV,
      $               WORK, LDWORK )

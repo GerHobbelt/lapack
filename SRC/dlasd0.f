@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLASD0 computes the singular values of a real upper bidiagonal n-by-m matrix B with diagonal d and off-diagonal e. Used by sbdsdc.
 *
 *  =========== DOCUMENTATION ===========
@@ -147,7 +148,8 @@
 *>     California at Berkeley, USA
 *>
 *  =====================================================================
-      SUBROUTINE DLASD0( N, SQRE, D, E, U, LDU, VT, LDVT, SMLSIZ, IWORK,
+      SUBROUTINE DLASD0( N, SQRE, D, E, U, LDU, VT, LDVT, SMLSIZ,
+     $                   IWORK,
      $                   WORK, INFO )
 *
 *  -- LAPACK auxiliary routine --
@@ -203,7 +205,8 @@
 *     If the input matrix is too small, call DLASDQ to find the SVD.
 *
       IF( N.LE.SMLSIZ ) THEN
-         CALL DLASDQ( 'U', SQRE, N, M, N, 0, D, E, VT, LDVT, U, LDU, U,
+         CALL DLASDQ( 'U', SQRE, N, M, N, 0, D, E, VT, LDVT, U, LDU,
+     $                U,
      $                LDU, WORK, INFO )
          RETURN
       END IF
@@ -240,7 +243,8 @@
          NLF = IC - NL
          NRF = IC + 1
          SQREI = 1
-         CALL DLASDQ( 'U', SQREI, NL, NLP1, NL, NCC, D( NLF ), E( NLF ),
+         CALL DLASDQ( 'U', SQREI, NL, NLP1, NL, NCC, D( NLF ),
+     $                E( NLF ),
      $                VT( NLF, NLF ), LDVT, U( NLF, NLF ), LDU,
      $                U( NLF, NLF ), LDU, WORK, INFO )
          IF( INFO.NE.0 ) THEN
@@ -256,7 +260,8 @@
             SQREI = 1
          END IF
          NRP1 = NR + SQREI
-         CALL DLASDQ( 'U', SQREI, NR, NRP1, NR, NCC, D( NRF ), E( NRF ),
+         CALL DLASDQ( 'U', SQREI, NR, NRP1, NR, NCC, D( NRF ),
+     $                E( NRF ),
      $                VT( NRF, NRF ), LDVT, U( NRF, NRF ), LDU,
      $                U( NRF, NRF ), LDU, WORK, INFO )
          IF( INFO.NE.0 ) THEN

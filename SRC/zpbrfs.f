@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZPBRFS
 *
 *  =========== DOCUMENTATION ===========
@@ -225,7 +226,8 @@
       INTEGER            ISAVE( 3 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           XERBLA, ZAXPY, ZCOPY, ZHBMV, ZLACN2, ZPBTRS
+      EXTERNAL           XERBLA, ZAXPY, ZCOPY, ZHBMV, ZLACN2,
+     $                   ZPBTRS
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DIMAG, MAX, MIN
@@ -411,7 +413,8 @@
 *
 *              Multiply by diag(W)*inv(A**H).
 *
-               CALL ZPBTRS( UPLO, N, KD, 1, AFB, LDAFB, WORK, N, INFO )
+               CALL ZPBTRS( UPLO, N, KD, 1, AFB, LDAFB, WORK, N,
+     $                      INFO )
                DO 110 I = 1, N
                   WORK( I ) = RWORK( I )*WORK( I )
   110          CONTINUE
@@ -422,7 +425,8 @@
                DO 120 I = 1, N
                   WORK( I ) = RWORK( I )*WORK( I )
   120          CONTINUE
-               CALL ZPBTRS( UPLO, N, KD, 1, AFB, LDAFB, WORK, N, INFO )
+               CALL ZPBTRS( UPLO, N, KD, 1, AFB, LDAFB, WORK, N,
+     $                      INFO )
             END IF
             GO TO 100
          END IF

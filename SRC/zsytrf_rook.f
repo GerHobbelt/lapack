@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZSYTRF_ROOK
 *
 *  =========== DOCUMENTATION ===========
@@ -204,7 +205,8 @@
 *> \endverbatim
 *
 *  =====================================================================
-      SUBROUTINE ZSYTRF_ROOK( UPLO, N, A, LDA, IPIV, WORK, LWORK, INFO )
+      SUBROUTINE ZSYTRF_ROOK( UPLO, N, A, LDA, IPIV, WORK, LWORK,
+     $                        INFO )
 *
 *  -- LAPACK computational routine --
 *  -- LAPACK is a software package provided by Univ. of Tennessee,    --

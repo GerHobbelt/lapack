@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLAGV2 computes the Generalized Schur factorization of a real 2-by-2 matrix pencil (A,B) where B is upper triangular.
 *
 *  =========== DOCUMENTATION ===========
@@ -152,7 +153,8 @@
 *>     Mark Fahey, Department of Mathematics, Univ. of Kentucky, USA
 *
 *  =====================================================================
-      SUBROUTINE DLAGV2( A, LDA, B, LDB, ALPHAR, ALPHAI, BETA, CSL, SNL,
+      SUBROUTINE DLAGV2( A, LDA, B, LDB, ALPHAR, ALPHAI, BETA, CSL,
+     $                   SNL,
      $                   CSR, SNR )
 *
 *  -- LAPACK auxiliary routine --
@@ -253,7 +255,8 @@
 *
 *        B is nonsingular, first compute the eigenvalues of (A,B)
 *
-         CALL DLAG2( A, LDA, B, LDB, SAFMIN, SCALE1, SCALE2, WR1, WR2,
+         CALL DLAG2( A, LDA, B, LDB, SAFMIN, SCALE1, SCALE2, WR1,
+     $               WR2,
      $               WI )
 *
          IF( WI.EQ.ZERO ) THEN

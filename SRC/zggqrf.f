@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZGGQRF
 *
 *  =========== DOCUMENTATION ===========
@@ -280,7 +281,8 @@
 *
 *     Update B := Q**H*B.
 *
-      CALL ZUNMQR( 'Left', 'Conjugate Transpose', N, P, MIN( N, M ), A,
+      CALL ZUNMQR( 'Left', 'Conjugate Transpose', N, P, MIN( N, M ),
+     $             A,
      $             LDA, TAUA, B, LDB, WORK, LWORK, INFO )
       LOPT = MAX( LOPT, INT( WORK( 1 ) ) )
 *

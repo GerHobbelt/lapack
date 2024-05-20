@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZLA_GERCOND_X computes the infinity norm condition number of op(A)*diag(x) for general matrices.
 *
 *  =========== DOCUMENTATION ===========
@@ -247,7 +248,8 @@
                CALL ZGETRS( 'No transpose', N, 1, AF, LDAF, IPIV,
      $            WORK, N, INFO )
             ELSE
-               CALL ZGETRS( 'Conjugate transpose', N, 1, AF, LDAF, IPIV,
+               CALL ZGETRS( 'Conjugate transpose', N, 1, AF, LDAF,
+     $                      IPIV,
      $            WORK, N, INFO )
             ENDIF
 *
@@ -265,7 +267,8 @@
             END DO
 *
             IF ( NOTRANS ) THEN
-               CALL ZGETRS( 'Conjugate transpose', N, 1, AF, LDAF, IPIV,
+               CALL ZGETRS( 'Conjugate transpose', N, 1, AF, LDAF,
+     $                      IPIV,
      $            WORK, N, INFO )
             ELSE
                CALL ZGETRS( 'No transpose', N, 1, AF, LDAF, IPIV,

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DSPGV
 *
 *  =========== DOCUMENTATION ===========
@@ -155,7 +156,8 @@
 *> \ingroup hpgv
 *
 *  =====================================================================
-      SUBROUTINE DSPGV( ITYPE, JOBZ, UPLO, N, AP, BP, W, Z, LDZ, WORK,
+      SUBROUTINE DSPGV( ITYPE, JOBZ, UPLO, N, AP, BP, W, Z, LDZ,
+     $                  WORK,
      $                  INFO )
 *
 *  -- LAPACK driver routine --
@@ -183,7 +185,8 @@
       EXTERNAL           LSAME
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           DPPTRF, DSPEV, DSPGST, DTPMV, DTPSV, XERBLA
+      EXTERNAL           DPPTRF, DSPEV, DSPGST, DTPMV, DTPSV,
+     $                   XERBLA
 *     ..
 *     .. Executable Statements ..
 *

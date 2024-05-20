@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CPBTRS
 *
 *  =========== DOCUMENTATION ===========
@@ -184,12 +185,14 @@
 *
 *           Solve U**H *X = B, overwriting B with X.
 *
-            CALL CTBSV( 'Upper', 'Conjugate transpose', 'Non-unit', N,
+            CALL CTBSV( 'Upper', 'Conjugate transpose', 'Non-unit',
+     $                  N,
      $                  KD, AB, LDAB, B( 1, J ), 1 )
 *
 *           Solve U*X = B, overwriting B with X.
 *
-            CALL CTBSV( 'Upper', 'No transpose', 'Non-unit', N, KD, AB,
+            CALL CTBSV( 'Upper', 'No transpose', 'Non-unit', N, KD,
+     $                  AB,
      $                  LDAB, B( 1, J ), 1 )
    10    CONTINUE
       ELSE
@@ -200,12 +203,14 @@
 *
 *           Solve L*X = B, overwriting B with X.
 *
-            CALL CTBSV( 'Lower', 'No transpose', 'Non-unit', N, KD, AB,
+            CALL CTBSV( 'Lower', 'No transpose', 'Non-unit', N, KD,
+     $                  AB,
      $                  LDAB, B( 1, J ), 1 )
 *
 *           Solve L**H *X = B, overwriting B with X.
 *
-            CALL CTBSV( 'Lower', 'Conjugate transpose', 'Non-unit', N,
+            CALL CTBSV( 'Lower', 'Conjugate transpose', 'Non-unit',
+     $                  N,
      $                  KD, AB, LDAB, B( 1, J ), 1 )
    20    CONTINUE
       END IF

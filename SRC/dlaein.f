@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLAEIN computes a specified right or left eigenvector of an upper Hessenberg matrix by inverse iteration.
 *
 *  =========== DOCUMENTATION ===========
@@ -167,7 +168,8 @@
 *> \ingroup laein
 *
 *  =====================================================================
-      SUBROUTINE DLAEIN( RIGHTV, NOINIT, N, H, LDH, WR, WI, VR, VI, B,
+      SUBROUTINE DLAEIN( RIGHTV, NOINIT, N, H, LDH, WR, WI, VR, VI,
+     $                   B,
      $                   LDB, WORK, EPS3, SMLNUM, BIGNUM, INFO )
 *
 *  -- LAPACK auxiliary routine --
@@ -332,7 +334,8 @@
 *             or U**T*x = scale*v for a left eigenvector,
 *           overwriting x on v.
 *
-            CALL DLATRS( 'Upper', TRANS, 'Nonunit', NORMIN, N, B, LDB,
+            CALL DLATRS( 'Upper', TRANS, 'Nonunit', NORMIN, N, B,
+     $                   LDB,
      $                   VR, SCALE, WORK, IERR )
             NORMIN = 'Y'
 *
@@ -378,7 +381,8 @@
 *
 *           Scale supplied initial vector.
 *
-            NORM = DLAPY2( DNRM2( N, VR, 1 ), DNRM2( N, VI, 1 ) )
+            NORM = DLAPY2( DNRM2( N, VR, 1 ),
+     $                     DNRM2( N, VI, 1 ) )
             REC = ( EPS3*ROOTN ) / MAX( NORM, NRMSML )
             CALL DSCAL( N, REC, VR, 1 )
             CALL DSCAL( N, REC, VI, 1 )
@@ -569,7 +573,8 @@
 *
 *                 Divide by diagonal element of B.
 *
-                  CALL DLADIV( XR, XI, B( I, I ), B( I+1, I ), VR( I ),
+                  CALL DLADIV( XR, XI, B( I, I ), B( I+1, I ),
+     $                         VR( I ),
      $                         VI( I ) )
                   VMAX = MAX( ABS( VR( I ) )+ABS( VI( I ) ), VMAX )
                   VCRIT = BIGNUM / VMAX

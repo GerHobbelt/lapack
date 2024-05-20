@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLASD7 merges the two sets of singular values together into a single sorted set. Then it tries to deflate the size of the problem. Used by sbdsdc.
 *
 *  =========== DOCUMENTATION ===========
@@ -273,7 +274,8 @@
 *>     California at Berkeley, USA
 *>
 *  =====================================================================
-      SUBROUTINE SLASD7( ICOMPQ, NL, NR, SQRE, K, D, Z, ZW, VF, VFW, VL,
+      SUBROUTINE SLASD7( ICOMPQ, NL, NR, SQRE, K, D, Z, ZW, VF, VFW,
+     $                   VL,
      $                   VLW, ALPHA, BETA, DSIGMA, IDX, IDXP, IDXQ,
      $                   PERM, GIVPTR, GIVCOL, LDGCOL, GIVNUM, LDGNUM,
      $                   C, S, INFO )

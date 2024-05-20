@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b ZUPMTR
 *
 *  =========== DOCUMENTATION ===========
@@ -145,7 +146,8 @@
 *> \ingroup upmtr
 *
 *  =====================================================================
-      SUBROUTINE ZUPMTR( SIDE, UPLO, TRANS, M, N, AP, TAU, C, LDC, WORK,
+      SUBROUTINE ZUPMTR( SIDE, UPLO, TRANS, M, N, AP, TAU, C, LDC,
+     $                   WORK,
      $                   INFO )
 *
 *  -- LAPACK computational routine --

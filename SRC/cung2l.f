@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b CUNG2L generates all or part of the unitary matrix Q from a QL factorization determined by cgeqlf (unblocked algorithm).
 *
 *  =========== DOCUMENTATION ===========
@@ -178,7 +179,8 @@
 *        Apply H(i) to A(1:m-k+i,1:n-k+i) from the left
 *
          A( M-N+II, II ) = ONE
-         CALL CLARF( 'Left', M-N+II, II-1, A( 1, II ), 1, TAU( I ), A,
+         CALL CLARF( 'Left', M-N+II, II-1, A( 1, II ), 1, TAU( I ),
+     $               A,
      $               LDA, WORK )
          CALL CSCAL( M-N+II-1, -TAU( I ), A( 1, II ), 1 )
          A( M-N+II, II ) = ONE - TAU( I )

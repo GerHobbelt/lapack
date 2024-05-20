@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief <b> ZSYSV_RK computes the solution to system of linear equations A * X = B for SY matrices</b>
 *
 *  =========== DOCUMENTATION ===========
@@ -223,7 +224,8 @@
 *> \endverbatim
 *
 *  =====================================================================
-      SUBROUTINE ZSYSV_RK( UPLO, N, NRHS, A, LDA, E, IPIV, B, LDB, WORK,
+      SUBROUTINE ZSYSV_RK( UPLO, N, NRHS, A, LDA, E, IPIV, B, LDB,
+     $                     WORK,
      $                     LWORK, INFO )
 *
 *  -- LAPACK driver routine --
@@ -261,7 +263,8 @@
 *
       INFO = 0
       LQUERY = ( LWORK.EQ.-1 )
-      IF( .NOT.LSAME( UPLO, 'U' ) .AND. .NOT.LSAME( UPLO, 'L' ) ) THEN
+      IF( .NOT.LSAME( UPLO, 'U' ) .AND.
+     $    .NOT.LSAME( UPLO, 'L' ) ) THEN
          INFO = -1
       ELSE IF( N.LT.0 ) THEN
          INFO = -2
@@ -279,7 +282,8 @@
          IF( N.EQ.0 ) THEN
             LWKOPT = 1
          ELSE
-            CALL ZSYTRF_RK( UPLO, N, A, LDA, E, IPIV, WORK, -1, INFO )
+            CALL ZSYTRF_RK( UPLO, N, A, LDA, E, IPIV, WORK, -1,
+     $                      INFO )
             LWKOPT = INT( DBLE( WORK( 1 ) ) )
          END IF
          WORK( 1 ) = LWKOPT
@@ -301,7 +305,8 @@
 *
 *        Solve the system A*X = B with BLAS3 solver, overwriting B with X.
 *
-         CALL ZSYTRS_3( UPLO, N, NRHS, A, LDA, E, IPIV, B, LDB, INFO )
+         CALL ZSYTRS_3( UPLO, N, NRHS, A, LDA, E, IPIV, B, LDB,
+     $                  INFO )
 *
       END IF
 *

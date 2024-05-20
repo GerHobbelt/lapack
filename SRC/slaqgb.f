@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b SLAQGB scales a general band matrix, using row and column scaling factors computed by sgbequ.
 *
 *  =========== DOCUMENTATION ===========
@@ -154,7 +155,8 @@
 *> \ingroup laqgb
 *
 *  =====================================================================
-      SUBROUTINE SLAQGB( M, N, KL, KU, AB, LDAB, R, C, ROWCND, COLCND,
+      SUBROUTINE SLAQGB( M, N, KL, KU, AB, LDAB, R, C, ROWCND,
+     $                   COLCND,
      $                   AMAX, EQUED )
 *
 *  -- LAPACK auxiliary routine --

@@ -1,3 +1,4 @@
+#include "lapack_64.h"
 *> \brief \b DLAGS2 computes 2-by-2 orthogonal matrices U, V, and Q, and applies them to matrices A and B such that the rows of the transformed A and B are parallel.
 *
 *  =========== DOCUMENTATION ===========
@@ -147,7 +148,8 @@
 *> \ingroup lags2
 *
 *  =====================================================================
-      SUBROUTINE DLAGS2( UPPER, A1, A2, A3, B1, B2, B3, CSU, SNU, CSV,
+      SUBROUTINE DLAGS2( UPPER, A1, A2, A3, B1, B2, B3, CSU, SNU,
+     $                   CSV,
      $                   SNV, CSQ, SNQ )
 *
 *  -- LAPACK auxiliary routine --
