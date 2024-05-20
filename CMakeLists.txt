@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 project(LAPACK)
 
 set(LAPACK_MAJOR_VERSION 3)
-set(LAPACK_MINOR_VERSION 11)
+set(LAPACK_MINOR_VERSION 12)
 set(LAPACK_PATCH_VERSION 0)
 set(
   LAPACK_VERSION
@@ -223,6 +223,7 @@ option(USE_OPTIMIZED_BLAS "Whether or not to use an optimized BLAS library inste
 
 # Check the usage of the user provided BLAS libraries
 if(BLAS_LIBRARIES)
+  enable_language(Fortran)
   include(CheckFortranFunctionExists)
   set(CMAKE_REQUIRED_LIBRARIES ${BLAS_LIBRARIES})
   CHECK_FORTRAN_FUNCTION_EXISTS("dgemm" BLAS_FOUND)
