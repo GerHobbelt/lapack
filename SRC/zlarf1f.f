@@ -7,12 +7,12 @@
 *            http://www.netlib.org/lapack/explore-html/
 *
 *> \htmlonly
-*> Download DLARF + dependencies
-*> <a href="http://www.netlib.org/cgi-bin/netlibfiles.tgz?format=tgz&filename=/lapack/lapack_routine/dlarf.f">
+*> Download ZLARF1F + dependencies
+*> <a href="http://www.netlib.org/cgi-bin/netlibfiles.tgz?format=tgz&filename=/lapack/lapack_routine/zlarf1f.f">
 *> [TGZ]</a>
-*> <a href="http://www.netlib.org/cgi-bin/netlibfiles.zip?format=zip&filename=/lapack/lapack_routine/dlarf.f">
+*> <a href="http://www.netlib.org/cgi-bin/netlibfiles.zip?format=zip&filename=/lapack/lapack_routine/zlarf1f.f">
 *> [ZIP]</a>
-*> <a href="http://www.netlib.org/cgi-bin/netlibfiles.txt?format=txt&filename=/lapack/lapack_routine/dlarf.f">
+*> <a href="http://www.netlib.org/cgi-bin/netlibfiles.txt?format=txt&filename=/lapack/lapack_routine/zlarf1f.f">
 *> [TXT]</a>
 *> \endhtmlonly
 *
@@ -39,7 +39,7 @@
 *> ZLARF1F applies a complex elementary reflector H to a real m by n matrix
 *> C, from either the left or the right. H is represented in the form
 *>
-*>       H = I - tau * v * v**T
+*>       H = I - tau * v * v**H
 *>
 *> where tau is a complex scalar and v is a complex vector.
 *>
@@ -56,8 +56,6 @@
 *> \verbatim
 *>          SIDE is CHARACTER*1
 *>          = 'L': form  H * C
-*>          = 'R': form  C * H
-*> \endverbatim
 *>
 *> \param[in] M
 *> \verbatim
@@ -77,7 +75,7 @@
 *>                     (1 + (M-1)*abs(INCV)) if SIDE = 'L'
 *>                  or (1 + (N-1)*abs(INCV)) if SIDE = 'R'
 *>          The vector v in the representation of H. V is not used if
-*>          TAU = 0.
+*>          TAU = 0. V(1) is not referenced or modified.
 *> \endverbatim
 *>
 *> \param[in] INCV
@@ -112,6 +110,39 @@
 *>                         (N) if SIDE = 'L'
 *>                      or (M) if SIDE = 'R'
 *> \endverbatim
+*  To take advantage of the fact that v(1) = 1, we do the following
+*     v = [ 1 v_2 ]**T
+*     If SIDE='L'
+*           |-----|
+*           | C_1 |
+*        C =| C_2 |
+*           |-----|
+*        C_1\in\mathbb{C}^{1\times n}, C_2\in\mathbb{C}^{m-1\times n}
+*        So we compute:
+*        C = HC   = (I - \tau vv**T)C
+*                 = C - \tau vv**T C
+*        w = C**T v  = [ C_1**T C_2**T ] [ 1 v_2 ]**T
+*                    = C_1**T + C_2**T v ( ZGEMM then ZAXPYC-like )
+*        C  = C - \tau vv**T C
+*           = C - \tau vw**T
+*        Giving us   C_1 = C_1 - \tau w**T ( ZAXPYC-like )
+*                 and
+*                    C_2 = C_2 - \tau v_2w**T ( ZGERC )
+*     If SIDE='R'
+*
+*        C = [ C_1 C_2 ]
+*        C_1\in\mathbb{C}^{m\times 1}, C_2\in\mathbb{C}^{m\times n-1}
+*        So we compute: 
+*        C = CH   = C(I - \tau vv**T)
+*                 = C - \tau Cvv**T
+*
+*        w = Cv   = [ C_1 C_2 ] [ 1 v_2 ]**T
+*                 = C_1 + C_2v_2 ( ZGEMM then ZAXPYC-like )
+*        C  = C - \tau Cvv**T
+*           = C - \tau wv**T
+*        Giving us   C_1 = C_1 - \tau w ( ZAXPYC-like )
+*                 and
+*                    C_2 = C_2 - \tau wv_2**T ( ZGERC )
 *
 *  Authors:
 *  ========
@@ -153,20 +184,19 @@
       INTEGER            I, LASTV, LASTC, J
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           ZGEMV, ZGERC
+      EXTERNAL           ZGEMV, ZGERC, ZSCAL
+*     .. Intrinsic Functions ..
+      INTRINSIC          DCONJG
 *     ..
 *     .. External Functions ..
       LOGICAL            LSAME
-      INTEGER            ILADLR, ILADLC
-      EXTERNAL           LSAME, ILADLR, ILADLC
-*     ..
-*     .. Intrinsic Functions ..
-      INTRINSIC          DCONJG
+      INTEGER            ILAZLR, ILAZLC
+      EXTERNAL           LSAME, ILAZLR, ILAZLC
 *     ..
 *     .. Executable Statements ..
 *
       APPLYLEFT = LSAME( SIDE, 'L' )
-      LASTV = 0
+      LASTV = 1
       LASTC = 0
       IF( TAU.NE.ZERO ) THEN
 !     Set up variables for scanning V.  LASTV begins pointing to the end
@@ -182,60 +212,67 @@
             I = 1
          END IF
 !     Look for the last non-zero row in V.
-         DO WHILE( LASTV.GT.0 .AND. V( I ).EQ.ZERO )
+!        Since we are assuming that V(1) = 1, and it is not stored, so we
+!        shouldn't access it.
+         DO WHILE( LASTV.GT.1 .AND. V( I ).EQ.ZERO )
             LASTV = LASTV - 1
             I = I - INCV
          END DO
          IF( APPLYLEFT ) THEN
 !     Scan for the last non-zero column in C(1:lastv,:).
-            LASTC = ILADLC(LASTV, N, C, LDC)
+            LASTC = ILAZLC(LASTV, N, C, LDC)
          ELSE
 !     Scan for the last non-zero row in C(:,1:lastv).
-            LASTC = ILADLR(M, LASTV, C, LDC)
+            LASTC = ILAZLR(M, LASTV, C, LDC)
          END IF
-      END IF
-      IF( LASTC.EQ.0 .OR. LASTV.EQ.0 ) THEN
+      ELSE
+!        TAU is 0, so H = I. Meaning HC = C = CH.
          RETURN
       END IF
       IF( APPLYLEFT ) THEN
 *
 *        Form  H * C
 *
-         IF( LASTV.GT.0 ) THEN
             ! Check if m = 1. This means v = 1, So we just need to compute
             ! C := HC = (1-\tau)C.
-            IF( M.EQ.1 .OR. LASTV.EQ.1) THEN
+            IF( LASTV.EQ.1 ) THEN
                CALL ZSCAL(LASTC, ONE - TAU, C, LDC)
             ELSE
 *
 *              w(1:lastc,1) := C(1:lastv,1:lastc)**H * v(1:lastv,1)
 *
-               ! w(1:lastc,1) := C(2:lastv,1:lastc)**H * v(2:lastv,1)
+               ! (I - tvv**H)C = C - tvv**H C
+               ! First compute w**H = v**H c -> w = C**H v
+               ! C = [ C_1 C_2 ]**T, v = [1 v_2]**T
+               ! w = C_1**H + C_2**Hv_2
+               ! w = C_2**Hv_2
                CALL ZGEMV( 'Conj', LASTV-1, LASTC, ONE, C(1+1,1), LDC,
      $                     V(1+INCV), INCV, ZERO, WORK, 1)
-               ! w(1:lastc,1) += C(1,1:lastc) * v(1,1) = C(1,1:lastc)
-               DO I = 1, LASTC 
-                  WORK(I) = WORK(I) + DCONJG(C(1,I))
+               ! w += C_1**H
+               ! This is essentially a zaxpyc
+               DO J = 1, LASTC
+                  WORK(J) = WORK(J) + DCONJG(C(1,J))
                END DO
 *
-*           C(1:lastv,1:lastc) := C(...) - tau * v(1:lastv,1) * w(1:lastc,1)**T
+*           C(1:lastv,1:lastc) := C(...) - tau * v(1:lastv,1) * w(1:lastc,1)**H
 *
-            ! C(1, 1:lastc)   := C(...) - tau * v(1,1) * w(1:lastc,1)**T
-            !                  = C(...) - tau * w(1:lastc,1)
-               CALL ZAXPY(LASTC, -TAU, WORK, 1, C, LDC)
-               ! C(2:lastv,1:lastc) := C(...) - tau * v(2:lastv,1)*w(1:lastc,1)**T
+            ! C(1, 1:lastc)   := C(...) - tau * v(1,1) * w(1:lastc,1)**H
+            !                  = C(...) - tau * Conj(w(1:lastc,1))
+            ! This is essentially a zaxpyc
+               DO J = 1, LASTC
+                  C(1,J) = C(1,J) - TAU * DCONJG(WORK(J))
+               END DO
+               ! C(2:lastv,1:lastc) := C(...) - tau * v(2:lastv,1)*w(1:lastc,1)**H
                CALL ZGERC(LASTV-1, LASTC, -TAU, V(1+INCV), INCV, WORK,
      $                     1, C(1+1,1), LDC)
             END IF
-         END IF
       ELSE
 *
 *        Form  C * H
 *
-         IF( LASTV.GT.0 ) THEN
             ! Check if n = 1. This means v = 1, so we just need to compute
             ! C := CH = C(1-\tau).
-            IF( N.EQ.1 .OR. LASTV.EQ.1) THEN
+            IF( LASTV.EQ.1 ) THEN
                CALL ZSCAL(LASTC, ONE - TAU, C, 1)
             ELSE
 *
@@ -256,10 +293,9 @@
                CALL ZGERC( LASTC, LASTV-1, -TAU, WORK, 1, V(1+INCV),
      $                     INCV, C(1,1+1), LDC )
             END IF
-         END IF
       END IF
       RETURN
 *
-*     End of DLARF
+*     End of ZLARF1F
 *
       END
