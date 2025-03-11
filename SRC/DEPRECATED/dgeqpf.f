@@ -5,7 +5,6 @@
 * Online html documentation available at
 *            http://www.netlib.org/lapack/explore-html/
 *
-*> \htmlonly
 *> Download DGEQPF + dependencies
 *> <a href="http://www.netlib.org/cgi-bin/netlibfiles.tgz?format=tgz&filename=/lapack/lapack_routine/dgeqpf.f">
 *> [TGZ]</a>
@@ -13,7 +12,6 @@
 *> [ZIP]</a>
 *> <a href="http://www.netlib.org/cgi-bin/netlibfiles.txt?format=txt&filename=/lapack/lapack_routine/dgeqpf.f">
 *> [TXT]</a>
-*> \endhtmlonly
 *
 *  Definition:
 *  ===========
@@ -218,8 +216,8 @@
          MA = MIN( ITEMP, M )
          CALL DGEQR2( M, MA, A, LDA, TAU, WORK, INFO )
          IF( MA.LT.N ) THEN
-            CALL DORM2R( 'Left', 'Transpose', M, N-MA, MA, A, LDA, TAU,
-     $                   A( 1, MA+1 ), LDA, WORK, INFO )
+            CALL DORM2R( 'Left', 'Transpose', M, N-MA, MA, A, LDA,
+     $                   TAU, A( 1, MA+1 ), LDA, WORK, INFO )
          END IF
       END IF
 *
